@@ -1,0 +1,53 @@
+[
+ {
+  "id": "bigbang-sg-2026",
+  "artist": "BIGBANG",
+  "tour_en": "2026–2027 World Tour XX:COSMOS",
+  "tour_zh": "2026–2027 世界巡回演唱会 XX:COSMOS",
+  "city": "SG",
+  "venue_en": "Singapore National Stadium",
+  "venue_zh": "新加坡国家体育场",
+  "date_label_en": "Sat 17 Oct 2026 · 7pm",
+  "date_label_zh": "2026年10月17日（周六）· 晚上7点",
+  "event_date": "2026-10-17",
+  "status": "preorder",
+  "note_en": "All categories except VIP Ultimate",
+  "note_zh": "除 VIP Ultimate 外所有票区",
+  "image_url": "beams",
+  "published": true
+ },
+ {
+  "id": "tba-kl-1",
+  "artist": "[ARTIST]",
+  "tour_en": "[TOUR NAME]",
+  "tour_zh": "[巡演名称]",
+  "city": "KL",
+  "venue_en": "[VENUE]",
+  "venue_zh": "[场馆]",
+  "date_label_en": "[DD MMM 2026]",
+  "date_label_zh": "[2026年X月X日]",
+  "event_date": null,
+  "status": "soon",
+  "note_en": "Get notified when sales open",
+  "note_zh": "开票时第一时间通知你",
+  "image_url": "crowd",
+  "published": true
+ },
+ {
+  "id": "tba-sg-1",
+  "artist": "[ARTIST]",
+  "tour_en": "[TOUR NAME]",
+  "tour_zh": "[巡演名称]",
+  "city": "SG",
+  "venue_en": "[VENUE]",
+  "venue_zh": "[场馆]",
+  "date_label_en": "[DD MMM 2026]",
+  "date_label_zh": "[2026年X月X日]",
+  "event_date": null,
+  "status": "soon",
+  "note_en": "Get notified when sales open",
+  "note_zh": "开票时第一时间通知你",
+  "image_url": "night",
+  "published": true
+ }
+]

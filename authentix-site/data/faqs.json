@@ -1,0 +1,56 @@
+[
+ {
+  "id": "faq-1",
+  "q_en": "How much is your fee?",
+  "q_zh": "服务费是多少？",
+  "a_en": "A per-ticket service fee on top of the face value. You get the full breakdown in writing before you pay.",
+  "a_zh": "在票面价之外按每张票收取服务费。付款前会提供书面明细。",
+  "visible": true,
+  "sort_order": 1
+ },
+ {
+  "id": "faq-2",
+  "q_en": "When do I pay?",
+  "q_zh": "什么时候付款？",
+  "a_en": "Full payment upfront. You receive an Order ID and receipt straight away.",
+  "a_zh": "需预先全额付款，付款后立即获得订单编号与收据。",
+  "visible": true,
+  "sort_order": 2
+ },
+ {
+  "id": "faq-3",
+  "q_en": "What if you can’t secure my tickets?",
+  "q_zh": "如果没抢到票怎么办？",
+  "a_en": "If the quota is hit or your order isn’t secured, you get a full refund within 3 working days.",
+  "a_zh": "若名额已满或未能抢到，将于 3 个工作日内全额退款。",
+  "visible": true,
+  "sort_order": 3
+ },
+ {
+  "id": "faq-4",
+  "q_en": "Are the tickets physical or e-tickets?",
+  "q_zh": "是实体票还是电子票？",
+  "a_en": "Most of the time they’re e-tickets, transferred through the organiser’s official platform — unless the listing specifically says physical ticket.",
+  "a_zh": "大多数情况下是电子票，通过主办方官方平台转票——除非商品信息特别注明为实体票。",
+  "visible": true,
+  "sort_order": 4
+ },
+ {
+  "id": "faq-5",
+  "q_en": "Can we sit together?",
+  "q_zh": "可以坐在一起吗？",
+  "a_en": "Yes — side-by-side seats are available from 2 tickets. Final seats are assigned by the organiser; we’ll note your preferred zone.",
+  "a_zh": "可以——2 张起可安排连座。最终座位由主办方分配，我们会备注你偏好的区域。",
+  "visible": true,
+  "sort_order": 5
+ },
+ {
+  "id": "faq-6",
+  "q_en": "What about name-bound or ID-checked tickets?",
+  "q_zh": "实名制或需核对证件的门票怎么办？",
+  "a_en": "Some events require the ticket name to match your ID. For those, Buy For You purchases in your name where the organiser allows it. We’ll tell you the rules for each event before you pay.",
+  "a_zh": "部分演出要求票上姓名与证件一致。遇到这类演出，我们会在主办方允许的情况下以你的名义代抢。每场演出的规则都会在付款前说明。",
+  "visible": true,
+  "sort_order": 6
+ }
+]

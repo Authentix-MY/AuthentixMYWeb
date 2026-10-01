@@ -1,0 +1,724 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-i18n="meta.title">Authentix — 马来西亚、新加坡及海外演唱会门票</title>
+<meta name="description" data-i18n-content="meta.desc" content="Authentix：正版演唱会门票、内部票、代抢票服务与粉丝优惠，服务马来西亚与新加坡。不只是门票，更是真实的现场体验。">
+<meta property="og:title" content="Authentix — More than tickets, real experiences">
+<meta property="og:description" data-i18n-content="meta.desc" content="Authentix：正版演唱会门票、内部票、代抢票服务与粉丝优惠，服务马来西亚与新加坡。不只是门票，更是真实的现场体验。">
+<meta property="og:type" content="website">
+<meta property="og:image" content="/assets/og-image.jpg">
+<meta name="theme-color" content="#0E1512">
+<link rel="alternate" hreflang="en" href="/">
+<link rel="alternate" hreflang="zh-Hans" href="/zh/">
+<link rel="alternate" hreflang="x-default" href="/">
+<link rel="icon" href="/assets/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap">
+<style>
+:root{
+  --deep:#0E1512; --forest:#1F3A2F; --forest-2:#26473A; --sage:#8E9A93; --cream:#EFECE5; --paper:#E7E4DC;
+  --ink:#0F0F0F; --txt:#F1EEE6; --muted:#A9B2AC; --muted-l:#5E6661; --line-d:rgba(241,238,230,.16); --line-l:#D3CFC6;
+  --r:22px; --max:1200px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{margin:0;font-family:Montserrat,"Helvetica Neue",Arial,sans-serif;background:var(--deep);color:var(--txt);line-height:1.6;-webkit-font-smoothing:antialiased}
+img,svg{display:block;max-width:100%}
+a{color:inherit}
+p{margin:0}
+h1,h2,h3{margin:0;font-weight:600;line-height:1.15;letter-spacing:-.01em}
+.wrap{width:100%;max-width:var(--max);margin:0 auto;padding:0 24px}
+.caps{text-transform:uppercase;letter-spacing:.28em;font-weight:500;font-size:13px}
+.dash{width:28px;height:2px;background:currentColor;display:block}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 28px;border-radius:999px;font-weight:600;font-size:15px;text-decoration:none;border:0;cursor:pointer;font-family:inherit;transition:transform .15s ease, background .2s ease, color .2s ease}
+.btn:hover{transform:translateY(-1px)}
+.btn:focus-visible,a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:2px solid var(--sage);outline-offset:3px}
+.btn-cream{background:var(--cream);color:var(--forest)}
+.btn-cream:hover{background:#fff}
+.btn-ghost{background:transparent;color:var(--txt);box-shadow:inset 0 0 0 1.5px rgba(241,238,230,.45)}
+.btn-ghost:hover{box-shadow:inset 0 0 0 1.5px var(--txt)}
+.btn-forest{background:var(--forest);color:var(--txt)}
+.btn-forest:hover{background:var(--forest-2)}
+
+/* nav */
+.nav{position:fixed;inset:0 0 auto 0;z-index:50;transition:background .25s ease, box-shadow .25s ease}
+.nav.scrolled{background:rgba(14,21,18,.92);backdrop-filter:blur(10px);box-shadow:0 1px 0 var(--line-d)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:72px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.nav-links{display:flex;gap:30px;align-items:center}
+.nav-links a{text-decoration:none;font-size:14px;font-weight:500;color:var(--muted)}
+.nav-links a:hover{color:var(--txt)}
+.nav .btn{min-height:44px;padding:0 20px;font-size:14px}
+.nav-links a.btn{color:var(--forest)}
+.nav-links a.btn:hover{color:var(--forest)}
+.menu-btn{display:none;width:44px;height:44px;border-radius:12px;border:0;background:transparent;color:var(--txt);cursor:pointer;align-items:center;justify-content:center}
+@media (max-width:900px){
+  .nav-links{position:fixed;top:72px;left:0;right:0;flex-direction:column;align-items:flex-start;gap:0;background:var(--deep);padding:8px 24px 24px;border-bottom:1px solid var(--line-d);display:none}
+  .nav-links.open{display:flex}
+  .nav-links a{padding:14px 0;width:100%;font-size:16px;border-bottom:1px solid var(--line-d)}
+  .nav-links .btn{margin-top:16px;width:100%}
+  .menu-btn{display:inline-flex}
+}
+
+/* hero */
+.hero{position:relative;min-height:100vh;min-height:100svh;display:flex;flex-direction:column;overflow:hidden}
+.hero .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 60%;opacity:.85}
+.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,21,18,.6) 0%,rgba(14,21,18,.35) 40%,rgba(14,21,18,.9) 82%,var(--deep) 100%)}
+.hero-inner{position:relative;z-index:1;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:120px 24px 40px;gap:22px}
+.hero-side{position:absolute;z-index:1;top:108px;display:flex;flex-direction:column;gap:10px;font-size:12px;line-height:1.9}
+.hero-side.l{left:max(24px,calc(50% - 600px))}
+.hero-side.r{right:max(24px,calc(50% - 600px));align-items:flex-end;text-align:right}
+.hero h1{font-size:clamp(15px,1.6vw,18px);font-weight:400;letter-spacing:.42em;text-transform:uppercase;line-height:2}
+.hero .lead{max-width:560px;color:#C9D0CB;font-size:17px}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:8px}
+.usp{position:relative;z-index:1;border-top:1px solid var(--line-d)}
+.usp ul{list-style:none;margin:0 auto;padding:22px 24px;max-width:var(--max);display:grid;grid-template-columns:repeat(5,minmax(0,1fr))}
+.usp li{display:flex;align-items:center;justify-content:center;gap:16px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;line-height:1.7}
+.usp li+li{border-left:1px solid rgba(241,238,230,.3)}
+@media (max-width:900px){
+  .hero-side{display:none}
+  .usp ul{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 12px;padding:22px 24px 90px}
+  .usp li{justify-content:flex-start;gap:10px;font-size:10.5px;letter-spacing:.12em}
+  .usp li svg{width:28px;height:28px}
+  .usp li+li{border-left:0}
+  .usp li:last-child{grid-column:span 2}
+}
+
+/* sections */
+section{padding:110px 0}
+.sec-head{display:flex;flex-direction:column;gap:16px;max-width:680px;margin-bottom:56px}
+.sec-head h2{font-size:clamp(30px,4vw,46px)}
+.sec-head p{color:var(--muted);font-size:17px}
+.light{background:var(--paper);color:var(--ink)}
+.light .sec-head p{color:var(--muted-l)}
+.forest{background:var(--forest)}
+
+/* services */
+.services{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+.svc{background:#F3F1EC;border-radius:var(--r);padding:30px 26px;display:flex;flex-direction:column;gap:14px;box-shadow:inset 0 0 0 1px var(--line-l)}
+.svc .ico{width:56px;height:56px;border-radius:50%;background:var(--forest);display:flex;align-items:center;justify-content:center;color:var(--txt)}
+.svc h3{font-size:20px}
+.svc p{font-size:15px;color:#3A403C}
+.svc .tag{margin-top:auto;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--forest);font-weight:600}
+.svc.feature{background:var(--forest);color:var(--txt);box-shadow:none}
+.svc.feature p{color:#D5DAD6}
+.svc.feature .ico{background:var(--cream);color:var(--forest)}
+.svc.feature .tag{color:var(--cream)}
+@media (max-width:1000px){.services{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.services{grid-template-columns:1fr}}
+
+/* steps */
+.bfy{display:grid;grid-template-columns:1fr 1.15fr;gap:64px;align-items:start}
+.bfy-photo{position:relative;border-radius:28px;overflow:hidden;aspect-ratio:4/5}
+.bfy-photo img{width:100%;height:100%;object-fit:cover}
+.bfy-photo .over{position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,21,18,.6),rgba(14,21,18,.1) 50%,rgba(14,21,18,.6));display:flex;flex-direction:column;justify-content:space-between;padding:32px}
+.bfy-photo .big{font-size:clamp(26px,3vw,36px);font-weight:600;letter-spacing:.16em;text-transform:uppercase;line-height:1.4}
+.steps{list-style:none;margin:0;padding:0;position:relative}
+.steps:before{content:"";position:absolute;left:27px;top:30px;bottom:30px;width:2px;background:var(--line-d)}
+.steps li{position:relative;display:flex;gap:24px;padding:14px 0}
+.steps .n{width:56px;height:56px;flex-shrink:0;border-radius:50%;background:var(--forest);display:flex;align-items:center;justify-content:center;font-weight:600;letter-spacing:.06em;box-shadow:0 0 0 6px var(--deep)}
+.steps li:last-child .n{background:var(--cream);color:var(--forest)}
+.steps h3{font-size:20px;margin-top:4px}
+.steps p{color:var(--muted);font-size:15px;margin-top:4px}
+.note{margin-top:22px;padding:18px 22px;border-radius:16px;background:rgba(241,238,230,.06);box-shadow:inset 0 0 0 1px var(--line-d);color:var(--muted);font-size:14px}
+@media (max-width:900px){.bfy{grid-template-columns:1fr;gap:40px}.bfy-photo{aspect-ratio:4/3}.bfy-photo .over{padding:24px}}
+
+/* drops */
+.drop-top{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:36px}
+.drop-top .sec-head{margin-bottom:0}
+.filters{display:flex;gap:8px;flex-wrap:wrap}
+.chip{min-height:44px;padding:0 20px;border-radius:999px;border:0;background:#F3F1EC;color:var(--ink);font-family:inherit;font-weight:600;font-size:14px;cursor:pointer;box-shadow:inset 0 0 0 1px var(--line-l)}
+.chip[aria-pressed="true"]{background:var(--forest);color:var(--txt);box-shadow:none}
+.drops{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.ticket{position:relative;display:flex;flex-direction:column;border-radius:var(--r);background:var(--deep);color:var(--txt);overflow:hidden;min-height:330px}
+.ticket .ph{position:relative;height:150px;overflow:hidden}
+.ticket .ph img{width:100%;height:100%;object-fit:cover;opacity:.7}
+.ticket .ph:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,var(--deep))}
+.ticket .status{position:absolute;z-index:1;top:16px;left:16px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;padding:7px 12px;border-radius:999px;background:var(--cream);color:var(--forest)}
+.ticket .status.soon{background:rgba(14,21,18,.7);color:var(--txt);box-shadow:inset 0 0 0 1px rgba(241,238,230,.5)}
+.ticket .body{padding:6px 24px 0;display:flex;flex-direction:column;gap:6px;flex:1}
+.ticket h3{font-size:22px}
+.ticket .tour{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.ticket .meta{display:flex;gap:18px;flex-wrap:wrap;font-size:14px;color:#C9D0CB;margin-top:6px}
+.ticket .foot{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:18px 24px 22px;margin-top:16px;border-top:2px dashed rgba(241,238,230,.18);position:relative}
+.ticket .foot:before,.ticket .foot:after{content:"";position:absolute;top:-13px;width:24px;height:24px;border-radius:50%;background:var(--paper)}
+.ticket .foot:before{left:-12px}.ticket .foot:after{right:-12px}
+.ticket .foot small{color:var(--muted);font-size:13px}
+.ticket .foot a{font-weight:600;font-size:14px;text-decoration:none;display:inline-flex;align-items:center;gap:6px;min-height:44px}
+.empty{grid-column:1/-1;padding:40px;text-align:center;color:var(--muted-l)}
+@media (max-width:1000px){.drops{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){.drops{grid-template-columns:1fr}}
+
+/* trust */
+.trust{position:relative;overflow:hidden}
+.trust .wm{position:absolute;right:-120px;top:40px;width:640px;opacity:.06;pointer-events:none}
+.facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;position:relative}
+.fact{border-radius:var(--r);padding:26px;background:rgba(241,238,230,.06);box-shadow:inset 0 0 0 1px var(--line-d);display:flex;gap:16px}
+.fact h3{font-size:18px;margin-bottom:6px}
+.fact p{font-size:14px;color:#C9D0CB}
+.never{margin-top:40px;padding-top:28px;border-top:1px solid var(--line-d);display:grid;grid-template-columns:200px repeat(3,minmax(0,1fr));gap:20px;align-items:start;position:relative}
+.never div{display:flex;gap:10px;font-size:15px}
+@media (max-width:1000px){.facts{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:900px){.never{grid-template-columns:1fr}}
+@media (max-width:560px){.facts{grid-template-columns:1fr}}
+
+/* reviews */
+.rev-top{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:40px}
+.score{display:grid;grid-template-columns:auto auto;column-gap:14px;align-items:center;text-decoration:none;background:var(--forest);color:var(--txt);border-radius:22px;padding:18px 24px}
+.score .big{font-size:40px;font-weight:600;grid-row:span 2;line-height:1}
+.score .stars{color:#E9D9A6;letter-spacing:.12em;font-size:15px}
+.score span:nth-child(3){font-size:13px;color:#D5DAD6}
+.score .go{grid-column:1/-1;margin-top:10px;font-size:13px;font-weight:600;color:var(--cream)}
+.reviews{columns:3;column-gap:18px}
+.reviews .review{break-inside:avoid;margin:0 0 18px !important}
+.review .stars{color:var(--forest);letter-spacing:.14em;font-size:15px}
+.review .tags{display:flex;flex-wrap:wrap;gap:6px}
+.review .tags span{font-size:11px;font-weight:600;padding:5px 10px;border-radius:999px;background:#E3E0D8;color:var(--forest)}
+.review .src{display:flex;justify-content:space-between;gap:10px;font-size:12px;color:var(--muted-l);margin-top:auto;padding-top:14px;border-top:1px solid var(--line-l)}
+.shots{margin-top:40px;display:flex;flex-direction:column;gap:16px}
+.shot-row{display:flex;gap:14px;overflow-x:auto;padding-bottom:10px;scroll-snap-type:x mandatory}
+.shot-row button{flex:0 0 auto;width:180px;padding:0;border:0;border-radius:16px;overflow:hidden;cursor:zoom-in;background:#111;scroll-snap-align:start;box-shadow:0 8px 20px rgba(0,0,0,.15)}
+.shot-row img{width:180px;height:340px;object-fit:cover;object-position:center 35%}
+.lightbox{position:fixed;inset:0;z-index:100;background:rgba(10,14,12,.92);display:flex;align-items:center;justify-content:center;padding:24px}
+.lightbox[hidden]{display:none}
+.lightbox img{max-height:92vh;max-width:92vw;border-radius:16px}
+.lb-close{position:absolute;top:16px;right:16px;width:48px;height:48px;border-radius:50%;border:0;background:var(--cream);color:var(--forest);font-size:28px;line-height:1;cursor:pointer}
+.review{background:#F3F1EC;border-radius:var(--r);padding:30px;display:flex;flex-direction:column;gap:18px;box-shadow:inset 0 0 0 1px var(--line-l)}
+.review q{font-size:17px;font-weight:500;line-height:1.55;quotes:"“" "”"}
+.review .who{margin-top:auto;font-size:13px;color:var(--muted-l);letter-spacing:.06em}
+.review .ph-note{font-size:12px;color:var(--muted-l);font-style:italic}
+@media (max-width:1000px){.reviews{columns:2}}
+@media (max-width:640px){.reviews{columns:1}}
+
+/* faq + form */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+details{border-bottom:1px solid var(--line-l)}
+summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:22px 0;font-weight:600;font-size:17px;min-height:44px}
+summary::-webkit-details-marker{display:none}
+summary .pm{flex-shrink:0;width:28px;height:28px;border-radius:50%;background:var(--forest);color:var(--txt);display:flex;align-items:center;justify-content:center;transition:transform .2s ease}
+details[open] summary .pm{transform:rotate(45deg)}
+details p{padding:0 44px 22px 0;color:#3A403C;font-size:15px}
+.form{background:var(--forest);color:var(--txt);border-radius:28px;padding:36px;display:flex;flex-direction:column;gap:18px}
+.form h3{font-size:26px}
+.form .sub{color:#D5DAD6;font-size:15px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.field{display:flex;flex-direction:column;gap:8px}
+.field label{font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;color:#D5DAD6}
+.field input,.field select,.field textarea{min-height:50px;border-radius:14px;border:0;background:rgba(241,238,230,.1);box-shadow:inset 0 0 0 1px rgba(241,238,230,.22);color:var(--txt);padding:12px 16px;font-family:inherit;font-size:15px}
+.field textarea{min-height:96px;resize:vertical}
+.field select option{color:var(--ink)}
+.field input::placeholder,.field textarea::placeholder{color:rgba(241,238,230,.5)}
+.form .fine{font-size:12px;color:#C9D0CB}
+.form-msg{display:none;padding:16px 18px;border-radius:14px;background:var(--cream);color:var(--forest);font-weight:600;font-size:15px}
+.hidden{display:none}
+@media (max-width:900px){.split{grid-template-columns:1fr}.row{grid-template-columns:1fr}.form{padding:26px}}
+
+/* cta + footer */
+.cta{position:relative;overflow:hidden;text-align:center;padding:120px 0}
+.cta > img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.55}
+.cta:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,var(--deep),rgba(14,21,18,.5) 50%,var(--deep))}
+.cta .wrap{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:22px}
+.qr{margin-top:10px;display:flex;align-items:center;gap:18px;text-align:left;padding:14px 22px 14px 14px;border-radius:24px;background:rgba(241,238,230,.08);box-shadow:inset 0 0 0 1px var(--line-d);font-size:14px;color:#C9D0CB;line-height:1.5}
+.qr img{width:120px;height:120px;border-radius:14px;position:static;opacity:1}
+.qr strong{color:var(--txt);font-weight:600}
+.cta h2{font-size:clamp(28px,4vw,48px);letter-spacing:.2em;text-transform:uppercase;font-weight:600;line-height:1.35}
+footer{padding:64px 0 40px;border-top:1px solid var(--line-d)}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:32px}
+.foot-grid h4{margin:0 0 14px;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--sage);font-weight:600}
+.foot-grid ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;font-size:14px;color:#C9D0CB}
+.foot-grid a{text-decoration:none}.foot-grid a:hover{color:var(--txt)}
+.legal{margin-top:48px;padding-top:24px;border-top:1px solid var(--line-d);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:12px;color:var(--muted)}
+@media (max-width:900px){.foot-grid{grid-template-columns:1fr 1fr}}
+.wa-float{position:fixed;right:20px;bottom:20px;z-index:60;width:60px;height:60px;border-radius:50%;background:var(--cream);color:var(--forest);display:flex;align-items:center;justify-content:center;box-shadow:0 10px 30px rgba(0,0,0,.35);text-decoration:none}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease, transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+
+/* ---- v3 additions ---- */
+body{font-family:Montserrat,"Noto Sans SC","Helvetica Neue",Arial,sans-serif}
+:lang(zh-Hans) .caps,:lang(zh-Hans) .usp li,:lang(zh-Hans) .hero h1{letter-spacing:.14em}
+:lang(zh-Hans) .hero h1{font-size:clamp(16px,1.8vw,20px)}
+:lang(zh-Hans) .cta h2{letter-spacing:.12em}
+:lang(zh-Hans) .bfy-photo .big{letter-spacing:.08em}
+.lang{display:inline-flex;align-items:center;padding:3px;border-radius:999px;box-shadow:inset 0 0 0 1px rgba(241,238,230,.3)}
+.lang button{min-height:36px;min-width:44px;padding:0 12px;border:0;border-radius:999px;background:transparent;color:var(--muted);font:600 13px/1 inherit;font-family:inherit;cursor:pointer}
+.lang button[aria-pressed="true"]{background:var(--cream);color:var(--forest)}
+.nav-right{display:flex;align-items:center;gap:10px}
+@media (max-width:900px){.nav-links .lang{display:none}}
+.lang-m{display:none}
+@media (max-width:900px){.lang-m{display:inline-flex}}
+.consent{display:flex;gap:12px;align-items:flex-start;font-size:13px;color:#D5DAD6;line-height:1.5}
+.consent input{width:20px;height:20px;margin-top:1px;flex-shrink:0;accent-color:var(--cream)}
+.consent a{color:var(--cream)}
+dialog.pv{max-width:560px;width:calc(100% - 32px);border:0;border-radius:24px;padding:32px;background:var(--cream);color:var(--ink)}
+dialog.pv::backdrop{background:rgba(10,14,12,.75)}
+dialog.pv h3{font-size:22px;margin-bottom:14px;color:var(--forest)}
+dialog.pv p{font-size:15px;color:#3A403C;margin-bottom:12px}
+dialog.pv .btn{margin-top:8px}
+.review .orig{font-size:11px;color:var(--muted-l);letter-spacing:.06em}
+.btn[disabled]{opacity:.6;cursor:wait;transform:none}
+.off{display:none !important}
+/* "We will never" row: label + evenly spaced items, all on one baseline */
+.never{display:flex;flex-wrap:wrap;align-items:center;gap:14px 44px}
+.never > .caps{flex:0 0 180px;line-height:1.4}
+.never > div{display:flex;align-items:center;gap:10px;font-size:15px;line-height:1.4}
+.never > div svg{flex-shrink:0}
+@media (max-width:900px){.never{flex-direction:column;align-items:flex-start;gap:14px}.never > .caps{flex:none}}
+</style>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Authentix"><svg viewBox="662 54 1910 1293" width="40" height="27" aria-hidden="true"><g transform="translate(0.000000,1360.000000) scale(0.100000,-0.100000)" fill="#F1EEE6"><path d="M14490 12971 c-192 -8 -199 -12 -279 -184 -28 -59 -61 -122 -74 -140 -14 -17 -37 -56 -51 -85 -15 -29 -43 -75 -62 -101 -18 -27 -34 -53 -34 -58 0 -5 -25 -52 -56 -104 -31 -51 -95 -170 -144 -264 -155 -299 -170 -328 -181 -342 -15 -17 -101 -178 -222 -413 -55 -107 -107 -206 -117 -220 -22 -32 -150 -258 -150 -265 0 -3 -52 -103 -115 -223 -146 -275 -139 -262 -192 -357 -25 -44 -71 -127 -103 -185 -32 -58 -83 -150 -114 -205 -31 -55 -79 -145 -105 -200 -27 -56 -66 -130 -88 -165 -22 -36 -88 -157 -148 -270 -59 -113 -119 -223 -133 -245 -15 -22 -86 -159 -159 -304 -74 -145 -151 -294 -172 -330 -68 -118 -170 -307 -185 -342 -14 -32 -68 -134 -193 -364 -86 -157 -343 -644 -343 -650 0 -3 -12 -24 -27 -48 -14 -23 -40 -69 -56 -102 -16 -33 -42 -80 -57 -105 -15 -25 -33 -62 -39 -82 -7 -20 -29 -63 -50 -95 -20 -32 -58 -101 -84 -153 -80 -163 -97 -185 -179 -226 -40 -20 -97 -45 -127 -55 -30 -11 -73 -30 -96 -44 -23 -13 -82 -42 -131 -64 -49 -21 -152 -68 -229 -103 -77 -36 -214 -99 -305 -141 -177 -81 -695 -341 -720 -362 -8 -7 -58 -35 -110 -62 -156 -81 -301 -162 -332 -185 -17 -11 -67 -40 -112 -63 -129 -66 -211 -115 -356 -211 -210 -140 -242 -163 -285 -203 -22 -20 -71 -59 -110 -86 -376 -266 -730 -644 -870 -930 -84 -171 -99 -230 -92 -365 7 -132 25 -190 86 -282 70 -103 227 -215 351 -248 36 -10 124 -34 195 -54 183 -52 257 -58 726 -63 550 -6 935 26 1554 128 365 60 599 100 606 104 4 3 56 12 116 20 59 9 176 31 258 50 83 19 179 39 213 45 35 6 74 15 87 20 12 5 64 16 115 25 52 8 146 29 209 45 64 16 145 34 181 40 36 6 97 19 135 30 39 10 120 31 180 45 121 30 334 86 435 115 36 11 119 31 185 45 148 31 377 86 550 132 72 19 175 45 230 58 55 13 119 30 142 38 22 9 79 23 125 31 45 9 175 41 288 71 113 30 234 63 270 71 36 9 101 27 145 39 193 55 585 162 690 189 124 32 393 99 474 117 45 11 96 26 113 35 16 8 68 22 116 30 48 8 132 28 187 44 55 16 141 37 190 45 50 9 124 27 165 40 41 13 176 46 300 75 124 28 259 61 300 72 41 11 104 26 140 33 93 17 390 82 490 107 174 43 222 32 255 -59 10 -26 33 -86 51 -133 18 -47 35 -96 39 -110 3 -14 21 -59 40 -100 39 -85 165 -398 206 -510 15 -41 41 -104 58 -140 17 -36 31 -71 31 -78 0 -7 14 -45 31 -85 17 -40 46 -112 64 -162 43 -116 99 -257 130 -320 13 -27 29 -70 35 -94 7 -25 41 -117 77 -205 35 -89 77 -195 92 -236 46 -124 215 -537 273 -665 127 -281 430 -675 643 -835 28 -20 59 -47 70 -60 35 -38 295 -205 412 -264 166 -83 355 -151 563 -202 175 -43 246 -54 560 -84 101 -10 1591 -21 1650 -12 44 6 73 39 67 76 -6 37 -178 452 -349 841 -17 39 -44 106 -60 150 -16 44 -42 105 -57 135 -16 30 -51 111 -80 180 -29 69 -59 141 -68 160 -105 228 -252 565 -364 835 -44 105 -97 225 -119 267 -22 42 -51 107 -64 145 -13 37 -52 133 -86 213 -34 80 -79 186 -100 235 -43 103 -113 261 -170 385 -22 47 -62 139 -89 205 -103 250 -317 742 -331 760 -12 15 -209 473 -256 593 -13 34 -24 73 -24 86 0 37 36 73 93 92 96 31 331 122 434 168 55 25 143 61 195 81 144 56 565 249 668 307 19 10 69 35 110 54 168 79 603 353 794 499 71 54 231 207 250 239 10 17 41 65 67 106 55 86 94 211 84 269 -12 65 -63 149 -115 190 -201 159 -646 216 -1263 162 -122 -11 -289 -25 -372 -31 -82 -7 -177 -18 -210 -25 -33 -7 -136 -25 -228 -40 -93 -14 -219 -37 -280 -50 -62 -14 -157 -34 -212 -44 -55 -11 -163 -35 -240 -55 -77 -19 -180 -42 -228 -50 -101 -18 -123 -28 -132 -57 -9 -28 11 -41 53 -34 18 3 92 12 165 20 73 8 168 24 212 36 185 49 633 111 965 134 124 9 280 20 348 25 270 22 606 2 746 -43 89 -28 164 -93 173 -149 6 -43 -37 -146 -79 -188 -105 -104 -161 -149 -288 -231 -161 -103 -261 -157 -540 -293 -218 -105 -334 -155 -530 -229 -36 -14 -103 -40 -150 -59 -111 -45 -260 -101 -335 -126 -33 -11 -103 -36 -155 -55 -206 -77 -460 -165 -555 -195 -243 -74 -541 -162 -549 -162 -5 0 -34 -11 -65 -24 -31 -13 -119 -43 -196 -66 -77 -23 -189 -56 -250 -75 -60 -18 -137 -39 -170 -45 -59 -12 -237 -66 -385 -116 -41 -14 -106 -35 -145 -46 -38 -11 -92 -29 -120 -40 -27 -11 -77 -27 -110 -36 -33 -8 -127 -34 -210 -57 -82 -24 -179 -49 -215 -55 -64 -12 -164 -39 -310 -85 -41 -13 -145 -44 -230 -70 -85 -27 -202 -63 -260 -80 -58 -18 -152 -45 -210 -59 -58 -14 -132 -35 -165 -46 -33 -12 -98 -29 -145 -40 -47 -10 -186 -51 -310 -90 -124 -39 -261 -79 -305 -90 -44 -10 -105 -27 -135 -38 -30 -11 -102 -32 -160 -46 -97 -24 -275 -71 -555 -146 -60 -16 -162 -46 -225 -65 -63 -20 -153 -45 -200 -56 -47 -12 -130 -32 -185 -46 -117 -30 -186 -47 -475 -115 -238 -56 -385 -94 -535 -138 -127 -37 -420 -107 -506 -120 -37 -5 -86 -17 -109 -25 -89 -31 -160 -15 -160 36 0 24 123 295 190 420 90 167 264 509 285 558 14 35 36 80 49 100 12 20 33 61 45 91 13 30 28 61 33 67 6 7 47 86 93 175 307 608 704 1389 782 1538 27 52 110 214 185 360 74 146 166 321 203 390 37 69 155 298 263 510 107 212 203 397 213 411 10 14 34 59 53 100 20 41 60 117 89 169 132 233 220 396 237 441 11 27 31 66 44 86 14 21 32 58 41 83 9 25 34 75 55 111 22 36 51 94 65 129 14 35 43 93 64 129 22 36 49 91 61 122 22 59 86 139 113 139 25 0 55 -48 78 -124 12 -39 32 -93 46 -120 26 -51 101 -230 158 -376 18 -47 69 -170 114 -273 44 -104 81 -191 81 -194 0 -2 29 -66 64 -141 35 -75 71 -162 81 -192 10 -30 29 -77 42 -104 14 -27 42 -96 63 -155 45 -126 117 -300 131 -317 5 -6 20 -42 33 -80 13 -38 36 -96 51 -129 55 -123 118 -272 135 -320 9 -28 31 -77 49 -109 17 -32 31 -65 31 -72 0 -8 18 -56 40 -108 22 -51 40 -100 40 -108 0 -8 22 -60 50 -116 27 -56 54 -121 61 -144 6 -23 22 -64 35 -89 13 -26 32 -69 43 -95 10 -27 49 -121 86 -209 37 -88 74 -180 82 -205 55 -167 75 -176 301 -130 84 17 164 35 178 40 14 6 78 24 142 40 65 16 164 43 222 61 58 17 132 38 165 46 33 9 139 37 235 64 96 26 202 53 235 59 33 7 80 20 105 30 25 9 67 21 95 25 27 4 108 25 180 47 71 22 177 50 235 63 58 13 130 32 160 43 30 11 111 34 180 51 69 17 170 42 225 56 55 14 110 28 123 31 74 15 78 73 16 220 -76 180 -84 203 -84 238 0 24 -11 47 -40 83 -37 47 -132 243 -319 658 -40 88 -85 185 -100 215 -16 30 -34 73 -41 95 -7 22 -31 78 -53 125 -57 123 -123 272 -167 375 -20 50 -68 155 -105 235 -37 80 -76 167 -87 194 -10 27 -32 77 -47 110 -16 34 -45 99 -66 146 -47 107 -120 271 -147 330 -11 25 -36 83 -55 130 -19 47 -52 121 -73 165 -75 153 -244 525 -365 800 -84 192 -113 255 -154 335 -21 41 -44 93 -51 115 -7 22 -30 75 -52 118 -21 43 -48 101 -59 130 -11 29 -46 106 -78 172 -32 66 -69 149 -81 185 -12 36 -33 84 -47 106 -13 23 -49 99 -79 170 -78 180 -114 262 -173 394 -91 203 -100 224 -123 285 -19 49 -30 64 -63 82 l-40 22 -1200 4 c-660 3 -1265 2 -1345 -2z m-3986 -7017 c29 -11 18 -64 -28 -138 -24 -39 -72 -127 -106 -195 -34 -68 -72 -140 -85 -160 -32 -48 -155 -284 -329 -631 -78 -157 -182 -361 -231 -455 -49 -93 -106 -206 -128 -250 -22 -44 -47 -91 -57 -105 -21 -30 -226 -435 -309 -611 -74 -157 -82 -163 -242 -183 -177 -23 -704 -25 -834 -3 -239 41 -404 128 -481 256 -81 133 -86 218 -21 399 24 66 57 137 73 159 17 21 38 51 49 68 78 124 455 496 670 660 43 33 104 83 134 111 50 45 366 261 431 294 14 7 108 63 210 125 215 130 334 197 445 253 44 21 136 69 205 104 69 36 204 105 300 155 96 49 195 103 219 121 42 31 81 39 115 26z M23897 11892 c-20 -22 -32 -73 -58 -247 -22 -149 -91 -384 -148 -507 -61 -133 -253 -418 -280 -418 -4 0 -36 -30 -72 -66 -66 -68 -182 -160 -234 -187 -16 -8 -54 -31 -83 -51 -29 -19 -67 -39 -85 -44 -18 -5 -70 -25 -117 -45 -91 -38 -244 -74 -430 -102 -160 -25 -210 -47 -190 -85 12 -23 69 -37 225 -55 126 -15 347 -68 423 -101 20 -9 69 -29 108 -44 201 -77 535 -364 621 -534 14 -28 37 -66 51 -83 66 -87 192 -472 217 -663 18 -142 24 -168 41 -202 41 -80 72 -2 114 282 32 219 162 552 268 688 16 20 36 51 45 67 82 155 520 461 722 505 28 6 83 22 124 36 43 14 158 37 268 53 186 27 223 38 223 67 0 28 -53 46 -217 74 -92 16 -202 41 -243 55 -41 14 -102 32 -135 40 -70 16 -311 136 -438 218 -105 68 -268 229 -332 328 -66 102 -181 337 -205 416 -10 37 -30 104 -43 148 -14 44 -34 148 -46 230 -32 212 -56 270 -94 227z M11560 2963 c-63 -14 -155 -36 -204 -49 -49 -14 -148 -36 -220 -50 -72 -13 -158 -31 -191 -39 -33 -8 -92 -19 -131 -25 -40 -5 -145 -25 -235 -44 -90 -19 -191 -37 -224 -41 -33 -4 -85 -13 -115 -20 -30 -7 -161 -29 -290 -49 -129 -20 -273 -43 -320 -51 -47 -8 -157 -24 -245 -35 -88 -11 -185 -25 -215 -30 -30 -6 -117 -17 -192 -26 -220 -24 -212 -18 -339 -279 -17 -33 -41 -80 -55 -105 -14 -25 -38 -74 -55 -108 -16 -35 -39 -78 -51 -95 -12 -17 -41 -68 -64 -112 -22 -44 -76 -147 -119 -230 -43 -82 -165 -321 -270 -530 -106 -209 -235 -464 -289 -567 -53 -103 -96 -199 -96 -212 0 -56 -3 -56 565 -55 663 1 731 6 1070 80 180 40 501 148 585 198 36 21 90 51 120 66 98 49 223 128 305 192 44 34 114 89 155 122 41 32 105 89 141 127 37 38 86 87 110 110 92 85 183 200 363 461 116 167 261 421 322 563 20 47 117 244 215 437 99 194 179 359 179 366 0 21 -33 46 -66 51 -16 3 -81 -7 -144 -21z"></path></g></svg><svg viewBox="58 43 2871 489" width="129" height="22" role="img" aria-label="Authentix"><g transform="translate(0.000000,576.000000) scale(0.100000,-0.100000)" fill="#F1EEE6"><path d="M12041 5224 l-26 -22 2 -2272 2 -2272 22 -24 c36 -39 72 -42 401 -38 380 6 390 7 421 43 23 28 24 34 31 291 4 145 4 504 0 799 -7 568 -1 719 36 831 10 30 26 80 35 110 44 145 198 336 320 397 213 107 403 123 634 54 133 -40 144 -46 241 -148 91 -94 141 -179 160 -269 41 -200 40 -170 40 -1115 0 -624 3 -915 11 -932 23 -51 29 -52 399 -55 375 -3 406 0 442 49 19 25 19 55 19 1000 -1 1134 -2 1147 -86 1412 -45 141 -134 327 -201 418 -18 25 -77 87 -129 137 -84 81 -109 98 -217 151 -68 33 -143 65 -168 71 -25 6 -92 24 -150 40 -452 125 -940 21 -1222 -262 -91 -90 -121 -105 -148 -73 -11 13 -13 182 -14 819 -2 870 1 836 -53 865 -10 5 -189 11 -397 13 -380 4 -380 4 -405 -18z M25060 5182 c-152 -61 -232 -130 -285 -246 -51 -110 -60 -174 -40 -281 21 -112 33 -141 91 -216 105 -137 246 -209 409 -209 90 0 132 12 192 55 26 19 68 49 93 66 46 33 133 153 158 219 9 24 12 74 10 160 -3 123 -4 126 -42 198 -59 110 -111 162 -219 218 l-92 48 -115 3 c-93 3 -124 0 -160 -15z M2692 5103 c-26 -12 -42 -34 -76 -107 -76 -157 -187 -399 -208 -451 -11 -27 -28 -63 -38 -80 -9 -16 -23 -48 -30 -70 -7 -22 -55 -131 -106 -242 -52 -111 -94 -208 -94 -215 0 -8 -18 -51 -40 -96 -22 -44 -40 -84 -40 -87 0 -6 -134 -292 -233 -495 -38 -80 -82 -174 -97 -210 -15 -36 -60 -135 -100 -220 -40 -85 -78 -171 -85 -190 -21 -58 -120 -279 -189 -422 -35 -73 -74 -158 -86 -188 -12 -30 -34 -75 -50 -100 -15 -25 -36 -70 -45 -100 -10 -30 -33 -82 -51 -115 -18 -33 -42 -85 -54 -115 -12 -30 -42 -100 -66 -155 -25 -55 -61 -134 -79 -175 -18 -41 -55 -124 -83 -185 -28 -60 -62 -140 -76 -177 -13 -37 -41 -93 -62 -125 -45 -70 -56 -133 -29 -164 18 -19 30 -20 464 -18 557 1 516 -10 591 159 23 52 59 136 80 185 20 50 51 119 67 155 17 36 36 83 43 105 7 22 25 65 40 95 16 30 42 89 59 130 83 200 108 226 238 241 107 13 239 37 293 54 25 7 86 19 135 25 50 6 141 22 204 36 63 13 191 31 285 39 217 18 875 29 928 14 52 -14 100 -64 126 -135 63 -165 252 -459 379 -589 159 -163 383 -314 563 -381 25 -10 74 -29 110 -44 42 -18 122 -37 225 -54 187 -30 247 -33 269 -10 33 33 34 31 -220 538 -67 132 -131 273 -144 311 -57 177 -117 245 -400 460 -44 33 -112 79 -152 102 -118 68 -409 209 -468 228 -30 10 -81 31 -114 47 -32 16 -133 49 -225 74 -91 24 -191 53 -221 63 -30 10 -104 26 -165 36 -60 9 -144 24 -185 32 -100 21 -542 30 -667 13 -157 -21 -241 -24 -259 -9 -25 20 -13 91 30 189 21 47 49 114 62 150 14 36 42 101 64 145 22 44 57 125 79 181 22 55 81 190 132 300 50 109 115 253 143 318 28 66 59 124 69 130 45 28 73 -21 356 -639 50 -110 112 -240 136 -290 25 -49 78 -162 119 -250 55 -122 80 -165 103 -180 16 -12 92 -36 169 -54 284 -68 298 -73 529 -157 123 -45 281 -120 335 -159 93 -67 141 -81 160 -45 12 23 -6 72 -57 153 -17 26 -65 127 -107 225 -75 174 -122 270 -364 747 -67 132 -131 265 -143 295 -11 30 -34 80 -50 110 -41 79 -459 940 -459 947 0 3 -24 55 -54 117 -30 61 -76 158 -102 214 -28 60 -60 114 -77 128 l-29 24 -436 0 c-382 0 -441 -2 -470 -17z M22987 4721 c-59 -5 -72 -10 -93 -34 l-24 -28 0 -360 c0 -378 -3 -407 -45 -423 -9 -3 -101 -6 -203 -6 -168 0 -190 -2 -219 -20 -53 -32 -55 -41 -54 -312 2 -366 -4 -358 278 -358 100 0 189 -3 198 -6 43 -17 45 -40 46 -511 1 -246 4 -648 8 -893 6 -435 7 -446 29 -487 12 -23 27 -66 33 -95 6 -29 36 -100 67 -158 133 -251 349 -398 672 -456 100 -18 463 -21 579 -4 223 31 301 71 301 152 1 168 -25 512 -39 530 -23 28 -76 36 -161 26 -41 -5 -136 -8 -210 -5 -173 6 -212 19 -294 101 -85 84 -95 119 -107 366 -11 221 -9 1317 2 1369 15 71 5 69 396 78 348 8 353 8 375 31 23 22 23 27 26 298 3 302 1 313 -56 335 -16 6 -157 11 -352 11 -345 1 -355 2 -381 50 -8 15 -13 135 -16 382 -4 382 -6 399 -53 423 -26 13 -561 16 -703 4z M9930 4691 l-30 -29 0 -354 c0 -316 -2 -357 -18 -388 -25 -50 -54 -62 -137 -56 -103 7 -316 -8 -342 -25 -13 -7 -27 -27 -33 -43 -13 -38 -13 -516 0 -551 18 -47 59 -55 270 -55 206 0 241 -7 257 -52 4 -13 7 -324 5 -693 -1 -368 2 -776 7 -905 l8 -235 40 -116 c66 -195 199 -374 338 -456 32 -19 70 -43 83 -53 13 -11 94 -43 180 -72 l157 -53 265 0 c239 1 273 3 350 23 47 12 118 28 158 37 142 29 138 20 122 358 -6 144 -16 269 -21 278 -15 29 -65 42 -132 35 -219 -24 -243 -26 -325 -16 -153 17 -261 89 -323 215 -41 84 -47 208 -42 865 7 832 4 774 32 804 l24 26 336 0 c193 0 351 4 372 10 73 20 74 22 77 305 3 278 -1 309 -42 339 -26 20 -41 21 -369 23 -188 1 -350 2 -359 3 -32 0 -56 36 -63 92 -3 29 -7 200 -8 380 l-2 328 -28 27 -27 28 -376 3 -375 3 -29 -30z M16891 3920 c-293 -41 -569 -164 -830 -370 -125 -98 -304 -316 -352 -427 -12 -26 -39 -85 -61 -130 -48 -101 -90 -224 -125 -363 -62 -251 -35 -745 55 -1010 36 -104 119 -300 136 -320 8 -8 30 -40 51 -70 79 -115 232 -280 305 -330 30 -21 76 -55 102 -76 26 -22 64 -48 85 -59 21 -10 72 -38 113 -61 41 -23 100 -50 130 -59 30 -9 87 -27 125 -41 128 -44 421 -84 618 -85 158 -1 390 35 542 83 159 50 378 156 450 219 29 25 68 57 86 69 134 92 380 412 382 496 2 62 -85 109 -238 129 -27 4 -119 25 -203 46 -195 50 -285 53 -326 13 -14 -15 -26 -33 -26 -40 0 -23 -115 -137 -196 -195 -86 -61 -224 -121 -319 -138 -82 -15 -297 -13 -375 3 -216 46 -400 171 -507 346 -138 223 -164 332 -90 380 27 18 -31 18 1227 17 553 -1 1034 -1 1070 -1 139 0 150 16 150 216 -1 222 -15 346 -64 540 -48 195 -130 390 -210 499 -23 31 -49 69 -58 85 -90 149 -369 383 -572 478 -122 57 -329 122 -456 143 -111 18 -520 26 -619 13z m518 -701 c115 -30 271 -110 339 -172 36 -34 149 -210 165 -258 40 -122 50 -177 37 -208 -25 -61 -5 -59 -798 -62 l-722 -2 -25 23 c-36 34 -32 78 20 203 50 122 61 139 157 254 67 80 112 113 241 180 70 36 248 71 366 72 86 1 125 -4 220 -30z M20855 3918 c-99 -9 -122 -14 -282 -61 -98 -29 -211 -84 -273 -132 -105 -82 -122 -99 -160 -154 -21 -32 -46 -61 -55 -65 -67 -25 -85 16 -78 174 9 191 7 192 -465 184 -306 -6 -359 -11 -383 -40 -13 -16 -24 -293 -23 -584 8 -1676 16 -2576 25 -2591 24 -45 50 -49 399 -54 354 -6 390 -3 431 41 l24 26 6 866 c4 490 11 900 17 942 19 141 88 312 171 428 39 53 151 142 226 180 89 44 262 82 373 82 336 0 522 -149 639 -510 l28 -85 5 -950 c3 -522 9 -958 13 -967 21 -43 54 -46 422 -49 361 -2 393 1 421 39 11 14 13 211 14 1008 0 1020 -3 1127 -40 1279 -66 269 -127 398 -267 565 -288 341 -662 476 -1188 428z M28355 3870 c-65 -12 -86 -35 -200 -220 -16 -27 -48 -76 -70 -109 -22 -33 -120 -182 -218 -331 -100 -152 -189 -276 -201 -281 -49 -23 -76 5 -251 261 -78 115 -200 299 -302 458 -106 165 -127 189 -171 202 -23 6 -206 10 -470 10 l-433 0 -24 -25 c-36 -35 -32 -48 43 -130 37 -40 90 -105 117 -145 53 -75 147 -204 280 -385 44 -60 113 -154 153 -209 40 -56 107 -146 150 -200 73 -94 108 -142 200 -277 21 -31 52 -74 69 -95 85 -109 82 -133 -37 -282 -50 -63 -95 -122 -101 -133 -6 -11 -31 -44 -57 -73 -51 -57 -69 -82 -217 -297 -101 -148 -174 -250 -218 -304 -42 -53 -239 -328 -275 -385 -19 -30 -58 -82 -87 -115 -93 -107 -113 -156 -77 -187 14 -13 71 -16 387 -17 203 -1 397 2 430 5 66 8 94 29 148 115 15 24 52 78 82 119 29 41 83 118 120 170 36 52 95 136 130 185 36 50 84 122 107 160 185 313 209 320 347 107 49 -75 106 -159 126 -187 19 -27 83 -122 140 -210 211 -323 284 -423 329 -444 39 -19 65 -20 446 -21 223 -1 413 -1 422 -1 10 1 24 11 33 24 21 33 4 85 -48 144 -24 26 -74 93 -110 148 -118 176 -280 408 -353 505 -39 52 -89 122 -112 155 -22 33 -94 132 -158 220 -64 88 -133 185 -152 215 -20 30 -55 78 -78 106 -23 29 -49 72 -59 98 -17 44 -17 48 0 92 10 25 30 60 45 78 39 44 227 292 312 411 155 218 260 362 296 407 20 26 56 73 79 105 23 32 67 92 98 133 31 41 69 98 85 125 16 28 57 83 90 123 46 54 63 82 64 105 2 57 -26 63 -321 71 -142 3 -307 8 -368 10 -60 3 -132 1 -160 -4z M5935 3855 c-43 -16 -64 -37 -66 -69 -4 -62 3 -1947 7 -1976 3 -19 24 -136 46 -260 l41 -225 65 -120 c108 -203 293 -396 464 -487 236 -126 515 -186 813 -173 202 8 283 21 390 61 186 70 285 131 396 245 143 146 169 139 169 -50 0 -127 8 -154 52 -181 31 -19 51 -20 371 -20 369 0 383 2 406 57 8 21 11 426 9 1585 l-3 1558 -28 27 -27 28 -355 3 c-388 3 -426 -1 -449 -46 -11 -22 -14 -193 -19 -927 l-6 -900 -26 -95 c-55 -198 -85 -258 -204 -405 -51 -63 -64 -72 -182 -130 -151 -75 -228 -90 -427 -83 -123 4 -130 5 -219 45 -132 58 -182 99 -262 212 -80 113 -82 118 -121 285 l-30 129 -3 933 c-3 1047 3 964 -76 983 -65 15 -680 12 -726 -4z M24888 3831 l-33 -29 -2 -1544 c-1 -968 2 -1557 8 -1581 19 -73 32 -74 581 -80 l207 -2 28 27 28 28 0 1575 0 1575 -28 27 -27 28 -365 3 -364 3 -33 -30z"></path></g></svg></a>
+    <nav class="nav-links" id="navLinks" aria-label="Main">
+      <a href="#services" data-i18n="nav.services">服务</a>
+      <a href="#buy-for-you" data-i18n="nav.bfy">代抢票</a>
+      <a href="#drops" data-i18n="nav.drops">最新开票</a>
+      <a href="#trust" data-i18n="nav.trust">信誉保障</a>
+      <a href="#faq" data-i18n="nav.faq">常见问题</a>
+      <div class="lang" role="group" aria-label="Language"><button type="button" data-lang="en">EN</button><button type="button" data-lang="zh">中文</button></div>
+      <a class="btn btn-cream js-wa" data-loc="nav" href="#" data-i18n="nav.wa">WhatsApp 联系</a>
+    </nav>
+    <div class="nav-right">
+      <div class="lang lang-m" role="group" aria-label="Language"><button type="button" data-lang="en">EN</button><button type="button" data-lang="zh">中文</button></div>
+      <button class="menu-btn" id="menuBtn" data-i18n-aria="nav.menu" aria-label="打开菜单" aria-expanded="false" aria-controls="navLinks">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero" style="padding:0">
+  <img class="bg" src="/assets/img/crowd-hands.jpg" alt="">
+  <div class="hero-side l caps"><span data-i18n="hero.l">马来西亚<br>新加坡<br>及更多地区</span><span class="dash"></span></div>
+  <div class="hero-side r caps"><span data-i18n="hero.r">演唱会<br>让彼此<br>更靠近</span><span class="dash"></span></div>
+  <div class="hero-inner">
+    <svg style="width:clamp(150px,22vw,230px);height:auto" viewBox="662 54 1910 1293" width="230" height="156" aria-hidden="true"><g transform="translate(0.000000,1360.000000) scale(0.100000,-0.100000)" fill="#F1EEE6"><path d="M14490 12971 c-192 -8 -199 -12 -279 -184 -28 -59 -61 -122 -74 -140 -14 -17 -37 -56 -51 -85 -15 -29 -43 -75 -62 -101 -18 -27 -34 -53 -34 -58 0 -5 -25 -52 -56 -104 -31 -51 -95 -170 -144 -264 -155 -299 -170 -328 -181 -342 -15 -17 -101 -178 -222 -413 -55 -107 -107 -206 -117 -220 -22 -32 -150 -258 -150 -265 0 -3 -52 -103 -115 -223 -146 -275 -139 -262 -192 -357 -25 -44 -71 -127 -103 -185 -32 -58 -83 -150 -114 -205 -31 -55 -79 -145 -105 -200 -27 -56 -66 -130 -88 -165 -22 -36 -88 -157 -148 -270 -59 -113 -119 -223 -133 -245 -15 -22 -86 -159 -159 -304 -74 -145 -151 -294 -172 -330 -68 -118 -170 -307 -185 -342 -14 -32 -68 -134 -193 -364 -86 -157 -343 -644 -343 -650 0 -3 -12 -24 -27 -48 -14 -23 -40 -69 -56 -102 -16 -33 -42 -80 -57 -105 -15 -25 -33 -62 -39 -82 -7 -20 -29 -63 -50 -95 -20 -32 -58 -101 -84 -153 -80 -163 -97 -185 -179 -226 -40 -20 -97 -45 -127 -55 -30 -11 -73 -30 -96 -44 -23 -13 -82 -42 -131 -64 -49 -21 -152 -68 -229 -103 -77 -36 -214 -99 -305 -141 -177 -81 -695 -341 -720 -362 -8 -7 -58 -35 -110 -62 -156 -81 -301 -162 -332 -185 -17 -11 -67 -40 -112 -63 -129 -66 -211 -115 -356 -211 -210 -140 -242 -163 -285 -203 -22 -20 -71 -59 -110 -86 -376 -266 -730 -644 -870 -930 -84 -171 -99 -230 -92 -365 7 -132 25 -190 86 -282 70 -103 227 -215 351 -248 36 -10 124 -34 195 -54 183 -52 257 -58 726 -63 550 -6 935 26 1554 128 365 60 599 100 606 104 4 3 56 12 116 20 59 9 176 31 258 50 83 19 179 39 213 45 35 6 74 15 87 20 12 5 64 16 115 25 52 8 146 29 209 45 64 16 145 34 181 40 36 6 97 19 135 30 39 10 120 31 180 45 121 30 334 86 435 115 36 11 119 31 185 45 148 31 377 86 550 132 72 19 175 45 230 58 55 13 119 30 142 38 22 9 79 23 125 31 45 9 175 41 288 71 113 30 234 63 270 71 36 9 101 27 145 39 193 55 585 162 690 189 124 32 393 99 474 117 45 11 96 26 113 35 16 8 68 22 116 30 48 8 132 28 187 44 55 16 141 37 190 45 50 9 124 27 165 40 41 13 176 46 300 75 124 28 259 61 300 72 41 11 104 26 140 33 93 17 390 82 490 107 174 43 222 32 255 -59 10 -26 33 -86 51 -133 18 -47 35 -96 39 -110 3 -14 21 -59 40 -100 39 -85 165 -398 206 -510 15 -41 41 -104 58 -140 17 -36 31 -71 31 -78 0 -7 14 -45 31 -85 17 -40 46 -112 64 -162 43 -116 99 -257 130 -320 13 -27 29 -70 35 -94 7 -25 41 -117 77 -205 35 -89 77 -195 92 -236 46 -124 215 -537 273 -665 127 -281 430 -675 643 -835 28 -20 59 -47 70 -60 35 -38 295 -205 412 -264 166 -83 355 -151 563 -202 175 -43 246 -54 560 -84 101 -10 1591 -21 1650 -12 44 6 73 39 67 76 -6 37 -178 452 -349 841 -17 39 -44 106 -60 150 -16 44 -42 105 -57 135 -16 30 -51 111 -80 180 -29 69 -59 141 -68 160 -105 228 -252 565 -364 835 -44 105 -97 225 -119 267 -22 42 -51 107 -64 145 -13 37 -52 133 -86 213 -34 80 -79 186 -100 235 -43 103 -113 261 -170 385 -22 47 -62 139 -89 205 -103 250 -317 742 -331 760 -12 15 -209 473 -256 593 -13 34 -24 73 -24 86 0 37 36 73 93 92 96 31 331 122 434 168 55 25 143 61 195 81 144 56 565 249 668 307 19 10 69 35 110 54 168 79 603 353 794 499 71 54 231 207 250 239 10 17 41 65 67 106 55 86 94 211 84 269 -12 65 -63 149 -115 190 -201 159 -646 216 -1263 162 -122 -11 -289 -25 -372 -31 -82 -7 -177 -18 -210 -25 -33 -7 -136 -25 -228 -40 -93 -14 -219 -37 -280 -50 -62 -14 -157 -34 -212 -44 -55 -11 -163 -35 -240 -55 -77 -19 -180 -42 -228 -50 -101 -18 -123 -28 -132 -57 -9 -28 11 -41 53 -34 18 3 92 12 165 20 73 8 168 24 212 36 185 49 633 111 965 134 124 9 280 20 348 25 270 22 606 2 746 -43 89 -28 164 -93 173 -149 6 -43 -37 -146 -79 -188 -105 -104 -161 -149 -288 -231 -161 -103 -261 -157 -540 -293 -218 -105 -334 -155 -530 -229 -36 -14 -103 -40 -150 -59 -111 -45 -260 -101 -335 -126 -33 -11 -103 -36 -155 -55 -206 -77 -460 -165 -555 -195 -243 -74 -541 -162 -549 -162 -5 0 -34 -11 -65 -24 -31 -13 -119 -43 -196 -66 -77 -23 -189 -56 -250 -75 -60 -18 -137 -39 -170 -45 -59 -12 -237 -66 -385 -116 -41 -14 -106 -35 -145 -46 -38 -11 -92 -29 -120 -40 -27 -11 -77 -27 -110 -36 -33 -8 -127 -34 -210 -57 -82 -24 -179 -49 -215 -55 -64 -12 -164 -39 -310 -85 -41 -13 -145 -44 -230 -70 -85 -27 -202 -63 -260 -80 -58 -18 -152 -45 -210 -59 -58 -14 -132 -35 -165 -46 -33 -12 -98 -29 -145 -40 -47 -10 -186 -51 -310 -90 -124 -39 -261 -79 -305 -90 -44 -10 -105 -27 -135 -38 -30 -11 -102 -32 -160 -46 -97 -24 -275 -71 -555 -146 -60 -16 -162 -46 -225 -65 -63 -20 -153 -45 -200 -56 -47 -12 -130 -32 -185 -46 -117 -30 -186 -47 -475 -115 -238 -56 -385 -94 -535 -138 -127 -37 -420 -107 -506 -120 -37 -5 -86 -17 -109 -25 -89 -31 -160 -15 -160 36 0 24 123 295 190 420 90 167 264 509 285 558 14 35 36 80 49 100 12 20 33 61 45 91 13 30 28 61 33 67 6 7 47 86 93 175 307 608 704 1389 782 1538 27 52 110 214 185 360 74 146 166 321 203 390 37 69 155 298 263 510 107 212 203 397 213 411 10 14 34 59 53 100 20 41 60 117 89 169 132 233 220 396 237 441 11 27 31 66 44 86 14 21 32 58 41 83 9 25 34 75 55 111 22 36 51 94 65 129 14 35 43 93 64 129 22 36 49 91 61 122 22 59 86 139 113 139 25 0 55 -48 78 -124 12 -39 32 -93 46 -120 26 -51 101 -230 158 -376 18 -47 69 -170 114 -273 44 -104 81 -191 81 -194 0 -2 29 -66 64 -141 35 -75 71 -162 81 -192 10 -30 29 -77 42 -104 14 -27 42 -96 63 -155 45 -126 117 -300 131 -317 5 -6 20 -42 33 -80 13 -38 36 -96 51 -129 55 -123 118 -272 135 -320 9 -28 31 -77 49 -109 17 -32 31 -65 31 -72 0 -8 18 -56 40 -108 22 -51 40 -100 40 -108 0 -8 22 -60 50 -116 27 -56 54 -121 61 -144 6 -23 22 -64 35 -89 13 -26 32 -69 43 -95 10 -27 49 -121 86 -209 37 -88 74 -180 82 -205 55 -167 75 -176 301 -130 84 17 164 35 178 40 14 6 78 24 142 40 65 16 164 43 222 61 58 17 132 38 165 46 33 9 139 37 235 64 96 26 202 53 235 59 33 7 80 20 105 30 25 9 67 21 95 25 27 4 108 25 180 47 71 22 177 50 235 63 58 13 130 32 160 43 30 11 111 34 180 51 69 17 170 42 225 56 55 14 110 28 123 31 74 15 78 73 16 220 -76 180 -84 203 -84 238 0 24 -11 47 -40 83 -37 47 -132 243 -319 658 -40 88 -85 185 -100 215 -16 30 -34 73 -41 95 -7 22 -31 78 -53 125 -57 123 -123 272 -167 375 -20 50 -68 155 -105 235 -37 80 -76 167 -87 194 -10 27 -32 77 -47 110 -16 34 -45 99 -66 146 -47 107 -120 271 -147 330 -11 25 -36 83 -55 130 -19 47 -52 121 -73 165 -75 153 -244 525 -365 800 -84 192 -113 255 -154 335 -21 41 -44 93 -51 115 -7 22 -30 75 -52 118 -21 43 -48 101 -59 130 -11 29 -46 106 -78 172 -32 66 -69 149 -81 185 -12 36 -33 84 -47 106 -13 23 -49 99 -79 170 -78 180 -114 262 -173 394 -91 203 -100 224 -123 285 -19 49 -30 64 -63 82 l-40 22 -1200 4 c-660 3 -1265 2 -1345 -2z m-3986 -7017 c29 -11 18 -64 -28 -138 -24 -39 -72 -127 -106 -195 -34 -68 -72 -140 -85 -160 -32 -48 -155 -284 -329 -631 -78 -157 -182 -361 -231 -455 -49 -93 -106 -206 -128 -250 -22 -44 -47 -91 -57 -105 -21 -30 -226 -435 -309 -611 -74 -157 -82 -163 -242 -183 -177 -23 -704 -25 -834 -3 -239 41 -404 128 -481 256 -81 133 -86 218 -21 399 24 66 57 137 73 159 17 21 38 51 49 68 78 124 455 496 670 660 43 33 104 83 134 111 50 45 366 261 431 294 14 7 108 63 210 125 215 130 334 197 445 253 44 21 136 69 205 104 69 36 204 105 300 155 96 49 195 103 219 121 42 31 81 39 115 26z M23897 11892 c-20 -22 -32 -73 -58 -247 -22 -149 -91 -384 -148 -507 -61 -133 -253 -418 -280 -418 -4 0 -36 -30 -72 -66 -66 -68 -182 -160 -234 -187 -16 -8 -54 -31 -83 -51 -29 -19 -67 -39 -85 -44 -18 -5 -70 -25 -117 -45 -91 -38 -244 -74 -430 -102 -160 -25 -210 -47 -190 -85 12 -23 69 -37 225 -55 126 -15 347 -68 423 -101 20 -9 69 -29 108 -44 201 -77 535 -364 621 -534 14 -28 37 -66 51 -83 66 -87 192 -472 217 -663 18 -142 24 -168 41 -202 41 -80 72 -2 114 282 32 219 162 552 268 688 16 20 36 51 45 67 82 155 520 461 722 505 28 6 83 22 124 36 43 14 158 37 268 53 186 27 223 38 223 67 0 28 -53 46 -217 74 -92 16 -202 41 -243 55 -41 14 -102 32 -135 40 -70 16 -311 136 -438 218 -105 68 -268 229 -332 328 -66 102 -181 337 -205 416 -10 37 -30 104 -43 148 -14 44 -34 148 -46 230 -32 212 -56 270 -94 227z M11560 2963 c-63 -14 -155 -36 -204 -49 -49 -14 -148 -36 -220 -50 -72 -13 -158 -31 -191 -39 -33 -8 -92 -19 -131 -25 -40 -5 -145 -25 -235 -44 -90 -19 -191 -37 -224 -41 -33 -4 -85 -13 -115 -20 -30 -7 -161 -29 -290 -49 -129 -20 -273 -43 -320 -51 -47 -8 -157 -24 -245 -35 -88 -11 -185 -25 -215 -30 -30 -6 -117 -17 -192 -26 -220 -24 -212 -18 -339 -279 -17 -33 -41 -80 -55 -105 -14 -25 -38 -74 -55 -108 -16 -35 -39 -78 -51 -95 -12 -17 -41 -68 -64 -112 -22 -44 -76 -147 -119 -230 -43 -82 -165 -321 -270 -530 -106 -209 -235 -464 -289 -567 -53 -103 -96 -199 -96 -212 0 -56 -3 -56 565 -55 663 1 731 6 1070 80 180 40 501 148 585 198 36 21 90 51 120 66 98 49 223 128 305 192 44 34 114 89 155 122 41 32 105 89 141 127 37 38 86 87 110 110 92 85 183 200 363 461 116 167 261 421 322 563 20 47 117 244 215 437 99 194 179 359 179 366 0 21 -33 46 -66 51 -16 3 -81 -7 -144 -21z"></path></g></svg>
+    <h2 class="sr">Authentix</h2><svg style="width:clamp(240px,34vw,410px);height:auto" viewBox="58 43 2871 489" width="411" height="70" role="img" aria-label="Authentix"><g transform="translate(0.000000,576.000000) scale(0.100000,-0.100000)" fill="#F1EEE6"><path d="M12041 5224 l-26 -22 2 -2272 2 -2272 22 -24 c36 -39 72 -42 401 -38 380 6 390 7 421 43 23 28 24 34 31 291 4 145 4 504 0 799 -7 568 -1 719 36 831 10 30 26 80 35 110 44 145 198 336 320 397 213 107 403 123 634 54 133 -40 144 -46 241 -148 91 -94 141 -179 160 -269 41 -200 40 -170 40 -1115 0 -624 3 -915 11 -932 23 -51 29 -52 399 -55 375 -3 406 0 442 49 19 25 19 55 19 1000 -1 1134 -2 1147 -86 1412 -45 141 -134 327 -201 418 -18 25 -77 87 -129 137 -84 81 -109 98 -217 151 -68 33 -143 65 -168 71 -25 6 -92 24 -150 40 -452 125 -940 21 -1222 -262 -91 -90 -121 -105 -148 -73 -11 13 -13 182 -14 819 -2 870 1 836 -53 865 -10 5 -189 11 -397 13 -380 4 -380 4 -405 -18z M25060 5182 c-152 -61 -232 -130 -285 -246 -51 -110 -60 -174 -40 -281 21 -112 33 -141 91 -216 105 -137 246 -209 409 -209 90 0 132 12 192 55 26 19 68 49 93 66 46 33 133 153 158 219 9 24 12 74 10 160 -3 123 -4 126 -42 198 -59 110 -111 162 -219 218 l-92 48 -115 3 c-93 3 -124 0 -160 -15z M2692 5103 c-26 -12 -42 -34 -76 -107 -76 -157 -187 -399 -208 -451 -11 -27 -28 -63 -38 -80 -9 -16 -23 -48 -30 -70 -7 -22 -55 -131 -106 -242 -52 -111 -94 -208 -94 -215 0 -8 -18 -51 -40 -96 -22 -44 -40 -84 -40 -87 0 -6 -134 -292 -233 -495 -38 -80 -82 -174 -97 -210 -15 -36 -60 -135 -100 -220 -40 -85 -78 -171 -85 -190 -21 -58 -120 -279 -189 -422 -35 -73 -74 -158 -86 -188 -12 -30 -34 -75 -50 -100 -15 -25 -36 -70 -45 -100 -10 -30 -33 -82 -51 -115 -18 -33 -42 -85 -54 -115 -12 -30 -42 -100 -66 -155 -25 -55 -61 -134 -79 -175 -18 -41 -55 -124 -83 -185 -28 -60 -62 -140 -76 -177 -13 -37 -41 -93 -62 -125 -45 -70 -56 -133 -29 -164 18 -19 30 -20 464 -18 557 1 516 -10 591 159 23 52 59 136 80 185 20 50 51 119 67 155 17 36 36 83 43 105 7 22 25 65 40 95 16 30 42 89 59 130 83 200 108 226 238 241 107 13 239 37 293 54 25 7 86 19 135 25 50 6 141 22 204 36 63 13 191 31 285 39 217 18 875 29 928 14 52 -14 100 -64 126 -135 63 -165 252 -459 379 -589 159 -163 383 -314 563 -381 25 -10 74 -29 110 -44 42 -18 122 -37 225 -54 187 -30 247 -33 269 -10 33 33 34 31 -220 538 -67 132 -131 273 -144 311 -57 177 -117 245 -400 460 -44 33 -112 79 -152 102 -118 68 -409 209 -468 228 -30 10 -81 31 -114 47 -32 16 -133 49 -225 74 -91 24 -191 53 -221 63 -30 10 -104 26 -165 36 -60 9 -144 24 -185 32 -100 21 -542 30 -667 13 -157 -21 -241 -24 -259 -9 -25 20 -13 91 30 189 21 47 49 114 62 150 14 36 42 101 64 145 22 44 57 125 79 181 22 55 81 190 132 300 50 109 115 253 143 318 28 66 59 124 69 130 45 28 73 -21 356 -639 50 -110 112 -240 136 -290 25 -49 78 -162 119 -250 55 -122 80 -165 103 -180 16 -12 92 -36 169 -54 284 -68 298 -73 529 -157 123 -45 281 -120 335 -159 93 -67 141 -81 160 -45 12 23 -6 72 -57 153 -17 26 -65 127 -107 225 -75 174 -122 270 -364 747 -67 132 -131 265 -143 295 -11 30 -34 80 -50 110 -41 79 -459 940 -459 947 0 3 -24 55 -54 117 -30 61 -76 158 -102 214 -28 60 -60 114 -77 128 l-29 24 -436 0 c-382 0 -441 -2 -470 -17z M22987 4721 c-59 -5 -72 -10 -93 -34 l-24 -28 0 -360 c0 -378 -3 -407 -45 -423 -9 -3 -101 -6 -203 -6 -168 0 -190 -2 -219 -20 -53 -32 -55 -41 -54 -312 2 -366 -4 -358 278 -358 100 0 189 -3 198 -6 43 -17 45 -40 46 -511 1 -246 4 -648 8 -893 6 -435 7 -446 29 -487 12 -23 27 -66 33 -95 6 -29 36 -100 67 -158 133 -251 349 -398 672 -456 100 -18 463 -21 579 -4 223 31 301 71 301 152 1 168 -25 512 -39 530 -23 28 -76 36 -161 26 -41 -5 -136 -8 -210 -5 -173 6 -212 19 -294 101 -85 84 -95 119 -107 366 -11 221 -9 1317 2 1369 15 71 5 69 396 78 348 8 353 8 375 31 23 22 23 27 26 298 3 302 1 313 -56 335 -16 6 -157 11 -352 11 -345 1 -355 2 -381 50 -8 15 -13 135 -16 382 -4 382 -6 399 -53 423 -26 13 -561 16 -703 4z M9930 4691 l-30 -29 0 -354 c0 -316 -2 -357 -18 -388 -25 -50 -54 -62 -137 -56 -103 7 -316 -8 -342 -25 -13 -7 -27 -27 -33 -43 -13 -38 -13 -516 0 -551 18 -47 59 -55 270 -55 206 0 241 -7 257 -52 4 -13 7 -324 5 -693 -1 -368 2 -776 7 -905 l8 -235 40 -116 c66 -195 199 -374 338 -456 32 -19 70 -43 83 -53 13 -11 94 -43 180 -72 l157 -53 265 0 c239 1 273 3 350 23 47 12 118 28 158 37 142 29 138 20 122 358 -6 144 -16 269 -21 278 -15 29 -65 42 -132 35 -219 -24 -243 -26 -325 -16 -153 17 -261 89 -323 215 -41 84 -47 208 -42 865 7 832 4 774 32 804 l24 26 336 0 c193 0 351 4 372 10 73 20 74 22 77 305 3 278 -1 309 -42 339 -26 20 -41 21 -369 23 -188 1 -350 2 -359 3 -32 0 -56 36 -63 92 -3 29 -7 200 -8 380 l-2 328 -28 27 -27 28 -376 3 -375 3 -29 -30z M16891 3920 c-293 -41 -569 -164 -830 -370 -125 -98 -304 -316 -352 -427 -12 -26 -39 -85 -61 -130 -48 -101 -90 -224 -125 -363 -62 -251 -35 -745 55 -1010 36 -104 119 -300 136 -320 8 -8 30 -40 51 -70 79 -115 232 -280 305 -330 30 -21 76 -55 102 -76 26 -22 64 -48 85 -59 21 -10 72 -38 113 -61 41 -23 100 -50 130 -59 30 -9 87 -27 125 -41 128 -44 421 -84 618 -85 158 -1 390 35 542 83 159 50 378 156 450 219 29 25 68 57 86 69 134 92 380 412 382 496 2 62 -85 109 -238 129 -27 4 -119 25 -203 46 -195 50 -285 53 -326 13 -14 -15 -26 -33 -26 -40 0 -23 -115 -137 -196 -195 -86 -61 -224 -121 -319 -138 -82 -15 -297 -13 -375 3 -216 46 -400 171 -507 346 -138 223 -164 332 -90 380 27 18 -31 18 1227 17 553 -1 1034 -1 1070 -1 139 0 150 16 150 216 -1 222 -15 346 -64 540 -48 195 -130 390 -210 499 -23 31 -49 69 -58 85 -90 149 -369 383 -572 478 -122 57 -329 122 -456 143 -111 18 -520 26 -619 13z m518 -701 c115 -30 271 -110 339 -172 36 -34 149 -210 165 -258 40 -122 50 -177 37 -208 -25 -61 -5 -59 -798 -62 l-722 -2 -25 23 c-36 34 -32 78 20 203 50 122 61 139 157 254 67 80 112 113 241 180 70 36 248 71 366 72 86 1 125 -4 220 -30z M20855 3918 c-99 -9 -122 -14 -282 -61 -98 -29 -211 -84 -273 -132 -105 -82 -122 -99 -160 -154 -21 -32 -46 -61 -55 -65 -67 -25 -85 16 -78 174 9 191 7 192 -465 184 -306 -6 -359 -11 -383 -40 -13 -16 -24 -293 -23 -584 8 -1676 16 -2576 25 -2591 24 -45 50 -49 399 -54 354 -6 390 -3 431 41 l24 26 6 866 c4 490 11 900 17 942 19 141 88 312 171 428 39 53 151 142 226 180 89 44 262 82 373 82 336 0 522 -149 639 -510 l28 -85 5 -950 c3 -522 9 -958 13 -967 21 -43 54 -46 422 -49 361 -2 393 1 421 39 11 14 13 211 14 1008 0 1020 -3 1127 -40 1279 -66 269 -127 398 -267 565 -288 341 -662 476 -1188 428z M28355 3870 c-65 -12 -86 -35 -200 -220 -16 -27 -48 -76 -70 -109 -22 -33 -120 -182 -218 -331 -100 -152 -189 -276 -201 -281 -49 -23 -76 5 -251 261 -78 115 -200 299 -302 458 -106 165 -127 189 -171 202 -23 6 -206 10 -470 10 l-433 0 -24 -25 c-36 -35 -32 -48 43 -130 37 -40 90 -105 117 -145 53 -75 147 -204 280 -385 44 -60 113 -154 153 -209 40 -56 107 -146 150 -200 73 -94 108 -142 200 -277 21 -31 52 -74 69 -95 85 -109 82 -133 -37 -282 -50 -63 -95 -122 -101 -133 -6 -11 -31 -44 -57 -73 -51 -57 -69 -82 -217 -297 -101 -148 -174 -250 -218 -304 -42 -53 -239 -328 -275 -385 -19 -30 -58 -82 -87 -115 -93 -107 -113 -156 -77 -187 14 -13 71 -16 387 -17 203 -1 397 2 430 5 66 8 94 29 148 115 15 24 52 78 82 119 29 41 83 118 120 170 36 52 95 136 130 185 36 50 84 122 107 160 185 313 209 320 347 107 49 -75 106 -159 126 -187 19 -27 83 -122 140 -210 211 -323 284 -423 329 -444 39 -19 65 -20 446 -21 223 -1 413 -1 422 -1 10 1 24 11 33 24 21 33 4 85 -48 144 -24 26 -74 93 -110 148 -118 176 -280 408 -353 505 -39 52 -89 122 -112 155 -22 33 -94 132 -158 220 -64 88 -133 185 -152 215 -20 30 -55 78 -78 106 -23 29 -49 72 -59 98 -17 44 -17 48 0 92 10 25 30 60 45 78 39 44 227 292 312 411 155 218 260 362 296 407 20 26 56 73 79 105 23 32 67 92 98 133 31 41 69 98 85 125 16 28 57 83 90 123 46 54 63 82 64 105 2 57 -26 63 -321 71 -142 3 -307 8 -368 10 -60 3 -132 1 -160 -4z M5935 3855 c-43 -16 -64 -37 -66 -69 -4 -62 3 -1947 7 -1976 3 -19 24 -136 46 -260 l41 -225 65 -120 c108 -203 293 -396 464 -487 236 -126 515 -186 813 -173 202 8 283 21 390 61 186 70 285 131 396 245 143 146 169 139 169 -50 0 -127 8 -154 52 -181 31 -19 51 -20 371 -20 369 0 383 2 406 57 8 21 11 426 9 1585 l-3 1558 -28 27 -27 28 -355 3 c-388 3 -426 -1 -449 -46 -11 -22 -14 -193 -19 -927 l-6 -900 -26 -95 c-55 -198 -85 -258 -204 -405 -51 -63 -64 -72 -182 -130 -151 -75 -228 -90 -427 -83 -123 4 -130 5 -219 45 -132 58 -182 99 -262 212 -80 113 -82 118 -121 285 l-30 129 -3 933 c-3 1047 3 964 -76 983 -65 15 -680 12 -726 -4z M24888 3831 l-33 -29 -2 -1544 c-1 -968 2 -1557 8 -1581 19 -73 32 -74 581 -80 l207 -2 28 27 28 28 0 1575 0 1575 -28 27 -27 28 -365 3 -364 3 -33 -30z"></path></g></svg>
+    <h1 data-i18n="hero.h1">不只是门票<br>更是真实的现场体验</h1>
+    <p class="lead" data-i18n="hero.lead">正版演唱会门票、内部票、开票日代抢服务与粉丝优惠——服务马来西亚、新加坡及更多地区。</p>
+    <div class="hero-ctas">
+      <a class="btn btn-cream" href="#quote" data-i18n="hero.cta1">获取报价</a>
+      <a class="btn btn-ghost" href="#drops" data-i18n="hero.cta2">查看最新开票</a>
+    </div>
+  </div>
+  <div class="usp">
+    <ul>
+      <li><svg viewBox="0 0 24 24" width="40" height="40" aria-hidden="true" fill="none" stroke="#F1EEE6" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex-shrink:0"><path d="M12 3L19 6V11C19 15.5 16 19 12 21C8 19 5 15.5 5 11V6Z"></path><path d="M8.8 12L11 14.2L15.4 9.8"></path></svg><span data-i18n="usp1">100%<br>可信赖</span></li>
+      <li><svg viewBox="0 0 24 24" width="40" height="40" aria-hidden="true" fill="none" stroke="#F1EEE6" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex-shrink:0"><g transform="rotate(-22 12 12)"><path d="M3 7.5H21V10.5A1.5 1.5 0 0 0 21 13.5V16.5H3V13.5A1.5 1.5 0 0 0 3 10.5Z"></path><path d="M15 8.5V15.5" stroke-dasharray="1.2 1.8"></path></g></svg><span data-i18n="usp2">演唱会<br>门票</span></li>
+      <li><svg viewBox="0 0 24 24" width="40" height="40" aria-hidden="true" fill="none" stroke="#F1EEE6" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex-shrink:0"><circle cx="12" cy="12" r="9"></circle><path d="M3 12H21"></path><ellipse cx="12" cy="12" rx="4" ry="9"></ellipse><path d="M4.5 7.5H19.5M4.5 16.5H19.5"></path></svg><span data-i18n="usp3">马新<br>及海外</span></li>
+      <li><svg viewBox="0 0 24 24" width="40" height="40" aria-hidden="true" fill="none" stroke="#F1EEE6" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex-shrink:0"><circle cx="9" cy="8" r="3.2"></circle><path d="M3.5 19.5C3.5 16.2 6 13.8 9 13.8S14.5 16.2 14.5 19.5"></path><circle cx="16.5" cy="9" r="2.6"></circle><path d="M15.8 13.7C18.6 13.9 20.5 16.2 20.5 19.2"></path></svg><span data-i18n="usp4">内部票<br>及优惠票</span></li>
+      <li><svg viewBox="0 0 24 24" width="40" height="40" aria-hidden="true" fill="none" stroke="#F1EEE6" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex-shrink:0"><path d="M4 14V12A8 8 0 0 1 20 12V14"></path><rect x="3" y="13" width="4" height="6" rx="1.5"></rect><rect x="17" y="13" width="4" height="6" rx="1.5"></rect><path d="M20 19C20 20.5 18.5 21.5 16 21.5H13.5"></path></svg><span data-i18n="usp5">代抢票<br>服务</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="light" id="services">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="caps" style="color:var(--forest)" data-i18n="svc.k">我们的服务</span>
+      <h2 data-i18n="svc.t">四种方式，带你顺利入场。</h2>
+      <p data-i18n="svc.sub">一个团队、一个 WhatsApp，每一步都有书面记录。</p>
+    </div>
+    <div class="services">
+      <article class="svc reveal"><div class="ico"><svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" fill="none" stroke="#F1EEE6" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex-shrink:0"><g transform="rotate(-22 12 12)"><path d="M3 7.5H21V10.5A1.5 1.5 0 0 0 21 13.5V16.5H3V13.5A1.5 1.5 0 0 0 3 10.5Z"></path><path d="M15 8.5V15.5" stroke-dasharray="1.2 1.8"></path></g></svg></div><h3 data-i18n="svc1.t">演唱会门票</h3><p data-i18n="svc1.d">涵盖马新两地 K-pop、流行、摇滚及音乐节的官方票与转售电子票。</p><span class="tag" data-i18n="svc1.tag">官方平台转票</span></article>
+      <article class="svc feature reveal"><div class="ico"><svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" fill="none" stroke="#1F3A2F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex-shrink:0"><circle cx="9" cy="8" r="3.2"></circle><path d="M3.5 19.5C3.5 16.2 6 13.8 9 13.8S14.5 16.2 14.5 19.5"></path><circle cx="16.5" cy="9" r="2.6"></circle><path d="M15.8 13.7C18.6 13.9 20.5 16.2 20.5 19.2"></path></svg></div><h3 data-i18n="svc2.t">内部票</h3><p data-i18n="svc2.d">有名额时优先配票——付款前清楚说明票源与条款。</p><span class="tag" data-i18n="svc2.tag">最受欢迎</span></article>
+      <article class="svc reveal"><div class="ico"><svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" fill="none" stroke="#F1EEE6" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex-shrink:0"><path d="M4 14V12A8 8 0 0 1 20 12V14"></path><rect x="3" y="13" width="4" height="6" rx="1.5"></rect><rect x="17" y="13" width="4" height="6" rx="1.5"></rect><path d="M20 19C20 20.5 18.5 21.5 16 21.5H13.5"></path></svg></div><h3 data-i18n="svc3.t">代抢票</h3><p data-i18n="svc3.d">门票几分钟就售罄？开票日由我们替你排队抢票，并实时更新进度。</p><span class="tag" data-i18n="svc3.tag">开票日排队</span></article>
+      <article class="svc reveal"><div class="ico"><svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" fill="none" stroke="#F1EEE6" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex-shrink:0"><path d="M6 18L18 6"></path><circle cx="7" cy="7" r="2.2"></circle><circle cx="17" cy="17" r="2.2"></circle></svg></div><h3 data-i18n="svc4.t">优惠票</h3><p data-i18n="svc4.d">粉丝专属优惠，原价与我们的售价并列标示，付费一目了然。</p><span class="tag" data-i18n="svc4.tag">标示原价</span></article>
+    </div>
+  </div>
+</section>
+
+<section id="buy-for-you">
+  <div class="wrap bfy">
+    <div class="bfy-photo reveal">
+      <img src="/assets/img/stage-beams.jpg" alt="">
+      <div class="over"><span class="caps" data-i18n="bfy.pk">代抢票</span><div><div class="big" data-i18n="bfy.big">你放心，<br>我们来排队。</div><span class="dash" style="margin-top:16px"></span></div></div>
+    </div>
+    <div>
+      <div class="sec-head reveal" style="margin-bottom:28px">
+        <span class="caps" style="color:var(--sage)" data-i18n="bfy.k">服务流程</span>
+        <h2 data-i18n="bfy.t">五个步骤，全程书面记录。</h2>
+      </div>
+      <ol class="steps">
+        <li class="reveal"><span class="n">01</span><div><h3 data-i18n="s1.t">告诉我们演出</h3><p data-i18n="s1.d">演出、日期、票价区及数量——通过 WhatsApp 或报价表格提交。</p></div></li>
+        <li class="reveal"><span class="n">02</span><div><h3 data-i18n="s2.t">获取书面全包报价</h3><p data-i18n="s2.d">票面价加上每张票的服务费，逐项列明，绝无隐藏费用。</p></div></li>
+        <li class="reveal"><span class="n">03</span><div><h3 data-i18n="s3.t">付款并获取订单编号</h3><p data-i18n="s3.d">预先全额付款——立即获得订单编号与收据。</p></div></li>
+        <li class="reveal"><span class="n">04</span><div><h3 data-i18n="s4.t">开票日：我们替你排队</h3><p data-i18n="s4.d">排队期间在聊天中实时更新进度。</p></div></li>
+        <li class="reveal"><span class="n">05</span><div><h3 data-i18n="s5.t">抢票成功 → 官方电子票</h3><p data-i18n="s5.d">未抢到或名额已满？3 个工作日内全额退款。</p></div></li>
+      </ol>
+      <p class="note reveal" data-i18n="bfy.note">2 张起可安排连座。座位由主办方分配——我们会备注你偏好的区域，但无法保证。</p>
+    </div>
+  </div>
+</section>
+
+<section class="light" id="drops">
+  <div class="wrap">
+    <div class="drop-top">
+      <div class="sec-head reveal">
+        <span class="caps" style="color:var(--forest)" data-i18n="drops.k">最新开票</span>
+        <h2 data-i18n="drops.t">我们接下来要抢的票。</h2>
+      </div>
+      <div class="filters" role="group" data-i18n-aria="f.aria" aria-label="按城市筛选">
+        <button class="chip" aria-pressed="true" data-f="all" data-i18n="f.all">全部</button>
+        <button class="chip" aria-pressed="false" data-f="SG" data-i18n="f.sg">新加坡</button>
+        <button class="chip" aria-pressed="false" data-f="KL" data-i18n="f.kl">吉隆坡</button>
+      </div>
+    </div>
+    <div class="drops" id="drops-grid" aria-live="polite"></div>
+  </div>
+</section>
+
+<section class="forest trust" id="trust">
+  <div class="wm"><svg viewBox="662 54 1910 1293" width="640" height="433" aria-hidden="true"><g transform="translate(0.000000,1360.000000) scale(0.100000,-0.100000)" fill="#EFECE5"><path d="M14490 12971 c-192 -8 -199 -12 -279 -184 -28 -59 -61 -122 -74 -140 -14 -17 -37 -56 -51 -85 -15 -29 -43 -75 -62 -101 -18 -27 -34 -53 -34 -58 0 -5 -25 -52 -56 -104 -31 -51 -95 -170 -144 -264 -155 -299 -170 -328 -181 -342 -15 -17 -101 -178 -222 -413 -55 -107 -107 -206 -117 -220 -22 -32 -150 -258 -150 -265 0 -3 -52 -103 -115 -223 -146 -275 -139 -262 -192 -357 -25 -44 -71 -127 -103 -185 -32 -58 -83 -150 -114 -205 -31 -55 -79 -145 -105 -200 -27 -56 -66 -130 -88 -165 -22 -36 -88 -157 -148 -270 -59 -113 -119 -223 -133 -245 -15 -22 -86 -159 -159 -304 -74 -145 -151 -294 -172 -330 -68 -118 -170 -307 -185 -342 -14 -32 -68 -134 -193 -364 -86 -157 -343 -644 -343 -650 0 -3 -12 -24 -27 -48 -14 -23 -40 -69 -56 -102 -16 -33 -42 -80 -57 -105 -15 -25 -33 -62 -39 -82 -7 -20 -29 -63 -50 -95 -20 -32 -58 -101 -84 -153 -80 -163 -97 -185 -179 -226 -40 -20 -97 -45 -127 -55 -30 -11 -73 -30 -96 -44 -23 -13 -82 -42 -131 -64 -49 -21 -152 -68 -229 -103 -77 -36 -214 -99 -305 -141 -177 -81 -695 -341 -720 -362 -8 -7 -58 -35 -110 -62 -156 -81 -301 -162 -332 -185 -17 -11 -67 -40 -112 -63 -129 -66 -211 -115 -356 -211 -210 -140 -242 -163 -285 -203 -22 -20 -71 -59 -110 -86 -376 -266 -730 -644 -870 -930 -84 -171 -99 -230 -92 -365 7 -132 25 -190 86 -282 70 -103 227 -215 351 -248 36 -10 124 -34 195 -54 183 -52 257 -58 726 -63 550 -6 935 26 1554 128 365 60 599 100 606 104 4 3 56 12 116 20 59 9 176 31 258 50 83 19 179 39 213 45 35 6 74 15 87 20 12 5 64 16 115 25 52 8 146 29 209 45 64 16 145 34 181 40 36 6 97 19 135 30 39 10 120 31 180 45 121 30 334 86 435 115 36 11 119 31 185 45 148 31 377 86 550 132 72 19 175 45 230 58 55 13 119 30 142 38 22 9 79 23 125 31 45 9 175 41 288 71 113 30 234 63 270 71 36 9 101 27 145 39 193 55 585 162 690 189 124 32 393 99 474 117 45 11 96 26 113 35 16 8 68 22 116 30 48 8 132 28 187 44 55 16 141 37 190 45 50 9 124 27 165 40 41 13 176 46 300 75 124 28 259 61 300 72 41 11 104 26 140 33 93 17 390 82 490 107 174 43 222 32 255 -59 10 -26 33 -86 51 -133 18 -47 35 -96 39 -110 3 -14 21 -59 40 -100 39 -85 165 -398 206 -510 15 -41 41 -104 58 -140 17 -36 31 -71 31 -78 0 -7 14 -45 31 -85 17 -40 46 -112 64 -162 43 -116 99 -257 130 -320 13 -27 29 -70 35 -94 7 -25 41 -117 77 -205 35 -89 77 -195 92 -236 46 -124 215 -537 273 -665 127 -281 430 -675 643 -835 28 -20 59 -47 70 -60 35 -38 295 -205 412 -264 166 -83 355 -151 563 -202 175 -43 246 -54 560 -84 101 -10 1591 -21 1650 -12 44 6 73 39 67 76 -6 37 -178 452 -349 841 -17 39 -44 106 -60 150 -16 44 -42 105 -57 135 -16 30 -51 111 -80 180 -29 69 -59 141 -68 160 -105 228 -252 565 -364 835 -44 105 -97 225 -119 267 -22 42 -51 107 -64 145 -13 37 -52 133 -86 213 -34 80 -79 186 -100 235 -43 103 -113 261 -170 385 -22 47 -62 139 -89 205 -103 250 -317 742 -331 760 -12 15 -209 473 -256 593 -13 34 -24 73 -24 86 0 37 36 73 93 92 96 31 331 122 434 168 55 25 143 61 195 81 144 56 565 249 668 307 19 10 69 35 110 54 168 79 603 353 794 499 71 54 231 207 250 239 10 17 41 65 67 106 55 86 94 211 84 269 -12 65 -63 149 -115 190 -201 159 -646 216 -1263 162 -122 -11 -289 -25 -372 -31 -82 -7 -177 -18 -210 -25 -33 -7 -136 -25 -228 -40 -93 -14 -219 -37 -280 -50 -62 -14 -157 -34 -212 -44 -55 -11 -163 -35 -240 -55 -77 -19 -180 -42 -228 -50 -101 -18 -123 -28 -132 -57 -9 -28 11 -41 53 -34 18 3 92 12 165 20 73 8 168 24 212 36 185 49 633 111 965 134 124 9 280 20 348 25 270 22 606 2 746 -43 89 -28 164 -93 173 -149 6 -43 -37 -146 -79 -188 -105 -104 -161 -149 -288 -231 -161 -103 -261 -157 -540 -293 -218 -105 -334 -155 -530 -229 -36 -14 -103 -40 -150 -59 -111 -45 -260 -101 -335 -126 -33 -11 -103 -36 -155 -55 -206 -77 -460 -165 -555 -195 -243 -74 -541 -162 -549 -162 -5 0 -34 -11 -65 -24 -31 -13 -119 -43 -196 -66 -77 -23 -189 -56 -250 -75 -60 -18 -137 -39 -170 -45 -59 -12 -237 -66 -385 -116 -41 -14 -106 -35 -145 -46 -38 -11 -92 -29 -120 -40 -27 -11 -77 -27 -110 -36 -33 -8 -127 -34 -210 -57 -82 -24 -179 -49 -215 -55 -64 -12 -164 -39 -310 -85 -41 -13 -145 -44 -230 -70 -85 -27 -202 -63 -260 -80 -58 -18 -152 -45 -210 -59 -58 -14 -132 -35 -165 -46 -33 -12 -98 -29 -145 -40 -47 -10 -186 -51 -310 -90 -124 -39 -261 -79 -305 -90 -44 -10 -105 -27 -135 -38 -30 -11 -102 -32 -160 -46 -97 -24 -275 -71 -555 -146 -60 -16 -162 -46 -225 -65 -63 -20 -153 -45 -200 -56 -47 -12 -130 -32 -185 -46 -117 -30 -186 -47 -475 -115 -238 -56 -385 -94 -535 -138 -127 -37 -420 -107 -506 -120 -37 -5 -86 -17 -109 -25 -89 -31 -160 -15 -160 36 0 24 123 295 190 420 90 167 264 509 285 558 14 35 36 80 49 100 12 20 33 61 45 91 13 30 28 61 33 67 6 7 47 86 93 175 307 608 704 1389 782 1538 27 52 110 214 185 360 74 146 166 321 203 390 37 69 155 298 263 510 107 212 203 397 213 411 10 14 34 59 53 100 20 41 60 117 89 169 132 233 220 396 237 441 11 27 31 66 44 86 14 21 32 58 41 83 9 25 34 75 55 111 22 36 51 94 65 129 14 35 43 93 64 129 22 36 49 91 61 122 22 59 86 139 113 139 25 0 55 -48 78 -124 12 -39 32 -93 46 -120 26 -51 101 -230 158 -376 18 -47 69 -170 114 -273 44 -104 81 -191 81 -194 0 -2 29 -66 64 -141 35 -75 71 -162 81 -192 10 -30 29 -77 42 -104 14 -27 42 -96 63 -155 45 -126 117 -300 131 -317 5 -6 20 -42 33 -80 13 -38 36 -96 51 -129 55 -123 118 -272 135 -320 9 -28 31 -77 49 -109 17 -32 31 -65 31 -72 0 -8 18 -56 40 -108 22 -51 40 -100 40 -108 0 -8 22 -60 50 -116 27 -56 54 -121 61 -144 6 -23 22 -64 35 -89 13 -26 32 -69 43 -95 10 -27 49 -121 86 -209 37 -88 74 -180 82 -205 55 -167 75 -176 301 -130 84 17 164 35 178 40 14 6 78 24 142 40 65 16 164 43 222 61 58 17 132 38 165 46 33 9 139 37 235 64 96 26 202 53 235 59 33 7 80 20 105 30 25 9 67 21 95 25 27 4 108 25 180 47 71 22 177 50 235 63 58 13 130 32 160 43 30 11 111 34 180 51 69 17 170 42 225 56 55 14 110 28 123 31 74 15 78 73 16 220 -76 180 -84 203 -84 238 0 24 -11 47 -40 83 -37 47 -132 243 -319 658 -40 88 -85 185 -100 215 -16 30 -34 73 -41 95 -7 22 -31 78 -53 125 -57 123 -123 272 -167 375 -20 50 -68 155 -105 235 -37 80 -76 167 -87 194 -10 27 -32 77 -47 110 -16 34 -45 99 -66 146 -47 107 -120 271 -147 330 -11 25 -36 83 -55 130 -19 47 -52 121 -73 165 -75 153 -244 525 -365 800 -84 192 -113 255 -154 335 -21 41 -44 93 -51 115 -7 22 -30 75 -52 118 -21 43 -48 101 -59 130 -11 29 -46 106 -78 172 -32 66 -69 149 -81 185 -12 36 -33 84 -47 106 -13 23 -49 99 -79 170 -78 180 -114 262 -173 394 -91 203 -100 224 -123 285 -19 49 -30 64 -63 82 l-40 22 -1200 4 c-660 3 -1265 2 -1345 -2z m-3986 -7017 c29 -11 18 -64 -28 -138 -24 -39 -72 -127 -106 -195 -34 -68 -72 -140 -85 -160 -32 -48 -155 -284 -329 -631 -78 -157 -182 -361 -231 -455 -49 -93 -106 -206 -128 -250 -22 -44 -47 -91 -57 -105 -21 -30 -226 -435 -309 -611 -74 -157 -82 -163 -242 -183 -177 -23 -704 -25 -834 -3 -239 41 -404 128 -481 256 -81 133 -86 218 -21 399 24 66 57 137 73 159 17 21 38 51 49 68 78 124 455 496 670 660 43 33 104 83 134 111 50 45 366 261 431 294 14 7 108 63 210 125 215 130 334 197 445 253 44 21 136 69 205 104 69 36 204 105 300 155 96 49 195 103 219 121 42 31 81 39 115 26z M23897 11892 c-20 -22 -32 -73 -58 -247 -22 -149 -91 -384 -148 -507 -61 -133 -253 -418 -280 -418 -4 0 -36 -30 -72 -66 -66 -68 -182 -160 -234 -187 -16 -8 -54 -31 -83 -51 -29 -19 -67 -39 -85 -44 -18 -5 -70 -25 -117 -45 -91 -38 -244 -74 -430 -102 -160 -25 -210 -47 -190 -85 12 -23 69 -37 225 -55 126 -15 347 -68 423 -101 20 -9 69 -29 108 -44 201 -77 535 -364 621 -534 14 -28 37 -66 51 -83 66 -87 192 -472 217 -663 18 -142 24 -168 41 -202 41 -80 72 -2 114 282 32 219 162 552 268 688 16 20 36 51 45 67 82 155 520 461 722 505 28 6 83 22 124 36 43 14 158 37 268 53 186 27 223 38 223 67 0 28 -53 46 -217 74 -92 16 -202 41 -243 55 -41 14 -102 32 -135 40 -70 16 -311 136 -438 218 -105 68 -268 229 -332 328 -66 102 -181 337 -205 416 -10 37 -30 104 -43 148 -14 44 -34 148 -46 230 -32 212 -56 270 -94 227z M11560 2963 c-63 -14 -155 -36 -204 -49 -49 -14 -148 -36 -220 -50 -72 -13 -158 -31 -191 -39 -33 -8 -92 -19 -131 -25 -40 -5 -145 -25 -235 -44 -90 -19 -191 -37 -224 -41 -33 -4 -85 -13 -115 -20 -30 -7 -161 -29 -290 -49 -129 -20 -273 -43 -320 -51 -47 -8 -157 -24 -245 -35 -88 -11 -185 -25 -215 -30 -30 -6 -117 -17 -192 -26 -220 -24 -212 -18 -339 -279 -17 -33 -41 -80 -55 -105 -14 -25 -38 -74 -55 -108 -16 -35 -39 -78 -51 -95 -12 -17 -41 -68 -64 -112 -22 -44 -76 -147 -119 -230 -43 -82 -165 -321 -270 -530 -106 -209 -235 -464 -289 -567 -53 -103 -96 -199 -96 -212 0 -56 -3 -56 565 -55 663 1 731 6 1070 80 180 40 501 148 585 198 36 21 90 51 120 66 98 49 223 128 305 192 44 34 114 89 155 122 41 32 105 89 141 127 37 38 86 87 110 110 92 85 183 200 363 461 116 167 261 421 322 563 20 47 117 244 215 437 99 194 179 359 179 366 0 21 -33 46 -66 51 -16 3 -81 -7 -144 -21z"></path></g></svg></div>
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="caps" style="color:var(--cream)" data-i18n="trust.k">100% 可信赖</span>
+      <h2 data-i18n="trust.t">不必轻信，亲自查证。</h2>
+      <p style="color:#D5DAD6" data-i18n="trust.sub">付款前，这四点你都可以亲自查证。</p>
+    </div>
+    <div class="facts">
+      <div class="fact reveal"><svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true" fill="none" stroke="#EFECE5" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex-shrink:0"><path d="M5 12.5L9.5 17L19 7.5"></path></svg><div><h3 data-i18n="fact1.t">收据 + 订单编号</h3><p data-i18n="fact1.d">每笔订单逐项列明——票面价与服务费，白纸黑字。</p></div></div>
+      <div class="fact reveal"><svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true" fill="none" stroke="#EFECE5" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex-shrink:0"><path d="M5 12.5L9.5 17L19 7.5"></path></svg><div><h3 data-i18n="fact2.t">官方电子票</h3><p data-i18n="fact2.d">通过主办方官方平台转票，绝不只发截图。</p></div></div>
+      <div class="fact reveal"><svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true" fill="none" stroke="#EFECE5" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex-shrink:0"><path d="M5 12.5L9.5 17L19 7.5"></path></svg><div><h3 data-i18n="fact3.t">全额退款保障</h3><p data-i18n="fact3.d">未抢到或名额已满＝3 个工作日内全额退款。</p></div></div>
+      <div class="fact reveal"><svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true" fill="none" stroke="#EFECE5" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex-shrink:0"><path d="M5 12.5L9.5 17L19 7.5"></path></svg><div><h3 data-i18n="fact4.t">公开交易记录</h3><p data-i18n="fact4.d">Carousell 44 条评价全 5.0★，Instagram 精选动态也有成功订单记录。</p></div></div>
+    </div>
+    <div class="never reveal">
+      <span class="caps" style="color:var(--sage)" data-i18n="never.k">我们绝不会</span>
+      <div><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="#8E9A93" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex-shrink:0"><path d="M6 6L18 18M18 6L6 18"></path></svg><span data-i18n="never1">催你 5 分钟内付款</span></div>
+      <div><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="#8E9A93" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex-shrink:0"><path d="M6 6L18 18M18 6L6 18"></path></svg><span data-i18n="never2">要求礼品卡、加密货币或验证码（OTP）</span></div>
+      <div><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="#8E9A93" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex-shrink:0"><path d="M6 6L18 18M18 6L6 18"></path></svg><span data-i18n="never3">用新账号主动私信你</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="light" id="reviews">
+  <div class="wrap">
+    <div class="rev-top">
+      <div class="sec-head reveal" style="margin-bottom:0">
+        <span class="caps" style="color:var(--forest)" data-i18n="rev.k">真实粉丝，真实支持</span>
+        <h2 data-i18n="rev.t">粉丝怎么说。</h2>
+      </div>
+      <a class="score reveal js-cs" data-loc="reviews" href="#"><span class="big">5.0</span><span class="stars" aria-hidden="true">★★★★★</span><span data-i18n="score.l">44 条评价 · Carousell 3 年</span><span class="go" data-i18n="score.go">在 Carousell 查看全部 →</span></a>
+    </div>
+    <div class="reviews" id="reviews-grid"></div>
+    <div class="shots reveal">
+      <span class="caps" style="color:var(--forest)" data-i18n="shots.k">Carousell 评价截图</span>
+      <div class="shot-row" id="shot-row"></div>
+    </div>
+  </div>
+</section>
+
+<section class="light" id="faq" style="padding-top:0">
+  <div class="wrap split">
+    <div>
+      <div class="sec-head reveal" style="margin-bottom:24px">
+        <span class="caps" style="color:var(--forest)" data-i18n="faq.k">常见问题</span>
+        <h2 data-i18n="faq.t">你可能想问。</h2>
+      </div>
+      <div id="faq-list"><details data-q="faq-1"><summary><span>服务费是多少？</span><span class="pm" aria-hidden="true">+</span></summary><p>在票面价之外按每张票收取服务费。付款前会提供书面明细。</p></details><details data-q="faq-2"><summary><span>什么时候付款？</span><span class="pm" aria-hidden="true">+</span></summary><p>需预先全额付款，付款后立即获得订单编号与收据。</p></details><details data-q="faq-3"><summary><span>如果没抢到票怎么办？</span><span class="pm" aria-hidden="true">+</span></summary><p>若名额已满或未能抢到，将于 3 个工作日内全额退款。</p></details><details data-q="faq-4"><summary><span>是实体票还是电子票？</span><span class="pm" aria-hidden="true">+</span></summary><p>大多数情况下是电子票，通过主办方官方平台转票——除非商品信息特别注明为实体票。</p></details><details data-q="faq-5"><summary><span>可以坐在一起吗？</span><span class="pm" aria-hidden="true">+</span></summary><p>可以——2 张起可安排连座。最终座位由主办方分配，我们会备注你偏好的区域。</p></details><details data-q="faq-6"><summary><span>实名制或需核对证件的门票怎么办？</span><span class="pm" aria-hidden="true">+</span></summary><p>部分演出要求票上姓名与证件一致。遇到这类演出，我们会在主办方允许的情况下以你的名义代抢。每场演出的规则都会在付款前说明。</p></details></div>
+    </div>
+    <form class="form reveal" id="quote" name="quote" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thank-you.html">
+      <input type="hidden" name="form-name" value="quote">
+      <input type="hidden" name="lang" id="f-lang" value="en">
+      <p class="hidden"><label>Don’t fill this in: <input name="bot-field"></label></p>
+      <span class="caps" style="color:var(--cream)" data-i18n="form.k">获取报价</span>
+      <h3 data-i18n="form.t">告诉我们你想看的演出。</h3>
+      <p class="sub" data-i18n="form.sub">我们会通过 WhatsApp 回复书面全包报价。</p>
+      <div class="row">
+        <div class="field"><label for="f-name" data-i18n="l.name">姓名</label><input id="f-name" name="name" required autocomplete="name" data-i18n-ph="ph.name" placeholder="你的名字"></div>
+        <div class="field"><label for="f-wa" data-i18n="l.wa">WhatsApp 号码</label><input id="f-wa" name="whatsapp" required type="tel" autocomplete="tel" data-i18n-ph="ph.wa" placeholder="+60 / +65"></div>
+      </div>
+      <div class="field"><label for="f-event" data-i18n="l.event">演出</label><input id="f-event" name="event" required data-i18n-ph="ph.event" placeholder="艺人 / 音乐节 + 日期"></div>
+      <div class="row">
+        <div class="field"><label for="f-city" data-i18n="l.city">城市</label><select id="f-city" name="city"><option value="Singapore" data-i18n="o.sg">新加坡</option><option value="Kuala Lumpur" data-i18n="o.kl">吉隆坡</option><option value="Other" data-i18n="o.other">其他</option></select></div>
+        <div class="field"><label for="f-svc" data-i18n="l.svc">服务</label><select id="f-svc" name="service"><option value="Internal order" data-i18n="o.int">内部票</option><option value="Buy For You" data-i18n="o.bfy">代抢票</option><option value="Concert tickets" data-i18n="o.tix">演唱会门票</option><option value="Discounted deal" data-i18n="o.deal">优惠票</option></select></div>
+      </div>
+      <div class="field hidden" id="otherCityField"><label for="f-city-other" data-i18n="l.cityo">你的城市</label><input id="f-city-other" name="city_other" data-i18n-ph="ph.cityo" placeholder="例如：槟城、曼谷、东京"></div>
+      <div class="row">
+        <div class="field"><label for="f-cat" data-i18n="l.cat">票价区 / 区域</label><input id="f-cat" name="category" data-i18n-ph="ph.cat" placeholder="例如：CAT 1"></div>
+        <div class="field"><label for="f-qty" data-i18n="l.qty">数量</label><select id="f-qty" name="quantity"><option>1</option><option selected>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10+</option></select></div>
+      </div>
+      <div class="field"><label for="f-notes" data-i18n="l.notes">备注</label><textarea id="f-notes" name="notes" data-i18n-ph="ph.notes" placeholder="偏好区域、预算或其他需求"></textarea></div>
+      <label class="consent"><input type="checkbox" name="consent" value="yes" required><span data-i18n="consent">我同意 Authentix 使用以上资料回复我的询问。<a href="#privacy" class="js-privacy">隐私声明</a></span></label>
+      <button class="btn btn-cream" type="submit" id="submitBtn" data-i18n="submit">提交询问</button>
+      <p class="form-msg" id="formMsg" role="status"></p>
+    </form>
+  </div>
+</section>
+
+<section class="cta">
+  <img src="/assets/img/festival-night.jpg" alt="">
+  <div class="wrap">
+    <svg viewBox="662 54 1910 1293" width="96" height="65" aria-hidden="true"><g transform="translate(0.000000,1360.000000) scale(0.100000,-0.100000)" fill="#F1EEE6"><path d="M14490 12971 c-192 -8 -199 -12 -279 -184 -28 -59 -61 -122 -74 -140 -14 -17 -37 -56 -51 -85 -15 -29 -43 -75 -62 -101 -18 -27 -34 -53 -34 -58 0 -5 -25 -52 -56 -104 -31 -51 -95 -170 -144 -264 -155 -299 -170 -328 -181 -342 -15 -17 -101 -178 -222 -413 -55 -107 -107 -206 -117 -220 -22 -32 -150 -258 -150 -265 0 -3 -52 -103 -115 -223 -146 -275 -139 -262 -192 -357 -25 -44 -71 -127 -103 -185 -32 -58 -83 -150 -114 -205 -31 -55 -79 -145 -105 -200 -27 -56 -66 -130 -88 -165 -22 -36 -88 -157 -148 -270 -59 -113 -119 -223 -133 -245 -15 -22 -86 -159 -159 -304 -74 -145 -151 -294 -172 -330 -68 -118 -170 -307 -185 -342 -14 -32 -68 -134 -193 -364 -86 -157 -343 -644 -343 -650 0 -3 -12 -24 -27 -48 -14 -23 -40 -69 -56 -102 -16 -33 -42 -80 -57 -105 -15 -25 -33 -62 -39 -82 -7 -20 -29 -63 -50 -95 -20 -32 -58 -101 -84 -153 -80 -163 -97 -185 -179 -226 -40 -20 -97 -45 -127 -55 -30 -11 -73 -30 -96 -44 -23 -13 -82 -42 -131 -64 -49 -21 -152 -68 -229 -103 -77 -36 -214 -99 -305 -141 -177 -81 -695 -341 -720 -362 -8 -7 -58 -35 -110 -62 -156 -81 -301 -162 -332 -185 -17 -11 -67 -40 -112 -63 -129 -66 -211 -115 -356 -211 -210 -140 -242 -163 -285 -203 -22 -20 -71 -59 -110 -86 -376 -266 -730 -644 -870 -930 -84 -171 -99 -230 -92 -365 7 -132 25 -190 86 -282 70 -103 227 -215 351 -248 36 -10 124 -34 195 -54 183 -52 257 -58 726 -63 550 -6 935 26 1554 128 365 60 599 100 606 104 4 3 56 12 116 20 59 9 176 31 258 50 83 19 179 39 213 45 35 6 74 15 87 20 12 5 64 16 115 25 52 8 146 29 209 45 64 16 145 34 181 40 36 6 97 19 135 30 39 10 120 31 180 45 121 30 334 86 435 115 36 11 119 31 185 45 148 31 377 86 550 132 72 19 175 45 230 58 55 13 119 30 142 38 22 9 79 23 125 31 45 9 175 41 288 71 113 30 234 63 270 71 36 9 101 27 145 39 193 55 585 162 690 189 124 32 393 99 474 117 45 11 96 26 113 35 16 8 68 22 116 30 48 8 132 28 187 44 55 16 141 37 190 45 50 9 124 27 165 40 41 13 176 46 300 75 124 28 259 61 300 72 41 11 104 26 140 33 93 17 390 82 490 107 174 43 222 32 255 -59 10 -26 33 -86 51 -133 18 -47 35 -96 39 -110 3 -14 21 -59 40 -100 39 -85 165 -398 206 -510 15 -41 41 -104 58 -140 17 -36 31 -71 31 -78 0 -7 14 -45 31 -85 17 -40 46 -112 64 -162 43 -116 99 -257 130 -320 13 -27 29 -70 35 -94 7 -25 41 -117 77 -205 35 -89 77 -195 92 -236 46 -124 215 -537 273 -665 127 -281 430 -675 643 -835 28 -20 59 -47 70 -60 35 -38 295 -205 412 -264 166 -83 355 -151 563 -202 175 -43 246 -54 560 -84 101 -10 1591 -21 1650 -12 44 6 73 39 67 76 -6 37 -178 452 -349 841 -17 39 -44 106 -60 150 -16 44 -42 105 -57 135 -16 30 -51 111 -80 180 -29 69 -59 141 -68 160 -105 228 -252 565 -364 835 -44 105 -97 225 -119 267 -22 42 -51 107 -64 145 -13 37 -52 133 -86 213 -34 80 -79 186 -100 235 -43 103 -113 261 -170 385 -22 47 -62 139 -89 205 -103 250 -317 742 -331 760 -12 15 -209 473 -256 593 -13 34 -24 73 -24 86 0 37 36 73 93 92 96 31 331 122 434 168 55 25 143 61 195 81 144 56 565 249 668 307 19 10 69 35 110 54 168 79 603 353 794 499 71 54 231 207 250 239 10 17 41 65 67 106 55 86 94 211 84 269 -12 65 -63 149 -115 190 -201 159 -646 216 -1263 162 -122 -11 -289 -25 -372 -31 -82 -7 -177 -18 -210 -25 -33 -7 -136 -25 -228 -40 -93 -14 -219 -37 -280 -50 -62 -14 -157 -34 -212 -44 -55 -11 -163 -35 -240 -55 -77 -19 -180 -42 -228 -50 -101 -18 -123 -28 -132 -57 -9 -28 11 -41 53 -34 18 3 92 12 165 20 73 8 168 24 212 36 185 49 633 111 965 134 124 9 280 20 348 25 270 22 606 2 746 -43 89 -28 164 -93 173 -149 6 -43 -37 -146 -79 -188 -105 -104 -161 -149 -288 -231 -161 -103 -261 -157 -540 -293 -218 -105 -334 -155 -530 -229 -36 -14 -103 -40 -150 -59 -111 -45 -260 -101 -335 -126 -33 -11 -103 -36 -155 -55 -206 -77 -460 -165 -555 -195 -243 -74 -541 -162 -549 -162 -5 0 -34 -11 -65 -24 -31 -13 -119 -43 -196 -66 -77 -23 -189 -56 -250 -75 -60 -18 -137 -39 -170 -45 -59 -12 -237 -66 -385 -116 -41 -14 -106 -35 -145 -46 -38 -11 -92 -29 -120 -40 -27 -11 -77 -27 -110 -36 -33 -8 -127 -34 -210 -57 -82 -24 -179 -49 -215 -55 -64 -12 -164 -39 -310 -85 -41 -13 -145 -44 -230 -70 -85 -27 -202 -63 -260 -80 -58 -18 -152 -45 -210 -59 -58 -14 -132 -35 -165 -46 -33 -12 -98 -29 -145 -40 -47 -10 -186 -51 -310 -90 -124 -39 -261 -79 -305 -90 -44 -10 -105 -27 -135 -38 -30 -11 -102 -32 -160 -46 -97 -24 -275 -71 -555 -146 -60 -16 -162 -46 -225 -65 -63 -20 -153 -45 -200 -56 -47 -12 -130 -32 -185 -46 -117 -30 -186 -47 -475 -115 -238 -56 -385 -94 -535 -138 -127 -37 -420 -107 -506 -120 -37 -5 -86 -17 -109 -25 -89 -31 -160 -15 -160 36 0 24 123 295 190 420 90 167 264 509 285 558 14 35 36 80 49 100 12 20 33 61 45 91 13 30 28 61 33 67 6 7 47 86 93 175 307 608 704 1389 782 1538 27 52 110 214 185 360 74 146 166 321 203 390 37 69 155 298 263 510 107 212 203 397 213 411 10 14 34 59 53 100 20 41 60 117 89 169 132 233 220 396 237 441 11 27 31 66 44 86 14 21 32 58 41 83 9 25 34 75 55 111 22 36 51 94 65 129 14 35 43 93 64 129 22 36 49 91 61 122 22 59 86 139 113 139 25 0 55 -48 78 -124 12 -39 32 -93 46 -120 26 -51 101 -230 158 -376 18 -47 69 -170 114 -273 44 -104 81 -191 81 -194 0 -2 29 -66 64 -141 35 -75 71 -162 81 -192 10 -30 29 -77 42 -104 14 -27 42 -96 63 -155 45 -126 117 -300 131 -317 5 -6 20 -42 33 -80 13 -38 36 -96 51 -129 55 -123 118 -272 135 -320 9 -28 31 -77 49 -109 17 -32 31 -65 31 -72 0 -8 18 -56 40 -108 22 -51 40 -100 40 -108 0 -8 22 -60 50 -116 27 -56 54 -121 61 -144 6 -23 22 -64 35 -89 13 -26 32 -69 43 -95 10 -27 49 -121 86 -209 37 -88 74 -180 82 -205 55 -167 75 -176 301 -130 84 17 164 35 178 40 14 6 78 24 142 40 65 16 164 43 222 61 58 17 132 38 165 46 33 9 139 37 235 64 96 26 202 53 235 59 33 7 80 20 105 30 25 9 67 21 95 25 27 4 108 25 180 47 71 22 177 50 235 63 58 13 130 32 160 43 30 11 111 34 180 51 69 17 170 42 225 56 55 14 110 28 123 31 74 15 78 73 16 220 -76 180 -84 203 -84 238 0 24 -11 47 -40 83 -37 47 -132 243 -319 658 -40 88 -85 185 -100 215 -16 30 -34 73 -41 95 -7 22 -31 78 -53 125 -57 123 -123 272 -167 375 -20 50 -68 155 -105 235 -37 80 -76 167 -87 194 -10 27 -32 77 -47 110 -16 34 -45 99 -66 146 -47 107 -120 271 -147 330 -11 25 -36 83 -55 130 -19 47 -52 121 -73 165 -75 153 -244 525 -365 800 -84 192 -113 255 -154 335 -21 41 -44 93 -51 115 -7 22 -30 75 -52 118 -21 43 -48 101 -59 130 -11 29 -46 106 -78 172 -32 66 -69 149 -81 185 -12 36 -33 84 -47 106 -13 23 -49 99 -79 170 -78 180 -114 262 -173 394 -91 203 -100 224 -123 285 -19 49 -30 64 -63 82 l-40 22 -1200 4 c-660 3 -1265 2 -1345 -2z m-3986 -7017 c29 -11 18 -64 -28 -138 -24 -39 -72 -127 -106 -195 -34 -68 -72 -140 -85 -160 -32 -48 -155 -284 -329 -631 -78 -157 -182 -361 -231 -455 -49 -93 -106 -206 -128 -250 -22 -44 -47 -91 -57 -105 -21 -30 -226 -435 -309 -611 -74 -157 -82 -163 -242 -183 -177 -23 -704 -25 -834 -3 -239 41 -404 128 -481 256 -81 133 -86 218 -21 399 24 66 57 137 73 159 17 21 38 51 49 68 78 124 455 496 670 660 43 33 104 83 134 111 50 45 366 261 431 294 14 7 108 63 210 125 215 130 334 197 445 253 44 21 136 69 205 104 69 36 204 105 300 155 96 49 195 103 219 121 42 31 81 39 115 26z M23897 11892 c-20 -22 -32 -73 -58 -247 -22 -149 -91 -384 -148 -507 -61 -133 -253 -418 -280 -418 -4 0 -36 -30 -72 -66 -66 -68 -182 -160 -234 -187 -16 -8 -54 -31 -83 -51 -29 -19 -67 -39 -85 -44 -18 -5 -70 -25 -117 -45 -91 -38 -244 -74 -430 -102 -160 -25 -210 -47 -190 -85 12 -23 69 -37 225 -55 126 -15 347 -68 423 -101 20 -9 69 -29 108 -44 201 -77 535 -364 621 -534 14 -28 37 -66 51 -83 66 -87 192 -472 217 -663 18 -142 24 -168 41 -202 41 -80 72 -2 114 282 32 219 162 552 268 688 16 20 36 51 45 67 82 155 520 461 722 505 28 6 83 22 124 36 43 14 158 37 268 53 186 27 223 38 223 67 0 28 -53 46 -217 74 -92 16 -202 41 -243 55 -41 14 -102 32 -135 40 -70 16 -311 136 -438 218 -105 68 -268 229 -332 328 -66 102 -181 337 -205 416 -10 37 -30 104 -43 148 -14 44 -34 148 -46 230 -32 212 -56 270 -94 227z M11560 2963 c-63 -14 -155 -36 -204 -49 -49 -14 -148 -36 -220 -50 -72 -13 -158 -31 -191 -39 -33 -8 -92 -19 -131 -25 -40 -5 -145 -25 -235 -44 -90 -19 -191 -37 -224 -41 -33 -4 -85 -13 -115 -20 -30 -7 -161 -29 -290 -49 -129 -20 -273 -43 -320 -51 -47 -8 -157 -24 -245 -35 -88 -11 -185 -25 -215 -30 -30 -6 -117 -17 -192 -26 -220 -24 -212 -18 -339 -279 -17 -33 -41 -80 -55 -105 -14 -25 -38 -74 -55 -108 -16 -35 -39 -78 -51 -95 -12 -17 -41 -68 -64 -112 -22 -44 -76 -147 -119 -230 -43 -82 -165 -321 -270 -530 -106 -209 -235 -464 -289 -567 -53 -103 -96 -199 -96 -212 0 -56 -3 -56 565 -55 663 1 731 6 1070 80 180 40 501 148 585 198 36 21 90 51 120 66 98 49 223 128 305 192 44 34 114 89 155 122 41 32 105 89 141 127 37 38 86 87 110 110 92 85 183 200 363 461 116 167 261 421 322 563 20 47 117 244 215 437 99 194 179 359 179 366 0 21 -33 46 -66 51 -16 3 -81 -7 -144 -21z"></path></g></svg>
+    <h2 data-i18n="cta.t">一切<br>从一张票开始</h2>
+    <span class="dash"></span>
+    <div class="hero-ctas"><a class="btn btn-cream js-wa" data-loc="cta" href="#" data-i18n="cta.wa">WhatsApp 聊聊</a><a class="btn btn-ghost js-ig" data-loc="cta" href="#">Instagram <span class="js-ig-handle">@authentix_my</span></a><a class="btn btn-ghost js-cs" data-loc="cta" href="#">Carousell</a></div>
+    <div class="qr js-ig-block"><img src="/assets/img/ig-qr.png" alt="Instagram QR" width="150" height="150"><span><span data-i18n="qr">扫码关注</span><br><strong class="js-ig-handle">@authentix_my</strong></span></div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <a class="brand" href="#top" aria-label="Authentix"><svg viewBox="662 54 1910 1293" width="40" height="27" aria-hidden="true"><g transform="translate(0.000000,1360.000000) scale(0.100000,-0.100000)" fill="#F1EEE6"><path d="M14490 12971 c-192 -8 -199 -12 -279 -184 -28 -59 -61 -122 -74 -140 -14 -17 -37 -56 -51 -85 -15 -29 -43 -75 -62 -101 -18 -27 -34 -53 -34 -58 0 -5 -25 -52 -56 -104 -31 -51 -95 -170 -144 -264 -155 -299 -170 -328 -181 -342 -15 -17 -101 -178 -222 -413 -55 -107 -107 -206 -117 -220 -22 -32 -150 -258 -150 -265 0 -3 -52 -103 -115 -223 -146 -275 -139 -262 -192 -357 -25 -44 -71 -127 -103 -185 -32 -58 -83 -150 -114 -205 -31 -55 -79 -145 -105 -200 -27 -56 -66 -130 -88 -165 -22 -36 -88 -157 -148 -270 -59 -113 -119 -223 -133 -245 -15 -22 -86 -159 -159 -304 -74 -145 -151 -294 -172 -330 -68 -118 -170 -307 -185 -342 -14 -32 -68 -134 -193 -364 -86 -157 -343 -644 -343 -650 0 -3 -12 -24 -27 -48 -14 -23 -40 -69 -56 -102 -16 -33 -42 -80 -57 -105 -15 -25 -33 -62 -39 -82 -7 -20 -29 -63 -50 -95 -20 -32 -58 -101 -84 -153 -80 -163 -97 -185 -179 -226 -40 -20 -97 -45 -127 -55 -30 -11 -73 -30 -96 -44 -23 -13 -82 -42 -131 -64 -49 -21 -152 -68 -229 -103 -77 -36 -214 -99 -305 -141 -177 -81 -695 -341 -720 -362 -8 -7 -58 -35 -110 -62 -156 -81 -301 -162 -332 -185 -17 -11 -67 -40 -112 -63 -129 -66 -211 -115 -356 -211 -210 -140 -242 -163 -285 -203 -22 -20 -71 -59 -110 -86 -376 -266 -730 -644 -870 -930 -84 -171 -99 -230 -92 -365 7 -132 25 -190 86 -282 70 -103 227 -215 351 -248 36 -10 124 -34 195 -54 183 -52 257 -58 726 -63 550 -6 935 26 1554 128 365 60 599 100 606 104 4 3 56 12 116 20 59 9 176 31 258 50 83 19 179 39 213 45 35 6 74 15 87 20 12 5 64 16 115 25 52 8 146 29 209 45 64 16 145 34 181 40 36 6 97 19 135 30 39 10 120 31 180 45 121 30 334 86 435 115 36 11 119 31 185 45 148 31 377 86 550 132 72 19 175 45 230 58 55 13 119 30 142 38 22 9 79 23 125 31 45 9 175 41 288 71 113 30 234 63 270 71 36 9 101 27 145 39 193 55 585 162 690 189 124 32 393 99 474 117 45 11 96 26 113 35 16 8 68 22 116 30 48 8 132 28 187 44 55 16 141 37 190 45 50 9 124 27 165 40 41 13 176 46 300 75 124 28 259 61 300 72 41 11 104 26 140 33 93 17 390 82 490 107 174 43 222 32 255 -59 10 -26 33 -86 51 -133 18 -47 35 -96 39 -110 3 -14 21 -59 40 -100 39 -85 165 -398 206 -510 15 -41 41 -104 58 -140 17 -36 31 -71 31 -78 0 -7 14 -45 31 -85 17 -40 46 -112 64 -162 43 -116 99 -257 130 -320 13 -27 29 -70 35 -94 7 -25 41 -117 77 -205 35 -89 77 -195 92 -236 46 -124 215 -537 273 -665 127 -281 430 -675 643 -835 28 -20 59 -47 70 -60 35 -38 295 -205 412 -264 166 -83 355 -151 563 -202 175 -43 246 -54 560 -84 101 -10 1591 -21 1650 -12 44 6 73 39 67 76 -6 37 -178 452 -349 841 -17 39 -44 106 -60 150 -16 44 -42 105 -57 135 -16 30 -51 111 -80 180 -29 69 -59 141 -68 160 -105 228 -252 565 -364 835 -44 105 -97 225 -119 267 -22 42 -51 107 -64 145 -13 37 -52 133 -86 213 -34 80 -79 186 -100 235 -43 103 -113 261 -170 385 -22 47 -62 139 -89 205 -103 250 -317 742 -331 760 -12 15 -209 473 -256 593 -13 34 -24 73 -24 86 0 37 36 73 93 92 96 31 331 122 434 168 55 25 143 61 195 81 144 56 565 249 668 307 19 10 69 35 110 54 168 79 603 353 794 499 71 54 231 207 250 239 10 17 41 65 67 106 55 86 94 211 84 269 -12 65 -63 149 -115 190 -201 159 -646 216 -1263 162 -122 -11 -289 -25 -372 -31 -82 -7 -177 -18 -210 -25 -33 -7 -136 -25 -228 -40 -93 -14 -219 -37 -280 -50 -62 -14 -157 -34 -212 -44 -55 -11 -163 -35 -240 -55 -77 -19 -180 -42 -228 -50 -101 -18 -123 -28 -132 -57 -9 -28 11 -41 53 -34 18 3 92 12 165 20 73 8 168 24 212 36 185 49 633 111 965 134 124 9 280 20 348 25 270 22 606 2 746 -43 89 -28 164 -93 173 -149 6 -43 -37 -146 -79 -188 -105 -104 -161 -149 -288 -231 -161 -103 -261 -157 -540 -293 -218 -105 -334 -155 -530 -229 -36 -14 -103 -40 -150 -59 -111 -45 -260 -101 -335 -126 -33 -11 -103 -36 -155 -55 -206 -77 -460 -165 -555 -195 -243 -74 -541 -162 -549 -162 -5 0 -34 -11 -65 -24 -31 -13 -119 -43 -196 -66 -77 -23 -189 -56 -250 -75 -60 -18 -137 -39 -170 -45 -59 -12 -237 -66 -385 -116 -41 -14 -106 -35 -145 -46 -38 -11 -92 -29 -120 -40 -27 -11 -77 -27 -110 -36 -33 -8 -127 -34 -210 -57 -82 -24 -179 -49 -215 -55 -64 -12 -164 -39 -310 -85 -41 -13 -145 -44 -230 -70 -85 -27 -202 -63 -260 -80 -58 -18 -152 -45 -210 -59 -58 -14 -132 -35 -165 -46 -33 -12 -98 -29 -145 -40 -47 -10 -186 -51 -310 -90 -124 -39 -261 -79 -305 -90 -44 -10 -105 -27 -135 -38 -30 -11 -102 -32 -160 -46 -97 -24 -275 -71 -555 -146 -60 -16 -162 -46 -225 -65 -63 -20 -153 -45 -200 -56 -47 -12 -130 -32 -185 -46 -117 -30 -186 -47 -475 -115 -238 -56 -385 -94 -535 -138 -127 -37 -420 -107 -506 -120 -37 -5 -86 -17 -109 -25 -89 -31 -160 -15 -160 36 0 24 123 295 190 420 90 167 264 509 285 558 14 35 36 80 49 100 12 20 33 61 45 91 13 30 28 61 33 67 6 7 47 86 93 175 307 608 704 1389 782 1538 27 52 110 214 185 360 74 146 166 321 203 390 37 69 155 298 263 510 107 212 203 397 213 411 10 14 34 59 53 100 20 41 60 117 89 169 132 233 220 396 237 441 11 27 31 66 44 86 14 21 32 58 41 83 9 25 34 75 55 111 22 36 51 94 65 129 14 35 43 93 64 129 22 36 49 91 61 122 22 59 86 139 113 139 25 0 55 -48 78 -124 12 -39 32 -93 46 -120 26 -51 101 -230 158 -376 18 -47 69 -170 114 -273 44 -104 81 -191 81 -194 0 -2 29 -66 64 -141 35 -75 71 -162 81 -192 10 -30 29 -77 42 -104 14 -27 42 -96 63 -155 45 -126 117 -300 131 -317 5 -6 20 -42 33 -80 13 -38 36 -96 51 -129 55 -123 118 -272 135 -320 9 -28 31 -77 49 -109 17 -32 31 -65 31 -72 0 -8 18 -56 40 -108 22 -51 40 -100 40 -108 0 -8 22 -60 50 -116 27 -56 54 -121 61 -144 6 -23 22 -64 35 -89 13 -26 32 -69 43 -95 10 -27 49 -121 86 -209 37 -88 74 -180 82 -205 55 -167 75 -176 301 -130 84 17 164 35 178 40 14 6 78 24 142 40 65 16 164 43 222 61 58 17 132 38 165 46 33 9 139 37 235 64 96 26 202 53 235 59 33 7 80 20 105 30 25 9 67 21 95 25 27 4 108 25 180 47 71 22 177 50 235 63 58 13 130 32 160 43 30 11 111 34 180 51 69 17 170 42 225 56 55 14 110 28 123 31 74 15 78 73 16 220 -76 180 -84 203 -84 238 0 24 -11 47 -40 83 -37 47 -132 243 -319 658 -40 88 -85 185 -100 215 -16 30 -34 73 -41 95 -7 22 -31 78 -53 125 -57 123 -123 272 -167 375 -20 50 -68 155 -105 235 -37 80 -76 167 -87 194 -10 27 -32 77 -47 110 -16 34 -45 99 -66 146 -47 107 -120 271 -147 330 -11 25 -36 83 -55 130 -19 47 -52 121 -73 165 -75 153 -244 525 -365 800 -84 192 -113 255 -154 335 -21 41 -44 93 -51 115 -7 22 -30 75 -52 118 -21 43 -48 101 -59 130 -11 29 -46 106 -78 172 -32 66 -69 149 -81 185 -12 36 -33 84 -47 106 -13 23 -49 99 -79 170 -78 180 -114 262 -173 394 -91 203 -100 224 -123 285 -19 49 -30 64 -63 82 l-40 22 -1200 4 c-660 3 -1265 2 -1345 -2z m-3986 -7017 c29 -11 18 -64 -28 -138 -24 -39 -72 -127 -106 -195 -34 -68 -72 -140 -85 -160 -32 -48 -155 -284 -329 -631 -78 -157 -182 -361 -231 -455 -49 -93 -106 -206 -128 -250 -22 -44 -47 -91 -57 -105 -21 -30 -226 -435 -309 -611 -74 -157 -82 -163 -242 -183 -177 -23 -704 -25 -834 -3 -239 41 -404 128 -481 256 -81 133 -86 218 -21 399 24 66 57 137 73 159 17 21 38 51 49 68 78 124 455 496 670 660 43 33 104 83 134 111 50 45 366 261 431 294 14 7 108 63 210 125 215 130 334 197 445 253 44 21 136 69 205 104 69 36 204 105 300 155 96 49 195 103 219 121 42 31 81 39 115 26z M23897 11892 c-20 -22 -32 -73 -58 -247 -22 -149 -91 -384 -148 -507 -61 -133 -253 -418 -280 -418 -4 0 -36 -30 -72 -66 -66 -68 -182 -160 -234 -187 -16 -8 -54 -31 -83 -51 -29 -19 -67 -39 -85 -44 -18 -5 -70 -25 -117 -45 -91 -38 -244 -74 -430 -102 -160 -25 -210 -47 -190 -85 12 -23 69 -37 225 -55 126 -15 347 -68 423 -101 20 -9 69 -29 108 -44 201 -77 535 -364 621 -534 14 -28 37 -66 51 -83 66 -87 192 -472 217 -663 18 -142 24 -168 41 -202 41 -80 72 -2 114 282 32 219 162 552 268 688 16 20 36 51 45 67 82 155 520 461 722 505 28 6 83 22 124 36 43 14 158 37 268 53 186 27 223 38 223 67 0 28 -53 46 -217 74 -92 16 -202 41 -243 55 -41 14 -102 32 -135 40 -70 16 -311 136 -438 218 -105 68 -268 229 -332 328 -66 102 -181 337 -205 416 -10 37 -30 104 -43 148 -14 44 -34 148 -46 230 -32 212 -56 270 -94 227z M11560 2963 c-63 -14 -155 -36 -204 -49 -49 -14 -148 -36 -220 -50 -72 -13 -158 -31 -191 -39 -33 -8 -92 -19 -131 -25 -40 -5 -145 -25 -235 -44 -90 -19 -191 -37 -224 -41 -33 -4 -85 -13 -115 -20 -30 -7 -161 -29 -290 -49 -129 -20 -273 -43 -320 -51 -47 -8 -157 -24 -245 -35 -88 -11 -185 -25 -215 -30 -30 -6 -117 -17 -192 -26 -220 -24 -212 -18 -339 -279 -17 -33 -41 -80 -55 -105 -14 -25 -38 -74 -55 -108 -16 -35 -39 -78 -51 -95 -12 -17 -41 -68 -64 -112 -22 -44 -76 -147 -119 -230 -43 -82 -165 -321 -270 -530 -106 -209 -235 -464 -289 -567 -53 -103 -96 -199 -96 -212 0 -56 -3 -56 565 -55 663 1 731 6 1070 80 180 40 501 148 585 198 36 21 90 51 120 66 98 49 223 128 305 192 44 34 114 89 155 122 41 32 105 89 141 127 37 38 86 87 110 110 92 85 183 200 363 461 116 167 261 421 322 563 20 47 117 244 215 437 99 194 179 359 179 366 0 21 -33 46 -66 51 -16 3 -81 -7 -144 -21z"></path></g></svg><svg viewBox="58 43 2871 489" width="129" height="22" role="img" aria-label="Authentix"><g transform="translate(0.000000,576.000000) scale(0.100000,-0.100000)" fill="#F1EEE6"><path d="M12041 5224 l-26 -22 2 -2272 2 -2272 22 -24 c36 -39 72 -42 401 -38 380 6 390 7 421 43 23 28 24 34 31 291 4 145 4 504 0 799 -7 568 -1 719 36 831 10 30 26 80 35 110 44 145 198 336 320 397 213 107 403 123 634 54 133 -40 144 -46 241 -148 91 -94 141 -179 160 -269 41 -200 40 -170 40 -1115 0 -624 3 -915 11 -932 23 -51 29 -52 399 -55 375 -3 406 0 442 49 19 25 19 55 19 1000 -1 1134 -2 1147 -86 1412 -45 141 -134 327 -201 418 -18 25 -77 87 -129 137 -84 81 -109 98 -217 151 -68 33 -143 65 -168 71 -25 6 -92 24 -150 40 -452 125 -940 21 -1222 -262 -91 -90 -121 -105 -148 -73 -11 13 -13 182 -14 819 -2 870 1 836 -53 865 -10 5 -189 11 -397 13 -380 4 -380 4 -405 -18z M25060 5182 c-152 -61 -232 -130 -285 -246 -51 -110 -60 -174 -40 -281 21 -112 33 -141 91 -216 105 -137 246 -209 409 -209 90 0 132 12 192 55 26 19 68 49 93 66 46 33 133 153 158 219 9 24 12 74 10 160 -3 123 -4 126 -42 198 -59 110 -111 162 -219 218 l-92 48 -115 3 c-93 3 -124 0 -160 -15z M2692 5103 c-26 -12 -42 -34 -76 -107 -76 -157 -187 -399 -208 -451 -11 -27 -28 -63 -38 -80 -9 -16 -23 -48 -30 -70 -7 -22 -55 -131 -106 -242 -52 -111 -94 -208 -94 -215 0 -8 -18 -51 -40 -96 -22 -44 -40 -84 -40 -87 0 -6 -134 -292 -233 -495 -38 -80 -82 -174 -97 -210 -15 -36 -60 -135 -100 -220 -40 -85 -78 -171 -85 -190 -21 -58 -120 -279 -189 -422 -35 -73 -74 -158 -86 -188 -12 -30 -34 -75 -50 -100 -15 -25 -36 -70 -45 -100 -10 -30 -33 -82 -51 -115 -18 -33 -42 -85 -54 -115 -12 -30 -42 -100 -66 -155 -25 -55 -61 -134 -79 -175 -18 -41 -55 -124 -83 -185 -28 -60 -62 -140 -76 -177 -13 -37 -41 -93 -62 -125 -45 -70 -56 -133 -29 -164 18 -19 30 -20 464 -18 557 1 516 -10 591 159 23 52 59 136 80 185 20 50 51 119 67 155 17 36 36 83 43 105 7 22 25 65 40 95 16 30 42 89 59 130 83 200 108 226 238 241 107 13 239 37 293 54 25 7 86 19 135 25 50 6 141 22 204 36 63 13 191 31 285 39 217 18 875 29 928 14 52 -14 100 -64 126 -135 63 -165 252 -459 379 -589 159 -163 383 -314 563 -381 25 -10 74 -29 110 -44 42 -18 122 -37 225 -54 187 -30 247 -33 269 -10 33 33 34 31 -220 538 -67 132 -131 273 -144 311 -57 177 -117 245 -400 460 -44 33 -112 79 -152 102 -118 68 -409 209 -468 228 -30 10 -81 31 -114 47 -32 16 -133 49 -225 74 -91 24 -191 53 -221 63 -30 10 -104 26 -165 36 -60 9 -144 24 -185 32 -100 21 -542 30 -667 13 -157 -21 -241 -24 -259 -9 -25 20 -13 91 30 189 21 47 49 114 62 150 14 36 42 101 64 145 22 44 57 125 79 181 22 55 81 190 132 300 50 109 115 253 143 318 28 66 59 124 69 130 45 28 73 -21 356 -639 50 -110 112 -240 136 -290 25 -49 78 -162 119 -250 55 -122 80 -165 103 -180 16 -12 92 -36 169 -54 284 -68 298 -73 529 -157 123 -45 281 -120 335 -159 93 -67 141 -81 160 -45 12 23 -6 72 -57 153 -17 26 -65 127 -107 225 -75 174 -122 270 -364 747 -67 132 -131 265 -143 295 -11 30 -34 80 -50 110 -41 79 -459 940 -459 947 0 3 -24 55 -54 117 -30 61 -76 158 -102 214 -28 60 -60 114 -77 128 l-29 24 -436 0 c-382 0 -441 -2 -470 -17z M22987 4721 c-59 -5 -72 -10 -93 -34 l-24 -28 0 -360 c0 -378 -3 -407 -45 -423 -9 -3 -101 -6 -203 -6 -168 0 -190 -2 -219 -20 -53 -32 -55 -41 -54 -312 2 -366 -4 -358 278 -358 100 0 189 -3 198 -6 43 -17 45 -40 46 -511 1 -246 4 -648 8 -893 6 -435 7 -446 29 -487 12 -23 27 -66 33 -95 6 -29 36 -100 67 -158 133 -251 349 -398 672 -456 100 -18 463 -21 579 -4 223 31 301 71 301 152 1 168 -25 512 -39 530 -23 28 -76 36 -161 26 -41 -5 -136 -8 -210 -5 -173 6 -212 19 -294 101 -85 84 -95 119 -107 366 -11 221 -9 1317 2 1369 15 71 5 69 396 78 348 8 353 8 375 31 23 22 23 27 26 298 3 302 1 313 -56 335 -16 6 -157 11 -352 11 -345 1 -355 2 -381 50 -8 15 -13 135 -16 382 -4 382 -6 399 -53 423 -26 13 -561 16 -703 4z M9930 4691 l-30 -29 0 -354 c0 -316 -2 -357 -18 -388 -25 -50 -54 -62 -137 -56 -103 7 -316 -8 -342 -25 -13 -7 -27 -27 -33 -43 -13 -38 -13 -516 0 -551 18 -47 59 -55 270 -55 206 0 241 -7 257 -52 4 -13 7 -324 5 -693 -1 -368 2 -776 7 -905 l8 -235 40 -116 c66 -195 199 -374 338 -456 32 -19 70 -43 83 -53 13 -11 94 -43 180 -72 l157 -53 265 0 c239 1 273 3 350 23 47 12 118 28 158 37 142 29 138 20 122 358 -6 144 -16 269 -21 278 -15 29 -65 42 -132 35 -219 -24 -243 -26 -325 -16 -153 17 -261 89 -323 215 -41 84 -47 208 -42 865 7 832 4 774 32 804 l24 26 336 0 c193 0 351 4 372 10 73 20 74 22 77 305 3 278 -1 309 -42 339 -26 20 -41 21 -369 23 -188 1 -350 2 -359 3 -32 0 -56 36 -63 92 -3 29 -7 200 -8 380 l-2 328 -28 27 -27 28 -376 3 -375 3 -29 -30z M16891 3920 c-293 -41 -569 -164 -830 -370 -125 -98 -304 -316 -352 -427 -12 -26 -39 -85 -61 -130 -48 -101 -90 -224 -125 -363 -62 -251 -35 -745 55 -1010 36 -104 119 -300 136 -320 8 -8 30 -40 51 -70 79 -115 232 -280 305 -330 30 -21 76 -55 102 -76 26 -22 64 -48 85 -59 21 -10 72 -38 113 -61 41 -23 100 -50 130 -59 30 -9 87 -27 125 -41 128 -44 421 -84 618 -85 158 -1 390 35 542 83 159 50 378 156 450 219 29 25 68 57 86 69 134 92 380 412 382 496 2 62 -85 109 -238 129 -27 4 -119 25 -203 46 -195 50 -285 53 -326 13 -14 -15 -26 -33 -26 -40 0 -23 -115 -137 -196 -195 -86 -61 -224 -121 -319 -138 -82 -15 -297 -13 -375 3 -216 46 -400 171 -507 346 -138 223 -164 332 -90 380 27 18 -31 18 1227 17 553 -1 1034 -1 1070 -1 139 0 150 16 150 216 -1 222 -15 346 -64 540 -48 195 -130 390 -210 499 -23 31 -49 69 -58 85 -90 149 -369 383 -572 478 -122 57 -329 122 -456 143 -111 18 -520 26 -619 13z m518 -701 c115 -30 271 -110 339 -172 36 -34 149 -210 165 -258 40 -122 50 -177 37 -208 -25 -61 -5 -59 -798 -62 l-722 -2 -25 23 c-36 34 -32 78 20 203 50 122 61 139 157 254 67 80 112 113 241 180 70 36 248 71 366 72 86 1 125 -4 220 -30z M20855 3918 c-99 -9 -122 -14 -282 -61 -98 -29 -211 -84 -273 -132 -105 -82 -122 -99 -160 -154 -21 -32 -46 -61 -55 -65 -67 -25 -85 16 -78 174 9 191 7 192 -465 184 -306 -6 -359 -11 -383 -40 -13 -16 -24 -293 -23 -584 8 -1676 16 -2576 25 -2591 24 -45 50 -49 399 -54 354 -6 390 -3 431 41 l24 26 6 866 c4 490 11 900 17 942 19 141 88 312 171 428 39 53 151 142 226 180 89 44 262 82 373 82 336 0 522 -149 639 -510 l28 -85 5 -950 c3 -522 9 -958 13 -967 21 -43 54 -46 422 -49 361 -2 393 1 421 39 11 14 13 211 14 1008 0 1020 -3 1127 -40 1279 -66 269 -127 398 -267 565 -288 341 -662 476 -1188 428z M28355 3870 c-65 -12 -86 -35 -200 -220 -16 -27 -48 -76 -70 -109 -22 -33 -120 -182 -218 -331 -100 -152 -189 -276 -201 -281 -49 -23 -76 5 -251 261 -78 115 -200 299 -302 458 -106 165 -127 189 -171 202 -23 6 -206 10 -470 10 l-433 0 -24 -25 c-36 -35 -32 -48 43 -130 37 -40 90 -105 117 -145 53 -75 147 -204 280 -385 44 -60 113 -154 153 -209 40 -56 107 -146 150 -200 73 -94 108 -142 200 -277 21 -31 52 -74 69 -95 85 -109 82 -133 -37 -282 -50 -63 -95 -122 -101 -133 -6 -11 -31 -44 -57 -73 -51 -57 -69 -82 -217 -297 -101 -148 -174 -250 -218 -304 -42 -53 -239 -328 -275 -385 -19 -30 -58 -82 -87 -115 -93 -107 -113 -156 -77 -187 14 -13 71 -16 387 -17 203 -1 397 2 430 5 66 8 94 29 148 115 15 24 52 78 82 119 29 41 83 118 120 170 36 52 95 136 130 185 36 50 84 122 107 160 185 313 209 320 347 107 49 -75 106 -159 126 -187 19 -27 83 -122 140 -210 211 -323 284 -423 329 -444 39 -19 65 -20 446 -21 223 -1 413 -1 422 -1 10 1 24 11 33 24 21 33 4 85 -48 144 -24 26 -74 93 -110 148 -118 176 -280 408 -353 505 -39 52 -89 122 -112 155 -22 33 -94 132 -158 220 -64 88 -133 185 -152 215 -20 30 -55 78 -78 106 -23 29 -49 72 -59 98 -17 44 -17 48 0 92 10 25 30 60 45 78 39 44 227 292 312 411 155 218 260 362 296 407 20 26 56 73 79 105 23 32 67 92 98 133 31 41 69 98 85 125 16 28 57 83 90 123 46 54 63 82 64 105 2 57 -26 63 -321 71 -142 3 -307 8 -368 10 -60 3 -132 1 -160 -4z M5935 3855 c-43 -16 -64 -37 -66 -69 -4 -62 3 -1947 7 -1976 3 -19 24 -136 46 -260 l41 -225 65 -120 c108 -203 293 -396 464 -487 236 -126 515 -186 813 -173 202 8 283 21 390 61 186 70 285 131 396 245 143 146 169 139 169 -50 0 -127 8 -154 52 -181 31 -19 51 -20 371 -20 369 0 383 2 406 57 8 21 11 426 9 1585 l-3 1558 -28 27 -27 28 -355 3 c-388 3 -426 -1 -449 -46 -11 -22 -14 -193 -19 -927 l-6 -900 -26 -95 c-55 -198 -85 -258 -204 -405 -51 -63 -64 -72 -182 -130 -151 -75 -228 -90 -427 -83 -123 4 -130 5 -219 45 -132 58 -182 99 -262 212 -80 113 -82 118 -121 285 l-30 129 -3 933 c-3 1047 3 964 -76 983 -65 15 -680 12 -726 -4z M24888 3831 l-33 -29 -2 -1544 c-1 -968 2 -1557 8 -1581 19 -73 32 -74 581 -80 l207 -2 28 27 28 28 0 1575 0 1575 -28 27 -27 28 -365 3 -364 3 -33 -30z"></path></g></svg></a>
+        <p style="font-size:14px;color:#C9D0CB;max-width:300px" data-i18n="ft.tag">不只是门票，更是真实的现场体验。马来西亚、新加坡及更多地区。</p>
+      </div>
+      <div><h4 data-i18n="ft.svc">服务</h4><ul><li><a href="#services" data-i18n="svc2.t">内部票</a></li><li><a href="#buy-for-you" data-i18n="svc3.t">代抢票</a></li><li><a href="#services" data-i18n="svc1.t">演唱会门票</a></li><li><a href="#services" data-i18n="svc4.t">优惠票</a></li></ul></div>
+      <div><h4 data-i18n="ft.help">帮助</h4><ul><li><a href="#faq" data-i18n="nav.faq">常见问题</a></li><li><a href="#trust" data-i18n="ft.verify">如何查证我们</a></li><li><a href="#quote" data-i18n="hero.cta1">获取报价</a></li><li><a href="#privacy" class="js-privacy" data-i18n="ft.privacy">隐私声明</a></li></ul></div>
+      <div><h4 data-i18n="ft.contact">联系我们</h4><ul><li><a class="js-wa" data-loc="footer" href="#">WhatsApp <span class="js-wa-num"></span></a></li><li><a class="js-ig" data-loc="footer" href="#">Instagram <span class="js-ig-handle">@authentix_my</span></a></li><li><a class="js-cs" data-loc="footer" href="#">Carousell</a></li></ul></div>
+    </div>
+    <div class="legal"><span>© <span id="yr">2026</span> Authentix. <span data-i18n="legal.c">版权所有。</span></span><span data-i18n="legal.ind">独立票务服务——与任何艺人、主办方或场馆无关联。</span></div>
+  </div>
+</footer>
+
+<a class="wa-float js-wa" data-loc="float" href="#" aria-label="WhatsApp Authentix">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.2a9.7 9.7 0 0 0-8.4 14.6L2.3 21.8l5.1-1.3A9.7 9.7 0 1 0 12 2.2zm0 17.7c-1.5 0-2.9-.4-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 19.9zm4.4-6c-.2-.1-1.4-.7-1.7-.8-.2-.1-.4-.1-.5.1l-.8.9c-.1.2-.3.2-.5.1a6.6 6.6 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.5-.4h-.5a.9.9 0 0 0-.7.3 2.8 2.8 0 0 0-.9 2.1 5 5 0 0 0 1 2.6 11.2 11.2 0 0 0 4.3 3.8c1.6.7 2.2.7 3 .6a2.6 2.6 0 0 0 1.7-1.2 2.1 2.1 0 0 0 .2-1.2c-.1-.1-.3-.2-.6-.3z"/></svg>
+</a>
+
+<dialog class="pv" id="privacy" aria-labelledby="pvTitle">
+  <h3 id="pvTitle" data-i18n="pv.t">隐私声明</h3>
+  <div data-i18n="pv.b"><p>当你提交报价询问时，Authentix 会收集你的姓名、WhatsApp 号码及你提供的演出信息。</p><p>这些资料仅用于回复你的询问及处理订单，不会出售或分享作营销用途。询问记录会被安全保存，除有进行中的订单外，12 个月后删除。</p><p>如需查看、更正或删除你的资料，请通过 WhatsApp 或 Instagram @authentix_my 联系我们。</p><p>我们也会匿名统计访问次数与按钮点击，以改进网站。网站不使用广告追踪 Cookie。</p></div>
+  <button class="btn btn-forest" type="button" id="pvClose" data-i18n="pv.close">关闭</button>
+</dialog>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Review" hidden>
+  <button class="lb-close" id="lbClose" data-i18n-aria="lb.close" aria-label="关闭">×</button>
+  <img id="lbImg" alt="">
+</div>
+
+<script src="/config.js"></script>
+<script>
+/* ================= EDIT THESE ================= */
+var CONFIG = {
+  supabaseUrl: "",       // e.g. https://xxxx.supabase.co  (filled in at go-live)
+  supabaseAnonKey: ""    // public "anon" key — safe to publish, protected by row-level security
+};
+if (window.AX_CONFIG) Object.assign(CONFIG, window.AX_CONFIG);   // set once in /config.js
+/* ============================================== */
+var I18N = {"meta.title": ["Authentix — Concert Tickets in Malaysia, Singapore & Beyond", "Authentix — 马来西亚、新加坡及海外演唱会门票"], "meta.desc": ["Authentix: genuine concert tickets, internal orders, Buy For You queue service and fan deals in Malaysia and Singapore. More than tickets, real experiences.", "Authentix：正版演唱会门票、内部票、代抢票服务与粉丝优惠，服务马来西亚与新加坡。不只是门票，更是真实的现场体验。"], "nav.services": ["Services", "服务"], "nav.bfy": ["Buy For You", "代抢票"], "nav.drops": ["Drops", "最新开票"], "nav.trust": ["Trust", "信誉保障"], "nav.faq": ["FAQ", "常见问题"], "nav.wa": ["WhatsApp us", "WhatsApp 联系"], "nav.menu": ["Open menu", "打开菜单"], "hero.l": ["Malaysia<br>Singapore<br>And beyond", "马来西亚<br>新加坡<br>及更多地区"], "hero.r": ["Concerts<br>People<br>Closer", "演唱会<br>让彼此<br>更靠近"], "hero.h1": ["More than tickets<br>Real experiences", "不只是门票<br>更是真实的现场体验"], "hero.lead": ["Genuine concert tickets, internal orders, drop-day Buy For You service and fan deals — for Malaysia, Singapore and beyond.", "正版演唱会门票、内部票、开票日代抢服务与粉丝优惠——服务马来西亚、新加坡及更多地区。"], "hero.cta1": ["Get a quote", "获取报价"], "hero.cta2": ["See upcoming drops", "查看最新开票"], "usp1": ["100%<br>Trusted", "100%<br>可信赖"], "usp2": ["Concert<br>Tickets", "演唱会<br>门票"], "usp3": ["MY / SG<br>&amp; International", "马新<br>及海外"], "usp4": ["Internal orders<br>&amp; Discounted", "内部票<br>及优惠票"], "usp5": ["Buy For You<br>Services", "代抢票<br>服务"], "svc.k": ["What we do", "我们的服务"], "svc.t": ["Four ways to get you through the gate.", "四种方式，带你顺利入场。"], "svc.sub": ["One team, one WhatsApp, every step in writing.", "一个团队、一个 WhatsApp，每一步都有书面记录。"], "svc1.t": ["Concert tickets", "演唱会门票"], "svc1.d": ["Official and resale e-tickets for K-pop, pop, rock and festival shows across MY and SG.", "涵盖马新两地 K-pop、流行、摇滚及音乐节的官方票与转售电子票。"], "svc1.tag": ["Official transfer", "官方平台转票"], "svc2.t": ["Internal orders", "内部票"], "svc2.d": ["Priority allocations when available — the source and terms explained to you before you pay.", "有名额时优先配票——付款前清楚说明票源与条款。"], "svc2.tag": ["Most popular", "最受欢迎"], "svc3.t": ["Buy For You", "代抢票"], "svc3.d": ["Show sells out in minutes? We queue for you on drop day and keep you updated live.", "门票几分钟就售罄？开票日由我们替你排队抢票，并实时更新进度。"], "svc3.tag": ["Drop-day queue", "开票日排队"], "svc4.t": ["Discounted deals", "优惠票"], "svc4.d": ["Fan deals with the face value shown beside our price, so you always know what you’re paying for.", "粉丝专属优惠，原价与我们的售价并列标示，付费一目了然。"], "svc4.tag": ["Face value shown", "标示原价"], "bfy.pk": ["Buy For You", "代抢票"], "bfy.big": ["You relax.<br>We queue.", "你放心，<br>我们来排队。"], "bfy.k": ["How it works", "服务流程"], "bfy.t": ["Five steps, all in writing.", "五个步骤，全程书面记录。"], "s1.t": ["Tell us the show", "告诉我们演出"], "s1.d": ["Event, date, category and quantity — by WhatsApp or the quote form.", "演出、日期、票价区及数量——通过 WhatsApp 或报价表格提交。"], "s2.t": ["Get a written, all-in quote", "获取书面全包报价"], "s2.d": ["Face value plus our per-ticket service fee, itemised. No surprises later.", "票面价加上每张票的服务费，逐项列明，绝无隐藏费用。"], "s3.t": ["Pay &amp; get your Order ID", "付款并获取订单编号"], "s3.d": ["Full payment upfront — you get an Order ID and receipt straight away.", "预先全额付款——立即获得订单编号与收据。"], "s4.t": ["Drop day: we queue for you", "开票日：我们替你排队"], "s4.d": ["Live updates in your chat while we’re in the queue.", "排队期间在聊天中实时更新进度。"], "s5.t": ["Secured → official e-ticket", "抢票成功 → 官方电子票"], "s5.d": ["Not secured or quota hit? Full refund within 3 working days.", "未抢到或名额已满？3 个工作日内全额退款。"], "bfy.note": ["Side-by-side seats from 2 tickets. Seats are assigned by the organiser — we note your preferred zone, but can’t guarantee it.", "2 张起可安排连座。座位由主办方分配——我们会备注你偏好的区域，但无法保证。"], "drops.k": ["Upcoming drops", "最新开票"], "drops.t": ["What we’re securing next.", "我们接下来要抢的票。"], "f.all": ["All", "全部"], "f.sg": ["Singapore", "新加坡"], "f.kl": ["Kuala Lumpur", "吉隆坡"], "f.aria": ["Filter by city", "按城市筛选"], "trust.k": ["100% trusted", "100% 可信赖"], "trust.t": ["Don’t trust us. Verify us.", "不必轻信，亲自查证。"], "trust.sub": ["Four things you can check yourself — before you pay.", "付款前，这四点你都可以亲自查证。"], "fact1.t": ["Receipt + Order ID", "收据 + 订单编号"], "fact1.d": ["Every order itemised — face value and fee, in writing.", "每笔订单逐项列明——票面价与服务费，白纸黑字。"], "fact2.t": ["Official e-tickets", "官方电子票"], "fact2.d": ["Transferred through the organiser’s platform, never a screenshot.", "通过主办方官方平台转票，绝不只发截图。"], "fact3.t": ["Full refund rule", "全额退款保障"], "fact3.d": ["Not secured or quota hit = full refund within 3 working days.", "未抢到或名额已满＝3 个工作日内全额退款。"], "fact4.t": ["Public track record", "公开交易记录"], "fact4.d": ["5.0★ from 44 reviews on Carousell, plus secured orders in our Instagram highlights.", "Carousell 44 条评价全 5.0★，Instagram 精选动态也有成功订单记录。"], "never.k": ["We will never", "我们绝不会"], "never1": ["Rush you to pay in 5 minutes", "催你 5 分钟内付款"], "never2": ["Ask for gift cards, crypto or OTPs", "要求礼品卡、加密货币或验证码（OTP）"], "never3": ["DM you first from a new account", "用新账号主动私信你"], "rev.k": ["Real fans, real support", "真实粉丝，真实支持"], "rev.t": ["What fans say.", "粉丝怎么说。"], "score.l": ["44 reviews · 3 years on Carousell", "44 条评价 · Carousell 3 年"], "score.go": ["See all on Carousell →", "在 Carousell 查看全部 →"], "shots.k": ["Screenshots from Carousell", "Carousell 评价截图"], "rev.orig": ["", "评价原文"], "faq.k": ["FAQ", "常见问题"], "faq.t": ["Good questions.", "你可能想问。"], "q1": ["How much is your fee?", "服务费是多少？"], "a1": ["A per-ticket service fee on top of the face value. You get the full breakdown in writing before you pay.", "在票面价之外按每张票收取服务费。付款前会提供书面明细。"], "q2": ["When do I pay?", "什么时候付款？"], "a2": ["Full payment upfront. You receive an Order ID and receipt straight away.", "需预先全额付款，付款后立即获得订单编号与收据。"], "q3": ["What if you can’t secure my tickets?", "如果没抢到票怎么办？"], "a3": ["If the quota is hit or your order isn’t secured, you get a full refund within 3 working days.", "若名额已满或未能抢到，将于 3 个工作日内全额退款。"], "q4": ["Are the tickets physical or e-tickets?", "是实体票还是电子票？"], "a4": ["Most of the time they’re e-tickets, transferred through the organiser’s official platform — unless the listing specifically says physical ticket.", "大多数情况下是电子票，通过主办方官方平台转票——除非商品信息特别注明为实体票。"], "q5": ["Can we sit together?", "可以坐在一起吗？"], "a5": ["Yes — side-by-side seats are available from 2 tickets. Final seats are assigned by the organiser; we’ll note your preferred zone.", "可以——2 张起可安排连座。最终座位由主办方分配，我们会备注你偏好的区域。"], "q6": ["What about name-bound or ID-checked tickets?", "实名制或需核对证件的门票怎么办？"], "a6": ["Some events require the ticket name to match your ID. For those, Buy For You purchases in your name where the organiser allows it. We’ll tell you the rules for each event before you pay.", "部分演出要求票上姓名与证件一致。遇到这类演出，我们会在主办方允许的情况下以你的名义代抢。每场演出的规则都会在付款前说明。"], "form.k": ["Get a quote", "获取报价"], "form.t": ["Tell us the show.", "告诉我们你想看的演出。"], "form.sub": ["We reply on WhatsApp with a written, all-in quote.", "我们会通过 WhatsApp 回复书面全包报价。"], "l.name": ["Name", "姓名"], "l.wa": ["WhatsApp no.", "WhatsApp 号码"], "l.event": ["Event", "演出"], "l.city": ["City", "城市"], "l.cityo": ["Your city", "你的城市"], "l.svc": ["Service", "服务"], "l.cat": ["Category / zone", "票价区 / 区域"], "l.qty": ["Quantity", "数量"], "l.notes": ["Notes", "备注"], "ph.name": ["Your name", "你的名字"], "ph.wa": ["+60 / +65", "+60 / +65"], "ph.event": ["Artist / festival + date", "艺人 / 音乐节 + 日期"], "ph.cityo": ["e.g. Penang, Bangkok, Tokyo", "例如：槟城、曼谷、东京"], "ph.cat": ["e.g. CAT 1", "例如：CAT 1"], "ph.notes": ["Preferred zone, budget, anything else", "偏好区域、预算或其他需求"], "o.sg": ["Singapore", "新加坡"], "o.kl": ["Kuala Lumpur", "吉隆坡"], "o.other": ["Other", "其他"], "o.int": ["Internal order", "内部票"], "o.bfy": ["Buy For You", "代抢票"], "o.tix": ["Concert tickets", "演唱会门票"], "o.deal": ["Discounted deal", "优惠票"], "consent": ["I agree to Authentix using these details to reply to my request. <a href=\"#privacy\" class=\"js-privacy\">Privacy notice</a>", "我同意 Authentix 使用以上资料回复我的询问。<a href=\"#privacy\" class=\"js-privacy\">隐私声明</a>"], "submit": ["Send request", "提交询问"], "sending": ["Sending…", "提交中…"], "msg.ok": ["Thanks — request received. We’ll WhatsApp you shortly.", "谢谢！已收到你的询问，我们会尽快通过 WhatsApp 联系你。"], "msg.demo": ["Demo mode: the form goes live once the site is on Netlify.", "演示模式：网站上线后表格即可使用。"], "msg.fail": ["We couldn’t send this right now — please message us on WhatsApp instead.", "暂时无法提交——请直接通过 WhatsApp 联系我们。"], "msg.wa": ["Message us on WhatsApp now →", "立即通过 WhatsApp 联系我们 →"], "cta.t": ["It starts<br>with a ticket", "一切<br>从一张票开始"], "cta.wa": ["Chat on WhatsApp", "WhatsApp 聊聊"], "qr": ["Scan to follow", "扫码关注"], "ft.tag": ["More than tickets, real experiences. Malaysia, Singapore &amp; beyond.", "不只是门票，更是真实的现场体验。马来西亚、新加坡及更多地区。"], "ft.svc": ["Services", "服务"], "ft.help": ["Help", "帮助"], "ft.contact": ["Contact", "联系我们"], "ft.verify": ["How to verify us", "如何查证我们"], "ft.privacy": ["Privacy notice", "隐私声明"], "legal.c": ["All rights reserved.", "版权所有。"], "legal.ind": ["Independent ticket service — not affiliated with any artist, promoter or venue.", "独立票务服务——与任何艺人、主办方或场馆无关联。"], "pv.t": ["Privacy notice", "隐私声明"], "pv.b": ["<p>When you send a quote request, Authentix collects your name, WhatsApp number and the event details you provide.</p><p>We use them only to reply to your request and process your order, and we do not sell or share them for marketing. Requests are stored securely and deleted after 12 months unless you have an active order.</p><p>To see, correct or delete your details, message us on WhatsApp or Instagram @authentix_my.</p><p>We also count anonymous visits and button clicks to improve the site. No cookies are used for advertising.</p>", "<p>当你提交报价询问时，Authentix 会收集你的姓名、WhatsApp 号码及你提供的演出信息。</p><p>这些资料仅用于回复你的询问及处理订单，不会出售或分享作营销用途。询问记录会被安全保存，除有进行中的订单外，12 个月后删除。</p><p>如需查看、更正或删除你的资料，请通过 WhatsApp 或 Instagram @authentix_my 联系我们。</p><p>我们也会匿名统计访问次数与按钮点击，以改进网站。网站不使用广告追踪 Cookie。</p>"], "pv.close": ["Close", "关闭"], "st.preorder": ["Pre-order open", "开放预订"], "st.soon": ["Coming soon", "即将开票"], "st.available": ["Available", "现货"], "st.soldout": ["Sold out", "已售罄"], "drop.enquire": ["Enquire", "询问"], "drop.notify": ["Notify me", "开票提醒"], "drops.empty": ["No drops listed for this city yet — <a href=\"#quote\">tell us what you’re after</a>.", "该城市暂时没有开票信息——<a href=\"#quote\">告诉我们你想看的演出</a>。"], "wa.msg": ["Hi Authentix! I'd like a quote for: ", "你好 Authentix！我想询问："], "lb.close": ["Close", "关闭"], "lb.open": ["Open review screenshot", "打开评价截图"], "stars": ["5 out of 5 stars", "5 星满分"]};
+var FALLBACK_DROPS = [{"id": "bigbang-sg-2026", "artist": "BIGBANG", "tour_en": "2026–2027 World Tour XX:COSMOS", "tour_zh": "2026–2027 世界巡回演唱会 XX:COSMOS", "city": "SG", "venue_en": "Singapore National Stadium", "venue_zh": "新加坡国家体育场", "date_label_en": "Sat 17 Oct 2026 · 7pm", "date_label_zh": "2026年10月17日（周六）· 晚上7点", "event_date": "2026-10-17", "status": "preorder", "note_en": "All categories except VIP Ultimate", "note_zh": "除 VIP Ultimate 外所有票区", "image_url": "beams", "published": true}, {"id": "tba-kl-1", "artist": "[ARTIST]", "tour_en": "[TOUR NAME]", "tour_zh": "[巡演名称]", "city": "KL", "venue_en": "[VENUE]", "venue_zh": "[场馆]", "date_label_en": "[DD MMM 2026]", "date_label_zh": "[2026年X月X日]", "event_date": null, "status": "soon", "note_en": "Get notified when sales open", "note_zh": "开票时第一时间通知你", "image_url": "crowd", "published": true}, {"id": "tba-sg-1", "artist": "[ARTIST]", "tour_en": "[TOUR NAME]", "tour_zh": "[巡演名称]", "city": "SG", "venue_en": "[VENUE]", "venue_zh": "[场馆]", "date_label_en": "[DD MMM 2026]", "date_label_zh": "[2026年X月X日]", "event_date": null, "status": "soon", "note_en": "Get notified when sales open", "note_zh": "开票时第一时间通知你", "image_url": "night", "published": true}];
+var FALLBACK_REVIEWS = [{"id": "r1", "handle": "aria.abjalil", "text": "Totally legit — got the e-ticket for sure. I was kinda nervous at first, but the seller walked me through everything. Luckily I managed to snag the ticket, even if it was a bit last minute.", "tags": ["Great communication", "Knows their stuff"], "event": "HIGHLIGHT Live, Malaysia", "source": "Carousell", "screenshot_url": "review-1.jpg", "visible": true, "sort_order": 1}, {"id": "r2", "handle": "westasiesta", "text": "Trusted seller! Replied to my queries about the tickets very quickly, and was able to deal in person. Trustworthy, even secured me a poster! Polite and helpful seller. Thank you, I had a great time!", "tags": ["Value for money", "Great communication"], "event": "MONSTA X, Malaysia", "source": "Carousell", "screenshot_url": "review-2.jpg", "visible": true, "sort_order": 2}, {"id": "r3", "handle": "hoodawon", "text": "Nice service from the seller! Fast replies and very trustworthy. It was a last-minute purchase, and thankfully they managed to get the best seats for me and my sister.", "tags": ["Value for money", "Great communication"], "event": "MONSTA X, Malaysia", "source": "Carousell", "screenshot_url": "review-4.jpg", "visible": true, "sort_order": 3}, {"id": "r4", "handle": "bluelikeocean", "text": "Seller was so patient and was willing to wait for me to make payment. Great seller to deal with and even gave me a good price for my seat. Hope to deal with you again. Thank you!", "tags": ["Great communication", "Above and beyond"], "event": "MONSTA X, Malaysia", "source": "Carousell", "screenshot_url": "review-5.jpg", "visible": true, "sort_order": 4}, {"id": "r5", "handle": "kimja999", "text": "Not regret buying this from this seller. Really trustworthy!", "tags": ["Great communication", "Unique listings"], "event": "MONSTA X, Malaysia", "source": "Carousell", "screenshot_url": "review-3.jpg", "visible": true, "sort_order": 5}];
+var FALLBACK_FAQS = [{"id": "faq-1", "q_en": "How much is your fee?", "q_zh": "服务费是多少？", "a_en": "A per-ticket service fee on top of the face value. You get the full breakdown in writing before you pay.", "a_zh": "在票面价之外按每张票收取服务费。付款前会提供书面明细。", "visible": true, "sort_order": 1}, {"id": "faq-2", "q_en": "When do I pay?", "q_zh": "什么时候付款？", "a_en": "Full payment upfront. You receive an Order ID and receipt straight away.", "a_zh": "需预先全额付款，付款后立即获得订单编号与收据。", "visible": true, "sort_order": 2}, {"id": "faq-3", "q_en": "What if you can’t secure my tickets?", "q_zh": "如果没抢到票怎么办？", "a_en": "If the quota is hit or your order isn’t secured, you get a full refund within 3 working days.", "a_zh": "若名额已满或未能抢到，将于 3 个工作日内全额退款。", "visible": true, "sort_order": 3}, {"id": "faq-4", "q_en": "Are the tickets physical or e-tickets?", "q_zh": "是实体票还是电子票？", "a_en": "Most of the time they’re e-tickets, transferred through the organiser’s official platform — unless the listing specifically says physical ticket.", "a_zh": "大多数情况下是电子票，通过主办方官方平台转票——除非商品信息特别注明为实体票。", "visible": true, "sort_order": 4}, {"id": "faq-5", "q_en": "Can we sit together?", "q_zh": "可以坐在一起吗？", "a_en": "Yes — side-by-side seats are available from 2 tickets. Final seats are assigned by the organiser; we’ll note your preferred zone.", "a_zh": "可以——2 张起可安排连座。最终座位由主办方分配，我们会备注你偏好的区域。", "visible": true, "sort_order": 5}, {"id": "faq-6", "q_en": "What about name-bound or ID-checked tickets?", "q_zh": "实名制或需核对证件的门票怎么办？", "a_en": "Some events require the ticket name to match your ID. For those, Buy For You purchases in your name where the organiser allows it. We’ll tell you the rules for each event before you pay.", "a_zh": "部分演出要求票上姓名与证件一致。遇到这类演出，我们会在主办方允许的情况下以你的名义代抢。每场演出的规则都会在付款前说明。", "visible": true, "sort_order": 6}];
+var FALLBACK_CONTACTS = {"whatsapp_number": "+60 12-659 2025", "whatsapp_link": "https://wa.me/message/254MFSUP73ZGN1", "whatsapp_on": true, "instagram_url": "https://www.instagram.com/authentix_my", "instagram_handle": "authentix_my", "instagram_on": true, "carousell_url": "http://carousell.app.link/lHrZAsmCeKb", "carousell_on": true};
+var BUNDLED = { crowd: "/assets/img/crowd-hands.jpg", beams: "/assets/img/stage-beams.jpg", night: "/assets/img/festival-night.jpg" };
+var SHOT_BASE = "/assets/img/reviews/";
+var INLINE_SHOTS = [];
+var LANG = "zh";
+var IS_LIVE = /^https?:$/.test(location.protocol) && location.hostname !== "";
+var HAS_DB = !!(CONFIG.supabaseUrl && CONFIG.supabaseAnonKey);
+
+/* ---------- small helpers ---------- */
+function tr(k){ var v = I18N[k]; return v ? (LANG === "zh" ? v[1] : v[0]) : k; }
+function esc(s){ return String(s == null ? "" : s).replace(/[&<>"]/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]; }); }
+function store(k, v){ try { if (v === undefined) return localStorage.getItem(k); localStorage.setItem(k, v); } catch (e) { return null; } }
+function sid(){ try { var s = sessionStorage.getItem("ax_sid"); if (!s) { s = Math.random().toString(36).slice(2) + Date.now().toString(36); sessionStorage.setItem("ax_sid", s); } return s; } catch (e) { return "nosession"; } }
+function dbHeaders(){ return { "apikey": CONFIG.supabaseAnonKey, "Authorization": "Bearer " + CONFIG.supabaseAnonKey, "Content-Type": "application/json" }; }
+function pick(obj, base){ return LANG === "zh" && obj[base + "_zh"] ? obj[base + "_zh"] : obj[base + "_en"]; }
+function imgFor(d){ return BUNDLED[d.image_url] || d.image_url || BUNDLED.beams; }
+var CONTACTS = FALLBACK_CONTACTS;
+function waDigits(){ return String(CONTACTS.whatsapp_number || "").replace(/\D/g, ""); }
+function waOn(){ return CONTACTS.whatsapp_on !== false && !!waDigits(); }
+function waLink(text){ return "https://wa.me/" + waDigits() + "?text=" + encodeURIComponent(tr("wa.msg") + (text || "")); }
+
+/* ---------- tracking (anonymous; stored in your own database) ---------- */
+var UTM = (function(){ try { var p = new URLSearchParams(location.search); return p.get("utm_source") || ""; } catch (e) { return ""; } })();
+window.AX_EVENTS = [];
+function track(name, props){
+  var row = { name: name, path: location.pathname, lang: LANG, session_id: sid(), referrer: document.referrer.slice(0, 200), utm_source: UTM,
+              device: window.innerWidth < 768 ? "mobile" : "desktop", props: props || {} };
+  window.AX_EVENTS.push(row);
+  if (!HAS_DB) return;
+  try { fetch(CONFIG.supabaseUrl + "/rest/v1/events", { method: "POST", keepalive: true, headers: Object.assign(dbHeaders(), { "Prefer": "return=minimal" }), body: JSON.stringify(row) }); } catch (e) {}
+}
+
+/* ---------- language ---------- */
+function applyLang(lang, user){
+  LANG = lang;
+  document.documentElement.lang = lang === "zh" ? "zh-Hans" : "en";
+  document.querySelectorAll("[data-i18n]").forEach(function(el){ el.innerHTML = tr(el.getAttribute("data-i18n")); });
+  document.querySelectorAll("[data-i18n-ph]").forEach(function(el){ el.setAttribute("placeholder", tr(el.getAttribute("data-i18n-ph"))); });
+  document.querySelectorAll("[data-i18n-aria]").forEach(function(el){ el.setAttribute("aria-label", tr(el.getAttribute("data-i18n-aria"))); });
+  document.querySelectorAll("[data-i18n-content]").forEach(function(el){ el.setAttribute("content", tr(el.getAttribute("data-i18n-content"))); });
+  document.querySelectorAll(".lang button").forEach(function(b){ b.setAttribute("aria-pressed", b.dataset.lang === lang ? "true" : "false"); });
+  document.getElementById("f-lang").value = lang;
+  document.querySelectorAll(".js-privacy").forEach(bindPrivacy);
+  renderDrops(currentFilter); renderReviews(); renderFaqs(); applyContacts();
+  if (user) {
+    store("ax_lang", lang);
+    if (IS_LIVE) { try { history.replaceState(null, "", (lang === "zh" ? "/zh/" : "/") + location.hash); } catch (e) {} }
+    track("lang_switch", { to: lang });
+  }
+}
+document.querySelectorAll(".lang button").forEach(function(b){ b.addEventListener("click", function(){ if (b.dataset.lang !== LANG) applyLang(b.dataset.lang, true); }); });
+
+/* ---------- links ---------- */
+function bindClicks(sel, ev){ document.querySelectorAll(sel).forEach(function(a){ a.target = "_blank"; a.rel = "noopener"; a.addEventListener("click", function(){ track(ev, { loc: a.dataset.loc || "" }); }); }); }
+bindClicks(".js-wa", "click_whatsapp"); bindClicks(".js-ig", "click_instagram"); bindClicks(".js-cs", "click_carousell");
+function setChannel(sel, on, url){
+  document.querySelectorAll(sel).forEach(function(el){
+    var box = el.closest("li") || el;
+    box.classList.toggle("off", !on);
+    if (el.tagName === "A" && url) el.href = url;
+  });
+}
+function applyContacts(){
+  var c = CONTACTS, wa = waOn();
+  setChannel(".js-wa", wa, c.whatsapp_link || ("https://wa.me/" + waDigits()));
+  setChannel(".js-ig", c.instagram_on !== false && !!c.instagram_url, c.instagram_url);
+  setChannel(".js-ig-block", c.instagram_on !== false && !!c.instagram_url);
+  var cs = c.carousell_on !== false && !!c.carousell_url;
+  setChannel(".js-cs:not(.score)", cs, c.carousell_url);
+  var score = document.querySelector(".score");
+  if (score) { if (cs) { score.href = c.carousell_url; score.target = "_blank"; } else { score.removeAttribute("href"); } score.querySelector(".go").classList.toggle("off", !cs); }
+  document.querySelectorAll(".js-wa-num").forEach(function(s){ s.textContent = c.whatsapp_number || ""; });
+  document.querySelectorAll(".js-ig-handle").forEach(function(s){ s.textContent = c.instagram_handle ? "@" + String(c.instagram_handle).replace(/^@/, "") : ""; });
+}
+document.getElementById("yr").textContent = new Date().getFullYear();
+
+/* ---------- data: database → cached copy → backup file → built-in copy ---------- */
+var DROPS = FALLBACK_DROPS, REVIEWS = FALLBACK_REVIEWS, currentFilter = "all";
+function loadData(table, query, cacheKey, backupFile){
+  function fromCache(){ try { var c = JSON.parse(store(cacheKey) || "null"); if (c && c.length) return Promise.resolve(c); } catch (e) {} return Promise.reject(); }
+  function fromBackup(){ if (!IS_LIVE) return Promise.reject(); return fetch(backupFile).then(function(r){ if (!r.ok) throw 0; return r.json(); }); }
+  var first = HAS_DB ? fetch(CONFIG.supabaseUrl + "/rest/v1/" + table + "?" + query, { headers: dbHeaders() })
+      .then(function(r){ if (!r.ok) throw 0; return r.json(); }).then(function(rows){ store(cacheKey, JSON.stringify(rows)); return rows; })
+    : Promise.reject();
+  return first.catch(fromCache).catch(fromBackup);
+}
+function upcoming(list){ var today = new Date(); today.setHours(0, 0, 0, 0);
+  return list.filter(function(d){ return d.published !== false && (!d.event_date || new Date(d.event_date) >= today); }); }
+
+/* ---------- drops ---------- */
+var CITY = { SG: ["Singapore", "新加坡"], KL: ["Kuala Lumpur", "吉隆坡"] };
+var seenDrops = {};
+var dropObserver = "IntersectionObserver" in window ? new IntersectionObserver(function(es){ es.forEach(function(e){
+  if (e.isIntersecting) { var id = e.target.dataset.id; if (!seenDrops[id]) { seenDrops[id] = 1; track("drop_view", { drop_id: id, artist: e.target.dataset.artist }); } dropObserver.unobserve(e.target); } }); }, { threshold: .5 }) : null;
+function renderDrops(f){
+  currentFilter = f;
+  var g = document.getElementById("drops-grid");
+  var list = upcoming(DROPS).filter(function(d){ return f === "all" || d.city === f; });
+  if (!list.length) { g.innerHTML = '<p class="empty">' + tr("drops.empty") + '</p>'; return; }
+  g.innerHTML = list.map(function(d){
+    var soon = d.status === "soon", city = CITY[d.city] ? CITY[d.city][LANG === "zh" ? 1 : 0] : d.city;
+    return '<article class="ticket" data-id="' + esc(d.id) + '" data-artist="' + esc(d.artist) + '">' +
+      '<div class="ph"><img src="' + esc(imgFor(d)) + '" alt=""><span class="status' + (soon ? ' soon' : '') + '">' + esc(tr("st." + d.status)) + '</span></div>' +
+      '<div class="body"><span class="tour">' + esc(pick(d, "tour")) + '</span><h3>' + esc(d.artist) + '</h3>' +
+      '<div class="meta"><span>' + esc(pick(d, "date_label")) + '</span><span>' + esc(pick(d, "venue")) + ', ' + esc(city) + '</span></div></div>' +
+      '<div class="foot"><small>' + esc(pick(d, "note")) + '</small><a href="' + (waOn() ? waLink(d.artist + " — " + pick(d, "date_label") + " (" + city + ")") : "#quote") + '"' + (waOn() ? ' target="_blank" rel="noopener"' : '') + ' data-drop="' + esc(d.id) + '">' + tr(soon ? "drop.notify" : "drop.enquire") + ' →</a></div>' +
+    '</article>';
+  }).join("");
+  g.querySelectorAll("a[data-drop]").forEach(function(a){ a.addEventListener("click", function(){ track("drop_enquire", { drop_id: a.dataset.drop }); }); });
+  if (dropObserver) g.querySelectorAll(".ticket").forEach(function(t){ dropObserver.observe(t); });
+}
+document.querySelectorAll(".chip").forEach(function(b){
+  b.addEventListener("click", function(){
+    document.querySelectorAll(".chip").forEach(function(x){ x.setAttribute("aria-pressed", x === b ? "true" : "false"); });
+    renderDrops(b.getAttribute("data-f"));
+  });
+});
+
+/* ---------- reviews ---------- */
+function shotSrc(r, i){ if (r.screenshot_url && /^(https?:|data:|\/)/.test(r.screenshot_url)) return r.screenshot_url; return INLINE_SHOTS[i] || (SHOT_BASE + (r.screenshot_url || "")); }
+function renderReviews(){
+  var list = REVIEWS.filter(function(r){ return r.visible !== false; });
+  document.getElementById("reviews-grid").innerHTML = list.map(function(r){
+    var text = LANG === "zh" && r.text_zh ? r.text_zh : r.text;
+    var orig = LANG === "zh" && !r.text_zh ? '<span class="orig">' + tr("rev.orig") + '</span>' : "";
+    return '<figure class="review" style="margin:0"><span class="stars" role="img" aria-label="' + tr("stars") + '">★★★★★</span>' + orig + '<q>' + esc(text) + '</q>' +
+      '<div class="tags">' + (r.tags || []).map(function(x){ return '<span>' + esc(x) + '</span>'; }).join("") + '</div>' +
+      '<figcaption class="src"><span>@' + esc(r.handle) + ' · ' + esc(r.event) + '</span><span>' + esc(r.source || "Carousell") + '</span></figcaption></figure>';
+  }).join("");
+  var row = document.getElementById("shot-row");
+  var shots = list.filter(function(r){ return r.screenshot_url; });
+  row.innerHTML = shots.map(function(r, i){ return '<button type="button" data-i="' + i + '" aria-label="' + tr("lb.open") + ' ' + (i + 1) + '"><img src="' + esc(shotSrc(r, REVIEWS.indexOf(r))) + '" alt="" loading="lazy"></button>'; }).join("");
+  row.querySelectorAll("button").forEach(function(b){ b.addEventListener("click", function(){
+    lastFocus = b; lbImg.src = b.querySelector("img").src; lb.hidden = false; document.getElementById("lbClose").focus(); track("review_open", { i: +b.dataset.i }); }); });
+}
+var lb = document.getElementById("lightbox"), lbImg = document.getElementById("lbImg"), lastFocus = null;
+function closeLb(){ lb.hidden = true; if (lastFocus) lastFocus.focus(); }
+document.getElementById("lbClose").addEventListener("click", closeLb);
+lb.addEventListener("click", function(e){ if (e.target === lb) closeLb(); });
+lb.addEventListener("keydown", function(e){ if (e.key === "Escape") closeLb(); });
+
+/* ---------- FAQ ---------- */
+var FAQS = FALLBACK_FAQS;
+function renderFaqs(){
+  var list = FAQS.filter(function(f){ return f.visible !== false; }).sort(function(a, b){ return (a.sort_order || 0) - (b.sort_order || 0); });
+  var box = document.getElementById("faq-list");
+  box.innerHTML = list.map(function(f){
+    var q = LANG === "zh" && f.q_zh ? f.q_zh : f.q_en, a = LANG === "zh" && f.a_zh ? f.a_zh : f.a_en;
+    return '<details data-q="' + esc(f.id) + '"><summary><span>' + esc(q) + '</span><span class="pm" aria-hidden="true">+</span></summary><p>' + esc(a) + '</p></details>';
+  }).join("");
+  box.querySelectorAll("details").forEach(function(d){ d.addEventListener("toggle", function(){ if (d.open) track("faq_open", { q: d.dataset.q }); }); });
+}
+
+/* ---------- privacy dialog ---------- */
+var pv = document.getElementById("privacy");
+function bindPrivacy(a){ a.onclick = function(e){ e.preventDefault(); if (pv.showModal) pv.showModal(); else pv.setAttribute("open", ""); }; }
+document.getElementById("pvClose").addEventListener("click", function(){ if (pv.close) pv.close(); else pv.removeAttribute("open"); });
+
+/* ---------- nav / menu / reveal / faq ---------- */
+var nav = document.getElementById("nav");
+function onScroll(){ nav.classList.toggle("scrolled", window.scrollY > 40); }
+window.addEventListener("scroll", onScroll, { passive: true }); onScroll();
+var menuBtn = document.getElementById("menuBtn"), links = document.getElementById("navLinks");
+menuBtn.addEventListener("click", function(){ var o = links.classList.toggle("open"); menuBtn.setAttribute("aria-expanded", o); });
+links.querySelectorAll("a").forEach(function(a){ a.addEventListener("click", function(){ links.classList.remove("open"); menuBtn.setAttribute("aria-expanded", "false"); }); });
+if ("IntersectionObserver" in window) {
+  var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }); }, { threshold: .12 });
+  document.querySelectorAll(".reveal").forEach(function(el){ io.observe(el); });
+} else { document.querySelectorAll(".reveal").forEach(function(el){ el.classList.add("in"); }); }
+
+/* ---------- quote form: database + email copy, WhatsApp as last resort ---------- */
+var form = document.getElementById("quote"), msg = document.getElementById("formMsg"), btn = document.getElementById("submitBtn");
+var citySel = document.getElementById("f-city"), otherF = document.getElementById("otherCityField"), otherIn = document.getElementById("f-city-other");
+citySel.addEventListener("change", function(){ var on = citySel.value === "Other"; otherF.classList.toggle("hidden", !on); otherIn.required = on; if (on) otherIn.focus(); else otherIn.value = ""; });
+form.addEventListener("submit", function(e){
+  e.preventDefault();
+  var data = new FormData(form);
+  var city = data.get("city") === "Other" ? (data.get("city_other") || "Other") : data.get("city");
+  var summary = data.get("event") + " · " + city + " · " + (data.get("category") || "-") + " × " + data.get("quantity") + " (" + data.get("service") + ")";
+  function show(key, ok){
+    msg.style.display = "block";
+    msg.innerHTML = esc(tr(key)) + (waOn() ? ' <a href="' + waLink(summary) + '" target="_blank" rel="noopener" style="text-decoration:underline">' + tr("msg.wa") + '</a>' : '');
+    if (ok) form.reset(), otherF.classList.add("hidden");
+    btn.disabled = false; btn.innerHTML = tr("submit");
+  }
+  if (!IS_LIVE) { track("form_submit", { service: data.get("service"), demo: true }); show("msg.demo", false); return; }
+  btn.disabled = true; btn.innerHTML = tr("sending");
+  var row = { name: data.get("name"), whatsapp: data.get("whatsapp"), event: data.get("event"), city: city, service: data.get("service"),
+              category: data.get("category"), quantity: data.get("quantity"), notes: data.get("notes"), lang: LANG, consent: true,
+              session_id: sid(), utm_source: UTM, status: "new" };
+  var toDb = HAS_DB ? fetch(CONFIG.supabaseUrl + "/rest/v1/enquiries", { method: "POST", headers: Object.assign(dbHeaders(), { "Prefer": "return=minimal" }), body: JSON.stringify(row) })
+      .then(function(r){ return r.ok; }).catch(function(){ return false; }) : Promise.resolve(false);
+  var toEmail = fetch("/", { method: "POST", headers: { "Content-Type": "application/x-www-form-urlencoded" }, body: new URLSearchParams(data).toString() })
+      .then(function(r){ return r.ok; }).catch(function(){ return false; });
+  Promise.all([toDb, toEmail]).then(function(res){
+    var ok = res[0] || res[1];
+    track("form_submit", { service: row.service, city: city, saved_db: res[0], saved_email: res[1] });
+    show(ok ? "msg.ok" : "msg.fail", ok);
+  });
+});
+
+/* ---------- boot ---------- */
+(function(){
+  applyLang(LANG, false);
+  track("page_view", { title: document.title });
+  loadData("drops", "select=*&published=eq.true&order=event_date.asc", "ax_cache_drops", "/data/drops.json").then(function(rows){ if (rows && rows.length) { DROPS = rows; renderDrops(currentFilter); } }).catch(function(){});
+  loadData("reviews", "select=*&visible=eq.true&order=sort_order.asc", "ax_cache_reviews", "/data/reviews.json").then(function(rows){ if (rows && rows.length) { REVIEWS = rows; renderReviews(); } }).catch(function(){});
+  loadData("faqs", "select=*&visible=eq.true&order=sort_order.asc", "ax_cache_faqs", "/data/faqs.json").then(function(rows){ if (rows && rows.length) { FAQS = rows; renderFaqs(); } }).catch(function(){});
+  loadData("settings", "select=*&key=eq.contacts", "ax_cache_settings", "/data/settings.json").then(function(rows){ var r = rows && rows[0]; if (r && r.value) { CONTACTS = Object.assign({}, FALLBACK_CONTACTS, r.value); applyContacts(); renderDrops(currentFilter); } }).catch(function(){});
+})();
+</script>
+</body>
+</html>
