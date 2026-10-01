@@ -1,0 +1,38 @@
+
+/* ---- v3 additions ---- */
+body{font-family:Montserrat,"Noto Sans SC","Helvetica Neue",Arial,sans-serif}
+:lang(zh-Hans) .caps,:lang(zh-Hans) .usp li,:lang(zh-Hans) .hero h1{letter-spacing:.14em}
+:lang(zh-Hans) .hero h1{font-size:clamp(16px,1.8vw,20px)}
+:lang(zh-Hans) .cta h2{letter-spacing:.12em}
+:lang(zh-Hans) .bfy-photo .big{letter-spacing:.08em}
+.lang{display:inline-flex;align-items:center;padding:3px;border-radius:999px;box-shadow:inset 0 0 0 1px rgba(241,238,230,.3)}
+.lang button{min-height:36px;min-width:44px;padding:0 12px;border:0;border-radius:999px;background:transparent;color:var(--muted);font:600 13px/1 inherit;font-family:inherit;cursor:pointer}
+.lang button[aria-pressed="true"]{background:var(--cream);color:var(--forest)}
+.nav-right{display:flex;align-items:center;gap:10px}
+@media (max-width:900px){.nav-links .lang{display:none}}
+.lang-m{display:none}
+@media (max-width:900px){.lang-m{display:inline-flex}}
+.consent{display:flex;gap:12px;align-items:flex-start;font-size:13px;color:#D5DAD6;line-height:1.5}
+.consent input{width:20px;height:20px;margin-top:1px;flex-shrink:0;accent-color:var(--cream)}
+.consent a{color:var(--cream)}
+dialog.pv{max-width:560px;width:calc(100% - 32px);border:0;border-radius:24px;padding:32px;background:var(--cream);color:var(--ink)}
+dialog.pv::backdrop{background:rgba(10,14,12,.75)}
+dialog.pv h3{font-size:22px;margin-bottom:14px;color:var(--forest)}
+dialog.pv p{font-size:15px;color:#3A403C;margin-bottom:12px}
+dialog.pv .btn{margin-top:8px}
+.review .orig{font-size:11px;color:var(--muted-l);letter-spacing:.06em}
+.btn[disabled]{opacity:.6;cursor:wait;transform:none}
+.off{display:none !important}
+/* "We will never" row: label + evenly spaced items, all on one baseline */
+.never{display:flex;flex-wrap:wrap;align-items:center;gap:14px 44px}
+.never > .caps{flex:0 0 180px;line-height:1.4}
+.never > div{display:flex;align-items:center;gap:10px;font-size:15px;line-height:1.4}
+.never > div svg{flex-shrink:0}
+@media (max-width:900px){.never{flex-direction:column;align-items:flex-start;gap:14px}.never > .caps{flex:none}}
+
+/* Poster mode: uploaded concert posters show in full (no crop) over a blurred copy */
+.ticket .ph.poster{height:auto;aspect-ratio:4/5;background:var(--deep);isolation:isolate}
+.ticket .ph.poster:before{content:"";position:absolute;inset:-24px;background:var(--bg) center/cover no-repeat;filter:blur(22px) brightness(.4) saturate(1.1);z-index:-1}
+.ticket .ph.poster:after{display:none}
+.ticket .ph.poster .pz{display:block;width:100%;height:100%;cursor:zoom-in}
+.ticket .ph.poster img{object-fit:contain;opacity:1;padding:58px 16px 6px}

@@ -1,0 +1,707 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Authentix Admin</title>
+<link rel="icon" href="%%FAVICON%%">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600&display=swap">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+:root{--deep:#0E1512;--forest:#1F3A2F;--forest-2:#26473A;--sage:#8E9A93;--cream:#EFECE5;--paper:#F4F2EC;--card:#FFFFFF;--line:#E1DDD3;--ink:#141815;--muted:#5E6661;--txt:#F1EEE6;
+--new:#2F5D8A;--quoted:#8A6A1F;--paid:#5B4A8A;--secured:#1F6B45;--closed:#7A3B32}
+*{box-sizing:border-box}
+[hidden]{display:none !important}
+body{margin:0;font-family:Montserrat,"Noto Sans SC","Helvetica Neue",Arial,sans-serif;background:var(--paper);color:var(--ink);font-size:14px;line-height:1.5}
+button,input,select,textarea{font-family:inherit;font-size:14px}
+a{color:var(--forest)}
+.app{display:grid;grid-template-columns:240px 1fr;min-height:100vh}
+aside{background:var(--deep);color:var(--txt);padding:24px 16px;display:flex;flex-direction:column;gap:28px;position:sticky;top:0;height:100vh}
+.brand{display:flex;align-items:center;gap:10px;padding:0 8px}
+.brand small{display:block;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--sage);margin-top:4px}
+.side-nav{display:flex;flex-direction:column;gap:4px}
+.side-nav button{display:flex;align-items:center;gap:12px;min-height:44px;padding:0 14px;border:0;border-radius:12px;background:transparent;color:#C9D0CB;font-weight:500;cursor:pointer;text-align:left}
+.side-nav button:hover{background:rgba(241,238,230,.06);color:var(--txt)}
+.side-nav button[aria-current="page"]{background:var(--forest);color:var(--txt)}
+.side-nav .count{margin-left:auto;background:var(--cream);color:var(--forest);font-size:11px;font-weight:700;border-radius:999px;padding:2px 8px}
+.side-foot{margin-top:auto;font-size:12px;color:var(--sage);padding:0 8px;display:flex;flex-direction:column;gap:8px}
+.side-foot a{color:var(--cream)}
+main{padding:28px 36px 60px;min-width:0}
+.top{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:24px;flex-wrap:wrap}
+.top h1{margin:0;font-size:26px;font-weight:600}
+.badge{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:600;padding:6px 12px;border-radius:999px;background:#F3E7C8;color:#5C4510}
+.badge.live{background:#D6EBDD;color:#1F5B3A}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:40px;padding:0 16px;border-radius:10px;border:0;cursor:pointer;font-weight:600;text-decoration:none}
+.btn-p{background:var(--forest);color:var(--txt)}.btn-p:hover{background:var(--forest-2)}
+.btn-s{background:var(--card);color:var(--ink);box-shadow:inset 0 0 0 1px var(--line)}.btn-s:hover{box-shadow:inset 0 0 0 1px var(--sage)}
+.btn-d{background:transparent;color:#8A2E22;box-shadow:inset 0 0 0 1px #E4C3BD}
+.btn-sm{min-height:34px;padding:0 12px;font-size:13px}
+:focus-visible{outline:2px solid var(--forest);outline-offset:2px}
+.card{background:var(--card);border-radius:16px;box-shadow:0 0 0 1px var(--line);padding:20px}
+.card h2{margin:0 0 4px;font-size:15px;font-weight:600}
+.card .hint{color:var(--muted);font-size:12px;margin:0 0 14px}
+.grid{display:grid;gap:16px}
+.kpis{grid-template-columns:repeat(6,minmax(0,1fr))}
+.kpi{padding:16px 18px}
+.kpi .l{font-size:12px;color:var(--muted);font-weight:500}
+.kpi .v{font-size:28px;font-weight:600;margin-top:4px;font-variant-numeric:tabular-nums}
+.kpi .d{font-size:12px;color:var(--muted);margin-top:2px}
+.kpi .d.up{color:#1F6B45}.kpi .d.down{color:#8A2E22}
+.two{grid-template-columns:2fr 1fr}
+.half{grid-template-columns:1fr 1fr}
+.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+.chan{display:grid;gap:10px;padding-bottom:16px;border-bottom:1px solid #EFECE5}
+.chart{position:relative;height:240px}
+.chart.sm{height:200px}
+.filters{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:14px}
+.filters input,.filters select,.field input,.field select,.field textarea{min-height:40px;border:0;border-radius:10px;box-shadow:inset 0 0 0 1px var(--line);background:var(--card);padding:8px 12px;color:var(--ink)}
+.filters input{min-width:240px}
+.seg{display:inline-flex;background:var(--card);border-radius:10px;box-shadow:inset 0 0 0 1px var(--line);padding:3px}
+.seg button{border:0;background:transparent;border-radius:8px;min-height:34px;padding:0 12px;cursor:pointer;font-weight:600;color:var(--muted)}
+.seg button[aria-pressed="true"]{background:var(--forest);color:var(--txt)}
+table{width:100%;border-collapse:collapse}
+th{text-align:left;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600;padding:10px 12px;border-bottom:1px solid var(--line);white-space:nowrap}
+td{padding:12px;border-bottom:1px solid #EFECE5;vertical-align:middle}
+tr:hover td{background:#FAF9F6}
+td.num{text-align:right;font-variant-numeric:tabular-nums}
+.tbl-wrap{overflow-x:auto}
+.pill{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:3px 10px;border-radius:999px;background:#EFECE5;white-space:nowrap}
+.pill:before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}
+.st-new{color:var(--new)}.st-quoted{color:var(--quoted)}.st-paid{color:var(--paid)}.st-secured{color:var(--secured)}.st-closed{color:var(--closed)}
+select.status{min-height:34px;border-radius:999px;border:0;box-shadow:inset 0 0 0 1px var(--line);padding:0 10px;font-weight:600;background:var(--card)}
+.muted{color:var(--muted)}
+.empty{padding:32px;text-align:center;color:var(--muted)}
+.bar-row{display:grid;grid-template-columns:110px 1fr 56px;gap:10px;align-items:center;margin:8px 0}
+.bar-row .track{height:14px;background:#EFECE5;border-radius:4px;overflow:hidden}
+.bar-row .fill{height:100%;background:var(--forest);border-radius:0 4px 4px 0}
+.bar-row .n{text-align:right;font-variant-numeric:tabular-nums;font-weight:600}
+.drops-list,.rev-grid{display:grid;gap:14px}
+.drops-list{grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}
+.drop{display:flex;flex-direction:column;overflow:hidden;padding:0}
+.drop .img{position:relative;aspect-ratio:4/5;overflow:hidden;background:var(--deep);isolation:isolate}.drop .img:before{content:"";position:absolute;inset:-20px;background:var(--bg) center/cover no-repeat;filter:blur(18px) brightness(.45);z-index:-1}.drop .img img{width:100%;height:100%;object-fit:contain;padding:10px;display:block}
+.drop .b{padding:16px;display:flex;flex-direction:column;gap:6px;flex:1}
+.drop h3{margin:0;font-size:17px}
+.drop .acts{display:flex;gap:8px;align-items:center;margin-top:10px;flex-wrap:wrap}
+.switch{display:inline-flex;align-items:center;gap:8px;cursor:pointer;font-size:13px;font-weight:500}
+.switch input{width:38px;height:22px;appearance:none;background:#CFCBC2;border-radius:999px;position:relative;cursor:pointer;transition:background .2s}
+.switch input:before{content:"";position:absolute;top:3px;left:3px;width:16px;height:16px;border-radius:50%;background:#fff;transition:transform .2s}
+.switch input:checked{background:var(--forest)}.switch input:checked:before{transform:translateX(16px)}
+.rev-grid{grid-template-columns:repeat(auto-fill,minmax(250px,1fr))}
+.rev{padding:0;overflow:hidden;display:flex;flex-direction:column}
+.rev .shot{height:180px;background:#111 center 30%/cover}
+.rev .b{padding:14px;display:flex;flex-direction:column;gap:8px;flex:1}
+.rev q{font-size:13px;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
+.rev .acts{display:flex;gap:6px;align-items:center;margin-top:auto;flex-wrap:wrap}
+dialog{border:0;border-radius:18px;padding:0;width:min(720px,calc(100% - 32px));box-shadow:0 30px 80px rgba(0,0,0,.25)}
+dialog::backdrop{background:rgba(14,21,18,.55)}
+.dlg-h{display:flex;justify-content:space-between;align-items:center;padding:18px 22px;border-bottom:1px solid var(--line)}
+.dlg-h h2{margin:0;font-size:18px}
+.dlg-b{padding:20px 22px;display:grid;gap:14px;max-height:70vh;overflow:auto}
+.dlg-f{display:flex;justify-content:space-between;gap:10px;padding:16px 22px;border-top:1px solid var(--line)}
+.field{display:flex;flex-direction:column;gap:6px}
+.field label{font-size:12px;font-weight:600;color:var(--muted)}
+.field textarea{min-height:80px;resize:vertical}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.tabs{display:flex;gap:6px}
+.tabs button{border:0;background:#EFECE5;border-radius:8px;min-height:34px;padding:0 14px;font-weight:600;cursor:pointer}
+.tabs button[aria-selected="true"]{background:var(--forest);color:var(--txt)}
+.preview-img{width:100%;max-height:320px;object-fit:contain;border-radius:12px;background:#111}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(440px,100%);background:var(--card);box-shadow:-20px 0 60px rgba(0,0,0,.15);z-index:40;display:flex;flex-direction:column;transform:translateX(100%);transition:transform .25s ease}
+.drawer.open{transform:none}
+.drawer .dlg-b{max-height:none;flex:1}
+.kv{display:grid;grid-template-columns:110px 1fr;gap:8px 12px;font-size:13px}
+.kv span:nth-child(odd){color:var(--muted)}
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--deep);color:var(--txt);padding:12px 18px;border-radius:12px;font-weight:600;z-index:60;display:none}
+.login{min-height:100vh;display:flex;align-items:center;justify-content:center;background:var(--deep);padding:24px}
+.login form{background:var(--cream);border-radius:22px;padding:32px;width:min(380px,100%);display:grid;gap:14px}
+.stat-list{display:grid;gap:8px}
+.stat-list div{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid #EFECE5}
+@media (max-width:1200px){.kpis{grid-template-columns:repeat(3,minmax(0,1fr))}.two,.three{grid-template-columns:1fr}}
+@media (max-width:860px){.app{grid-template-columns:1fr}aside{position:static;height:auto;flex-direction:row;flex-wrap:wrap;align-items:center;padding:12px 16px;gap:12px}.side-nav{flex-direction:row;overflow-x:auto}.side-foot{display:none}main{padding:20px 16px 60px}.half,.frow{grid-template-columns:1fr}.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+</style>
+</head>
+<body>
+<div id="loginView" class="login" hidden>
+  <form id="loginForm">
+    <div style="display:flex;align-items:center;gap:10px">%%MARK_DARK%%<strong style="font-size:18px;color:var(--forest)">Authentix Admin</strong></div>
+    <div class="field"><label for="lgEmail">Email</label><input id="lgEmail" type="email" required autocomplete="username"></div>
+    <div class="field"><label for="lgPw">Password</label><input id="lgPw" type="password" required autocomplete="current-password"></div>
+    <button class="btn btn-p" type="submit">Sign in</button>
+    <p class="muted" id="lgMsg" role="status" style="margin:0;font-size:13px"></p>
+  </form>
+</div>
+
+<div class="app" id="appView" hidden>
+  <aside>
+    <div class="brand">%%MARK_NAV%%<div>%%WORD_NAV%%<small>Admin</small></div></div>
+    <nav class="side-nav" aria-label="Admin">
+      <button data-view="dashboard" aria-current="page">%%I_GRID%%Dashboard</button>
+      <button data-view="enquiries">%%I_INBOX%%Enquiries <span class="count" id="newCount">0</span></button>
+      <button data-view="drops">%%I_TICKET%%Drops</button>
+      <button data-view="reviews">%%I_STAR%%Reviews</button>
+      <button data-view="faq">%%I_HELP%%FAQ</button>
+      <button data-view="settings">%%I_GEAR%%Settings</button>
+    </nav>
+    <div class="side-foot"><span id="whoami"></span><a href="/" target="_blank" rel="noopener">View website ↗</a><a href="#" id="signOut">Sign out</a></div>
+  </aside>
+
+  <main>
+    <div class="top"><h1 id="viewTitle">Dashboard</h1><div style="display:flex;gap:10px;align-items:center"><span class="badge" id="modeBadge"></span></div></div>
+
+    <!-- DASHBOARD -->
+    <section data-section="dashboard">
+      <div class="filters">
+        <div class="seg" role="group" aria-label="Date range"><button data-range="7" aria-pressed="false">7 days</button><button data-range="30" aria-pressed="true">30 days</button><button data-range="90" aria-pressed="false">90 days</button></div>
+        <span class="muted" id="rangeLabel"></span>
+      </div>
+      <div class="grid kpis" id="kpis"></div>
+      <div class="grid two" style="margin-top:16px">
+        <div class="card"><h2>Visitors per day</h2><p class="hint">Unique visitors (sessions) on the website.</p><div class="chart"><canvas id="chVisitors" role="img" aria-label="Visitors per day line chart"></canvas></div></div>
+        <div class="card"><h2>Enquiry funnel</h2><p class="hint">Enquiries in this period, by furthest stage reached.</p><div id="funnel"></div></div>
+      </div>
+      <div class="grid two" style="margin-top:16px">
+        <div class="card"><h2>Enquiries per day</h2><p class="hint">Quote requests received.</p><div class="chart sm"><canvas id="chEnq" role="img" aria-label="Enquiries per day bar chart"></canvas></div></div>
+        <div class="card"><h2>Clicks to contact</h2><p class="hint">Where visitors went from the site.</p><div id="channels"></div></div>
+      </div>
+      <div class="grid three" style="margin-top:16px">
+        <div class="card"><h2>Top drops</h2><p class="hint">Card views and “Enquire” clicks.</p><div class="tbl-wrap"><table><thead><tr><th>Drop</th><th class="num">Views</th><th class="num">Enquire</th></tr></thead><tbody id="topDrops"></tbody></table></div></div>
+        <div class="card"><h2>Traffic sources</h2><p class="hint">Where visitors came from.</p><div id="sources"></div></div>
+        <div class="card"><h2>Audience</h2><p class="hint">Language and device.</p><div id="audience"></div></div>
+      </div>
+    </section>
+
+    <!-- ENQUIRIES -->
+    <section data-section="enquiries" hidden>
+      <div class="filters">
+        <label class="sr" for="qSearch">Search</label><input id="qSearch" type="search" placeholder="Search name, WhatsApp, event…">
+        <label class="sr" for="qStatus">Status</label><select id="qStatus"><option value="">All statuses</option></select>
+        <label class="sr" for="qSvc">Service</label><select id="qSvc"><option value="">All services</option><option>Internal order</option><option>Buy For You</option><option>Concert tickets</option><option>Discounted deal</option></select>
+        <label class="sr" for="qCity">City</label><select id="qCity"><option value="">All cities</option><option>Singapore</option><option>Kuala Lumpur</option><option value="__other">Other</option></select>
+        <button class="btn btn-s" id="exportCsv" type="button">Export CSV</button>
+      </div>
+      <div class="card" style="padding:0"><div class="tbl-wrap"><table>
+        <thead><tr><th>Received</th><th>Name</th><th>WhatsApp</th><th>Event</th><th>City</th><th>Cat × Qty</th><th>Service</th><th>Status</th><th></th></tr></thead>
+        <tbody id="enqBody"></tbody></table></div></div>
+    </section>
+
+    <!-- DROPS -->
+    <section data-section="drops" hidden>
+      <div class="filters"><button class="btn btn-p" id="newDrop" type="button">+ New drop</button><span class="muted">Published drops show on the website straight away. Past events hide automatically.</span></div>
+      <div class="drops-list" id="dropsList"></div>
+    </section>
+
+    <!-- REVIEWS -->
+    <section data-section="reviews" hidden>
+      <div class="filters"><button class="btn btn-p" id="newReview" type="button">+ Add review</button><span class="muted">Visible reviews show on the website in this order.</span></div>
+      <div class="rev-grid" id="revGrid"></div>
+    </section>
+
+    <!-- FAQ -->
+    <section data-section="faq" hidden>
+      <div class="filters"><button class="btn btn-p" id="newFaq" type="button">+ Add question</button><span class="muted">Visible questions show on the website in this order, in English and 中文.</span></div>
+      <div class="card" style="padding:0"><div class="tbl-wrap"><table><thead><tr><th style="width:48px">#</th><th>Question</th><th>Visible</th><th style="width:170px"></th></tr></thead><tbody id="faqBody"></tbody></table></div></div>
+    </section>
+
+    <!-- SETTINGS -->
+    <section data-section="settings" hidden>
+      <div class="card" style="margin-bottom:16px"><h2>Contact links</h2><p class="hint">Turn a channel off to hide every button and link for it on the website (both languages). Changes go live as soon as you save.</p>
+        <div class="grid" style="gap:18px">
+          <div class="chan"><label class="switch"><input type="checkbox" id="cWaOn"> <strong>WhatsApp</strong></label>
+            <div class="frow"><div class="field"><label for="cWaNum">Number (shown on site, used for pre-filled messages)</label><input id="cWaNum" placeholder="+60 12-345 6789"></div>
+            <div class="field"><label for="cWaLink">WhatsApp Business link (optional — used for general buttons)</label><input id="cWaLink" placeholder="https://wa.me/message/…"></div></div></div>
+          <div class="chan"><label class="switch"><input type="checkbox" id="cIgOn"> <strong>Instagram</strong></label>
+            <div class="frow"><div class="field"><label for="cIgUrl">Profile link</label><input id="cIgUrl" placeholder="https://www.instagram.com/…"></div>
+            <div class="field"><label for="cIgHandle">Handle (shown on site)</label><input id="cIgHandle" placeholder="authentix_my"></div></div></div>
+          <div class="chan"><label class="switch"><input type="checkbox" id="cCsOn"> <strong>Carousell</strong></label>
+            <div class="field"><label for="cCsUrl">Shop / profile link</label><input id="cCsUrl" placeholder="https://carousell…"></div></div>
+          <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap"><button class="btn btn-p" id="cSave" type="button">Save contact links</button><a class="btn btn-s" id="cTestWa" href="#" target="_blank" rel="noopener">Test WhatsApp link</a><span class="muted" id="cMsg" role="status"></span></div>
+        </div>
+      </div>
+      <div class="grid half">
+        <div class="card"><h2>Connection</h2><p class="hint">Where the admin reads and saves data.</p><div class="stat-list" id="connStats"></div></div>
+        <div class="card"><h2>Keep-alive</h2><p class="hint">A daily ping keeps the free database from pausing when things are quiet.</p><div class="stat-list" id="keepStats"></div></div>
+        <div class="card"><h2>Website backup copy</h2><p class="hint">If the database is ever unreachable, the website shows this copy of drops, reviews, FAQ and contact links. Download and replace the files in <code>/data</code> when you next publish.</p>
+          <div style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn btn-s" id="dlDrops" type="button">drops.json</button><button class="btn btn-s" id="dlReviews" type="button">reviews.json</button><button class="btn btn-s" id="dlFaqs" type="button">faqs.json</button><button class="btn btn-s" id="dlSettings" type="button">settings.json</button></div></div>
+        <div class="card"><h2>Enquiry alerts</h2><p class="hint">Every quote request is saved here and also emailed to you by Netlify, so nothing is lost if one side is down.</p>
+          <div class="stat-list"><div><span>Email copy</span><strong>Netlify Forms → your inbox</strong></div><div><span>Fallback</span><strong>WhatsApp pre-filled message</strong></div></div></div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<!-- enquiry drawer -->
+<div class="drawer" id="enqDrawer" role="dialog" aria-modal="false" aria-labelledby="drTitle">
+  <div class="dlg-h"><h2 id="drTitle">Enquiry</h2><button class="btn btn-s btn-sm" id="drClose" type="button" aria-label="Close">✕</button></div>
+  <div class="dlg-b" id="drBody"></div>
+  <div class="dlg-f"><a class="btn btn-p" id="drWa" href="#" target="_blank" rel="noopener">Reply on WhatsApp</a><button class="btn btn-s" id="drSave" type="button">Save notes</button></div>
+</div>
+
+<!-- drop dialog -->
+<dialog id="dropDlg" aria-labelledby="dropDlgT">
+  <form id="dropForm" method="dialog">
+    <div class="dlg-h"><h2 id="dropDlgT">New drop</h2><button class="btn btn-s btn-sm" value="cancel" formnovalidate aria-label="Close">✕</button></div>
+    <div class="dlg-b">
+      <div class="frow">
+        <div class="field"><label for="dArtist">Artist / event name</label><input id="dArtist" required></div>
+        <div class="field"><label for="dStatus">Status</label><select id="dStatus"><option value="preorder">Pre-order open</option><option value="soon">Coming soon</option><option value="available">Available</option><option value="soldout">Sold out</option></select></div>
+      </div>
+      <div class="frow">
+        <div class="field"><label for="dCity">City</label><select id="dCity"><option value="SG">Singapore</option><option value="KL">Kuala Lumpur</option><option value="OTHER">Other</option></select></div>
+        <div class="field"><label for="dDate">Event date (auto-hides after)</label><input id="dDate" type="date"></div>
+      </div>
+      <div class="tabs" role="tablist"><button type="button" role="tab" aria-selected="true" data-tab="en">English</button><button type="button" role="tab" aria-selected="false" data-tab="zh">中文</button></div>
+      <div class="grid" data-pane="en">
+        <div class="field"><label for="dTourEn">Tour name</label><input id="dTourEn"></div>
+        <div class="frow"><div class="field"><label for="dVenueEn">Venue</label><input id="dVenueEn"></div><div class="field"><label for="dDateEn">Date label</label><input id="dDateEn" placeholder="Sat 17 Oct 2026 · 7pm"></div></div>
+        <div class="field"><label for="dNoteEn">Note on card</label><input id="dNoteEn" placeholder="e.g. All categories except VIP"></div>
+      </div>
+      <div class="grid" data-pane="zh" hidden>
+        <div class="field"><label for="dTourZh">巡演名称</label><input id="dTourZh"></div>
+        <div class="frow"><div class="field"><label for="dVenueZh">场馆</label><input id="dVenueZh"></div><div class="field"><label for="dDateZh">日期显示</label><input id="dDateZh" placeholder="2026年10月17日（周六）· 晚上7点"></div></div>
+        <div class="field"><label for="dNoteZh">卡片备注</label><input id="dNoteZh"></div>
+      </div>
+      <div class="field"><label for="dImg">Poster image</label><input id="dImg" type="file" accept="image/*"><small class="muted" style="display:block;margin:4px 0 8px;font-size:12px">Shown in full, never cropped. Portrait posters (4:5) fit best.</small><img class="preview-img" id="dImgPrev" alt="" hidden></div>
+      <label class="switch"><input type="checkbox" id="dPub" checked> Published on website</label>
+    </div>
+    <div class="dlg-f"><button class="btn btn-d" type="button" id="dDelete">Delete</button><div style="display:flex;gap:10px"><button class="btn btn-s" value="cancel" formnovalidate>Cancel</button><button class="btn btn-p" value="save" id="dSave">Save drop</button></div></div>
+  </form>
+</dialog>
+
+<!-- review dialog -->
+<dialog id="revDlg" aria-labelledby="revDlgT">
+  <form id="revForm" method="dialog">
+    <div class="dlg-h"><h2 id="revDlgT">Add review</h2><button class="btn btn-s btn-sm" value="cancel" formnovalidate aria-label="Close">✕</button></div>
+    <div class="dlg-b">
+      <div class="frow">
+        <div class="field"><label for="rHandle">Fan handle</label><input id="rHandle" required placeholder="e.g. aria.abjalil"></div>
+        <div class="field"><label for="rSource">Source</label><select id="rSource"><option>Carousell</option><option>Instagram</option><option>WhatsApp</option><option>Google</option></select></div>
+      </div>
+      <div class="field"><label for="rEvent">Event</label><input id="rEvent" placeholder="e.g. MONSTA X, Malaysia"></div>
+      <div class="field"><label for="rText">Review (as written by the fan)</label><textarea id="rText" required></textarea></div>
+      <div class="field"><label for="rTextZh">Chinese version (optional — otherwise original is shown)</label><textarea id="rTextZh"></textarea></div>
+      <div class="field"><label for="rTags">Tags (comma separated)</label><input id="rTags" placeholder="Great communication, Value for money"></div>
+      <div class="field"><label for="rImg">Screenshot</label><input id="rImg" type="file" accept="image/*"><img class="preview-img" id="rImgPrev" alt="" hidden></div>
+      <label class="switch"><input type="checkbox" id="rVis" checked> Visible on website</label>
+      <p class="muted" style="margin:0;font-size:12px">Only post reviews the fan made publicly or agreed to share.</p>
+    </div>
+    <div class="dlg-f"><button class="btn btn-d" type="button" id="rDelete">Delete</button><div style="display:flex;gap:10px"><button class="btn btn-s" value="cancel" formnovalidate>Cancel</button><button class="btn btn-p" value="save">Save review</button></div></div>
+  </form>
+</dialog>
+
+<dialog id="faqDlg" aria-labelledby="faqDlgT">
+  <form id="faqForm" method="dialog">
+    <div class="dlg-h"><h2 id="faqDlgT">Add question</h2><button class="btn btn-s btn-sm" value="cancel" formnovalidate aria-label="Close">✕</button></div>
+    <div class="dlg-b">
+      <div class="tabs" role="tablist"><button type="button" role="tab" aria-selected="true" data-ftab="en">English</button><button type="button" role="tab" aria-selected="false" data-ftab="zh">中文</button></div>
+      <div class="grid" data-fpane="en"><div class="field"><label for="fqEn">Question</label><input id="fqEn" required></div><div class="field"><label for="faEn">Answer</label><textarea id="faEn" rows="5" required></textarea></div></div>
+      <div class="grid" data-fpane="zh" hidden><div class="field"><label for="fqZh">问题</label><input id="fqZh"></div><div class="field"><label for="faZh">回答</label><textarea id="faZh" rows="5"></textarea></div><p class="muted" style="margin:0;font-size:12px">Leave empty to show the English text on the Chinese site.</p></div>
+      <label class="switch"><input type="checkbox" id="fVis" checked> Visible on website</label>
+    </div>
+    <div class="dlg-f"><button class="btn btn-d" type="button" id="fDelete">Delete</button><div style="display:flex;gap:10px"><button class="btn btn-s" value="cancel" formnovalidate>Cancel</button><button class="btn btn-p" value="save">Save question</button></div></div>
+  </form>
+</dialog>
+
+<div class="toast" id="toast" role="status"></div>
+
+%%CONFIG_SCRIPT%%<script>
+/* ================= EDIT AT GO-LIVE ================= */
+var CONFIG = { supabaseUrl: "", supabaseAnonKey: "", siteUrl: "/" };
+if (window.AX_CONFIG) Object.assign(CONFIG, window.AX_CONFIG);
+/* =================================================== */
+var BUILD_DEMO = %%BUILD_DEMO%%;
+var CONNECTED = !!(CONFIG.supabaseUrl && CONFIG.supabaseAnonKey);
+var DEMO = BUILD_DEMO && !CONNECTED;
+var SEED_DROPS = %%DROPS_JSON%%, SEED_REVIEWS = %%REVIEWS_JSON%%, SEED_FAQS = %%FAQS_JSON%%, SEED_CONTACTS = %%CONTACTS_JSON%%;
+var BUNDLED = %%BUNDLED_JSON%%;
+var STATUSES = [["new","New"],["quoted","Quoted"],["paid","Paid"],["secured","Secured"],["closed","Refunded / closed"]];
+var STAGE = { new: 0, quoted: 1, paid: 2, secured: 3, closed: -1 };
+var sb = null, state = { enquiries: [], drops: [], reviews: [], faqs: [], contacts: {}, events: [], heartbeat: null, range: 30 };
+
+function $(s, r){ return (r || document).querySelector(s); }
+function $$(s, r){ return Array.prototype.slice.call((r || document).querySelectorAll(s)); }
+function esc(s){ return String(s == null ? "" : s).replace(/[&<>"]/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]; }); }
+function toast(t){ var el = $("#toast"); el.textContent = t; el.style.display = "block"; clearTimeout(toast._t); toast._t = setTimeout(function(){ el.style.display = "none"; }, Math.max(2400, t.length * 60)); }
+function day(d){ var x = new Date(d); x.setHours(0,0,0,0); return x; }
+function fmtDate(d){ return new Date(d).toLocaleDateString("en-GB", { day: "numeric", month: "short" }); }
+function fmtDT(d){ var x = new Date(d); return x.toLocaleDateString("en-GB", { day: "numeric", month: "short" }) + " " + x.toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" }); }
+function imgUrl(u){ return BUNDLED[u] || u || BUNDLED.beams; }
+function download(name, text, type){ var a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([text], { type: type || "application/json" })); a.download = name; document.body.appendChild(a); a.click(); a.remove(); }
+
+/* ================= SAMPLE DATA (demo mode only) ================= */
+function rng(seed){ return function(){ seed = (seed * 16807) % 2147483647; return (seed - 1) / 2147483646; }; }
+function makeDemo(){
+  var r = rng(42), now = new Date(), events = [], enq = [];
+  var names = ["Aina","Wei Jie","Priya","Jun Hao","Siti","Marcus","Mei Ling","Hafiz","Chloe","Arif","Yi Xuan","Daniel","Nurul","Kai","Shu Fen","Ryan","Farah","Zhi Wei"];
+  var evs = ["BIGBANG — Singapore","BIGBANG — Singapore","BIGBANG — Singapore","[ARTIST] — KL","SEVENTEEN — KL","Coldplay — KL","[FESTIVAL] — KL"];
+  var svcs = ["Internal order","Internal order","Internal order","Buy For You","Buy For You","Concert tickets","Discounted deal"];
+  var srcs = ["instagram","instagram","instagram","","","carousell","google","whatsapp"];
+  for (var i = 89; i >= 0; i--) {
+    var d = new Date(now); d.setDate(d.getDate() - i);
+    var spike = i < 20 ? 1.8 : 1; var weekend = (d.getDay() === 0 || d.getDay() === 6) ? 1.25 : 1;
+    var visitors = Math.round((35 + r() * 40) * spike * weekend);
+    for (var v = 0; v < visitors; v++) {
+      var t = new Date(d); t.setHours(9 + Math.floor(r() * 14), Math.floor(r() * 60));
+      var s = "s" + i + "_" + v, lang = r() < 0.32 ? "zh" : "en", dev = r() < 0.78 ? "mobile" : "desktop", src = srcs[Math.floor(r() * srcs.length)];
+      events.push({ name: "page_view", created_at: t.toISOString(), session_id: s, lang: lang, device: dev, utm_source: src, props: {} });
+      if (r() < 0.35) events.push({ name: "page_view", created_at: t.toISOString(), session_id: s, lang: lang, device: dev, utm_source: src, props: {} });
+      if (r() < 0.55) events.push({ name: "drop_view", created_at: t.toISOString(), session_id: s, lang: lang, device: dev, utm_source: src, props: { drop_id: r() < 0.6 ? "bigbang-sg-2026" : (r() < 0.5 ? "tba-kl-1" : "tba-sg-1") } });
+      if (r() < 0.16) events.push({ name: "click_whatsapp", created_at: t.toISOString(), session_id: s, lang: lang, device: dev, utm_source: src, props: {} });
+      if (r() < 0.05) events.push({ name: "click_carousell", created_at: t.toISOString(), session_id: s, lang: lang, device: dev, utm_source: src, props: {} });
+      if (r() < 0.07) events.push({ name: "click_instagram", created_at: t.toISOString(), session_id: s, lang: lang, device: dev, utm_source: src, props: {} });
+      if (r() < 0.06) events.push({ name: "drop_enquire", created_at: t.toISOString(), session_id: s, lang: lang, device: dev, utm_source: src, props: { drop_id: r() < 0.7 ? "bigbang-sg-2026" : "tba-kl-1" } });
+    }
+    var n = Math.round((1 + r() * 4) * spike);
+    for (var k = 0; k < n; k++) {
+      var ts = new Date(d); ts.setHours(10 + Math.floor(r() * 12), Math.floor(r() * 60));
+      var age = i, st = age > 14 ? (r() < 0.55 ? "secured" : r() < 0.6 ? "closed" : "paid") : age > 5 ? ["quoted","paid","secured","closed"][Math.floor(r() * 4)] : (r() < 0.6 ? "new" : "quoted");
+      var city = r() < 0.55 ? "Singapore" : r() < 0.9 ? "Kuala Lumpur" : "Penang";
+      enq.push({ id: "e" + i + "_" + k, created_at: ts.toISOString(), name: names[Math.floor(r() * names.length)] + " (sample)", whatsapp: "+60 12-" + (100 + Math.floor(r() * 899)) + " " + (1000 + Math.floor(r() * 8999)),
+        event: evs[Math.floor(r() * evs.length)], city: city, service: svcs[Math.floor(r() * svcs.length)], category: ["CAT 1","CAT 2","CAT 3","VIP","PS1"][Math.floor(r() * 5)],
+        quantity: String(1 + Math.floor(r() * 4)), notes: "", lang: r() < 0.3 ? "zh" : "en", status: st });
+      events.push({ name: "form_submit", created_at: ts.toISOString(), session_id: "f" + i + k, lang: "en", device: "mobile", utm_source: "", props: {} });
+    }
+  }
+  enq.sort(function(a, b){ return b.created_at < a.created_at ? -1 : 1; });
+  state.events = events; state.enquiries = enq;
+  state.drops = JSON.parse(JSON.stringify(SEED_DROPS)); state.reviews = JSON.parse(JSON.stringify(SEED_REVIEWS));
+  state.faqs = JSON.parse(JSON.stringify(SEED_FAQS)); state.contacts = JSON.parse(JSON.stringify(SEED_CONTACTS));
+  state.heartbeat = { last_ping: new Date(now.getTime() - 3 * 3600e3).toISOString(), ok: true };
+}
+
+/* ================= DATA LAYER ================= */
+var api = {
+  load: function(){
+    if (DEMO) { makeDemo(); return Promise.resolve(); }
+    var since = new Date(Date.now() - 180 * 864e5).toISOString();
+    return Promise.all([
+      sb.from("enquiries").select("*").order("created_at", { ascending: false }).limit(5000),
+      sb.from("drops").select("*").order("event_date", { ascending: true }),
+      sb.from("reviews").select("*").order("sort_order", { ascending: true }),
+      sb.from("events").select("name,created_at,session_id,lang,device,utm_source,referrer,props").gte("created_at", since).limit(100000),
+      sb.from("heartbeat").select("*").eq("id", 1).maybeSingle(),
+      sb.from("faqs").select("*").order("sort_order", { ascending: true }),
+      sb.from("settings").select("*").eq("key", "contacts").maybeSingle()
+    ]).then(function(r){
+      r.forEach(function(x){ if (x.error) throw x.error; });
+      state.enquiries = r[0].data; state.drops = r[1].data; state.reviews = r[2].data; state.events = r[3].data; state.heartbeat = r[4].data;
+      state.faqs = r[5].data; state.contacts = Object.assign({}, SEED_CONTACTS, (r[6].data || {}).value || {});
+    });
+  },
+  update: function(table, id, patch){ if (DEMO) return Promise.resolve(); return sb.from(table).update(patch).eq("id", id).then(function(x){ if (x.error) throw x.error; }); },
+  upsert: function(table, row){ if (DEMO) return Promise.resolve(row); return sb.from(table).upsert(row).select().single().then(function(x){ if (x.error) throw x.error; return x.data; }); },
+  remove: function(table, id){ if (DEMO) return Promise.resolve(); return sb.from(table).delete().eq("id", id).then(function(x){ if (x.error) throw x.error; }); },
+  upload: function(folder, file){
+    if (DEMO) return new Promise(function(res){ var fr = new FileReader(); fr.onload = function(){ res(fr.result); }; fr.readAsDataURL(file); });
+    var path = folder + "/" + Date.now() + "-" + file.name.replace(/[^\w.-]+/g, "_");
+    return sb.storage.from("media").upload(path, file, { upsert: true }).then(function(x){ if (x.error) throw x.error; return sb.storage.from("media").getPublicUrl(path).data.publicUrl; });
+  }
+};
+
+/* ================= NAV ================= */
+var TITLES = { dashboard: "Dashboard", enquiries: "Enquiries", drops: "Drops", reviews: "Fan reviews", faq: "FAQ", settings: "Settings" };
+function show(view){
+  $$(".side-nav button").forEach(function(b){ b.toggleAttribute("aria-current", b.dataset.view === view); if (b.dataset.view === view) b.setAttribute("aria-current", "page"); });
+  $$("[data-section]").forEach(function(s){ s.hidden = s.dataset.section !== view; });
+  $("#viewTitle").textContent = TITLES[view];
+  if (view === "dashboard") renderDashboard();
+  if (view === "enquiries") renderEnquiries();
+  if (view === "drops") renderDrops();
+  if (view === "reviews") renderReviews();
+  if (view === "faq") renderFaqs();
+  if (view === "settings") renderSettings();
+}
+$$(".side-nav button").forEach(function(b){ b.addEventListener("click", function(){ show(b.dataset.view); }); });
+
+/* ================= DASHBOARD ================= */
+var charts = {};
+function inRange(list, days, offset){ var end = Date.now() - (offset || 0) * 864e5, start = end - days * 864e5;
+  return list.filter(function(x){ var t = new Date(x.created_at).getTime(); return t > start && t <= end; }); }
+function uniq(list, k){ var s = {}; list.forEach(function(x){ s[x[k]] = 1; }); return Object.keys(s).length; }
+function delta(cur, prev){ if (!prev) return { t: "—", c: "" }; var p = Math.round((cur - prev) / prev * 100); return { t: (p >= 0 ? "▲ " : "▼ ") + Math.abs(p) + "% vs previous", c: p >= 0 ? "up" : "down" }; }
+function renderDashboard(){
+  var D = state.range, ev = inRange(state.events, D), evP = inRange(state.events, D, D), en = inRange(state.enquiries, D), enP = inRange(state.enquiries, D, D);
+  $("#rangeLabel").textContent = fmtDate(Date.now() - D * 864e5) + " – " + fmtDate(Date.now());
+  function cnt(list, names){ return list.filter(function(e){ return names.indexOf(e.name) >= 0; }).length; }
+  var pv = ev.filter(function(e){ return e.name === "page_view"; }), pvP = evP.filter(function(e){ return e.name === "page_view"; });
+  var k = [
+    ["Visitors", uniq(pv, "session_id"), uniq(pvP, "session_id")],
+    ["Page views", pv.length, pvP.length],
+    ["WhatsApp clicks", cnt(ev, ["click_whatsapp","drop_enquire"]), cnt(evP, ["click_whatsapp","drop_enquire"])],
+    ["Enquiries", en.length, enP.length],
+    ["Secured orders", en.filter(function(x){ return x.status === "secured"; }).length, enP.filter(function(x){ return x.status === "secured"; }).length],
+    ["Enquiry → secured", en.length ? Math.round(en.filter(function(x){ return x.status === "secured"; }).length / en.length * 100) : 0, enP.length ? Math.round(enP.filter(function(x){ return x.status === "secured"; }).length / enP.length * 100) : 0, "%"]
+  ];
+  $("#kpis").innerHTML = k.map(function(x){ var d = delta(x[1], x[2]); return '<div class="card kpi"><div class="l">' + x[0] + '</div><div class="v">' + x[1].toLocaleString() + (x[3] || "") + '</div><div class="d ' + d.c + '">' + d.t + '</div></div>'; }).join("");
+
+  // per-day series
+  var labels = [], vis = [], enqD = [];
+  for (var i = D - 1; i >= 0; i--) {
+    var d0 = day(Date.now() - i * 864e5), d1 = new Date(d0.getTime() + 864e5);
+    labels.push(fmtDate(d0));
+    var s = {}; pv.forEach(function(e){ var t = new Date(e.created_at); if (t >= d0 && t < d1) s[e.session_id] = 1; });
+    vis.push(Object.keys(s).length);
+    enqD.push(en.filter(function(e){ var t = new Date(e.created_at); return t >= d0 && t < d1; }).length);
+  }
+  drawChart("chVisitors", "line", labels, vis, "Visitors");
+  drawChart("chEnq", "bar", labels, enqD, "Enquiries");
+
+  // funnel (furthest stage reached)
+  var reached = [0,0,0,0]; en.forEach(function(x){ var s = STAGE[x.status]; if (s < 0) s = 1; for (var j = 0; j <= s; j++) reached[j]++; });
+  var closed = en.filter(function(x){ return x.status === "closed"; }).length;
+  $("#funnel").innerHTML = bars([["Enquiries", reached[0]], ["Quoted", reached[1]], ["Paid", reached[2]], ["Secured", reached[3]]]) + '<p class="muted" style="margin:10px 0 0;font-size:12px">Refunded / closed: ' + closed + '</p>';
+  $("#channels").innerHTML = bars([["WhatsApp", cnt(ev, ["click_whatsapp"])], ["Drop enquire", cnt(ev, ["drop_enquire"])], ["Instagram", cnt(ev, ["click_instagram"])], ["Carousell", cnt(ev, ["click_carousell"])]]);
+
+  // top drops
+  var byDrop = {};
+  ev.forEach(function(e){ if (e.name === "drop_view" || e.name === "drop_enquire") { var id = (e.props || {}).drop_id; if (!id) return; byDrop[id] = byDrop[id] || { v: 0, q: 0 }; byDrop[id][e.name === "drop_view" ? "v" : "q"]++; } });
+  var rows = Object.keys(byDrop).sort(function(a, b){ return byDrop[b].v - byDrop[a].v; }).slice(0, 6);
+  $("#topDrops").innerHTML = rows.length ? rows.map(function(id){ var d = state.drops.find(function(x){ return x.id === id; }); var n = d ? d.artist + " · " + (d.city || "") : id;
+    return '<tr><td>' + esc(n) + '</td><td class="num">' + byDrop[id].v + '</td><td class="num">' + byDrop[id].q + '</td></tr>'; }).join("") : '<tr><td colspan="3" class="empty">No drop views yet</td></tr>';
+
+  // sources + audience (by session)
+  var sess = {}; pv.forEach(function(e){ sess[e.session_id] = e; });
+  var S = {}, L = { en: 0, zh: 0 }, Dv = { mobile: 0, desktop: 0 };
+  Object.keys(sess).forEach(function(k){ var e = sess[k]; var src = e.utm_source || (e.referrer ? hostOf(e.referrer) : "") || "direct"; S[src] = (S[src] || 0) + 1; L[e.lang === "zh" ? "zh" : "en"]++; Dv[e.device === "desktop" ? "desktop" : "mobile"]++; });
+  var srcRows = Object.keys(S).sort(function(a, b){ return S[b] - S[a]; }).slice(0, 6).map(function(k){ return [cap(k), S[k]]; });
+  $("#sources").innerHTML = srcRows.length ? bars(srcRows) : '<p class="empty">No visits yet</p>';
+  $("#audience").innerHTML = bars([["English", L.en], ["中文", L.zh]]) + '<div style="height:10px"></div>' + bars([["Mobile", Dv.mobile], ["Desktop", Dv.desktop]]);
+}
+function hostOf(u){ try { return new URL(u).hostname.replace(/^www\./, "").split(".")[0]; } catch (e) { return ""; } }
+function cap(s){ return s.charAt(0).toUpperCase() + s.slice(1); }
+function bars(rows){ var max = Math.max.apply(null, rows.map(function(r){ return r[1]; }).concat([1]));
+  return rows.map(function(r){ return '<div class="bar-row"><span>' + esc(r[0]) + '</span><div class="track" role="img" aria-label="' + esc(r[0]) + ': ' + r[1] + '"><div class="fill" style="width:' + Math.max(2, r[1] / max * 100) + '%"></div></div><span class="n">' + r[1].toLocaleString() + '</span></div>'; }).join(""); }
+function drawChart(id, type, labels, data, label){
+  if (!window.Chart) { $("#" + id).parentNode.innerHTML = '<p class="empty">Chart library not loaded.</p>'; return; }
+  if (charts[id]) charts[id].destroy();
+  var ctx = document.getElementById(id);
+  charts[id] = new Chart(ctx, { type: type, data: { labels: labels, datasets: [{ label: label, data: data, borderColor: "#1F3A2F", backgroundColor: type === "bar" ? "#1F3A2F" : "rgba(31,58,47,.08)", borderWidth: 2, fill: type === "line", tension: .3, pointRadius: 0, pointHoverRadius: 5, borderRadius: 4, maxBarThickness: 18 }] },
+    options: { responsive: true, maintainAspectRatio: false, interaction: { mode: "index", intersect: false }, plugins: { legend: { display: false }, tooltip: { backgroundColor: "#0E1512", padding: 10, displayColors: false } },
+      scales: { x: { grid: { display: false }, ticks: { color: "#5E6661", maxTicksLimit: 8, font: { family: "Montserrat", size: 11 } } }, y: { beginAtZero: true, grid: { color: "#EFECE5" }, border: { display: false }, ticks: { color: "#5E6661", precision: 0, font: { family: "Montserrat", size: 11 } } } } } });
+}
+$$("[data-range]").forEach(function(b){ b.addEventListener("click", function(){ state.range = +b.dataset.range; $$("[data-range]").forEach(function(x){ x.setAttribute("aria-pressed", x === b); }); renderDashboard(); }); });
+
+/* ================= ENQUIRIES ================= */
+STATUSES.forEach(function(s){ $("#qStatus").insertAdjacentHTML("beforeend", '<option value="' + s[0] + '">' + s[1] + '</option>'); });
+function filteredEnq(){
+  var q = $("#qSearch").value.toLowerCase(), st = $("#qStatus").value, sv = $("#qSvc").value, ct = $("#qCity").value;
+  return state.enquiries.filter(function(e){
+    if (st && e.status !== st) return false; if (sv && e.service !== sv) return false;
+    if (ct === "__other" && (e.city === "Singapore" || e.city === "Kuala Lumpur")) return false; if (ct && ct !== "__other" && e.city !== ct) return false;
+    if (q && (e.name + " " + e.whatsapp + " " + e.event + " " + (e.notes || "")).toLowerCase().indexOf(q) < 0) return false; return true; });
+}
+function renderEnquiries(){
+  var list = filteredEnq();
+  $("#enqBody").innerHTML = list.length ? list.slice(0, 300).map(function(e){
+    return '<tr><td class="muted" style="white-space:nowrap">' + fmtDT(e.created_at) + '</td><td><strong>' + esc(e.name) + '</strong>' + (e.lang === "zh" ? ' <span class="muted">中文</span>' : '') + '</td><td style="white-space:nowrap">' + esc(e.whatsapp) + '</td><td>' + esc(e.event) + '</td><td>' + esc(e.city) + '</td><td style="white-space:nowrap">' + esc(e.category || "-") + ' × ' + esc(e.quantity) + '</td><td>' + esc(e.service) + '</td>' +
+      '<td><label class="sr" for="st_' + e.id + '">Status</label><select class="status st-' + e.status + '" id="st_' + e.id + '" data-id="' + e.id + '">' + STATUSES.map(function(s){ return '<option value="' + s[0] + '"' + (s[0] === e.status ? " selected" : "") + '>' + s[1] + '</option>'; }).join("") + '</select></td>' +
+      '<td style="white-space:nowrap"><button class="btn btn-s btn-sm" data-open="' + e.id + '" type="button">Open</button></td></tr>'; }).join("") : '<tr><td colspan="9" class="empty">No enquiries match these filters.</td></tr>';
+  $$("#enqBody select.status").forEach(function(s){ s.addEventListener("change", function(){ var e = byId(state.enquiries, s.dataset.id); e.status = s.value; s.className = "status st-" + s.value;
+    api.update("enquiries", e.id, { status: s.value }).then(function(){ toast("Status updated"); updateCount(); }).catch(function(err){ toast("Couldn’t save: " + err.message); }); }); });
+  $$("[data-open]").forEach(function(b){ b.addEventListener("click", function(){ openEnq(b.dataset.open); }); });
+}
+["#qSearch","#qStatus","#qSvc","#qCity"].forEach(function(s){ $(s).addEventListener("input", renderEnquiries); });
+function byId(list, id){ return list.find(function(x){ return String(x.id) === String(id); }); }
+function waReply(e){ var n = String(e.whatsapp).replace(/\D/g, ""); var msg = "Hi " + e.name.replace(" (sample)", "") + ", thanks for your enquiry about " + e.event + " (" + (e.category || "") + " × " + e.quantity + "). ";
+  if (e.lang === "zh") msg = "你好 " + e.name.replace(" (sample)", "") + "，谢谢你询问 " + e.event + "（" + (e.category || "") + " × " + e.quantity + "）。";
+  return "https://wa.me/" + n + "?text=" + encodeURIComponent(msg); }
+var openId = null;
+function openEnq(id){
+  var e = byId(state.enquiries, id); openId = id;
+  $("#drTitle").textContent = e.name;
+  $("#drBody").innerHTML = '<div class="kv"><span>Received</span><span>' + fmtDT(e.created_at) + '</span><span>WhatsApp</span><span>' + esc(e.whatsapp) + '</span><span>Event</span><span>' + esc(e.event) + '</span><span>City</span><span>' + esc(e.city) + '</span><span>Service</span><span>' + esc(e.service) + '</span><span>Category × Qty</span><span>' + esc(e.category || "-") + ' × ' + esc(e.quantity) + '</span><span>Language</span><span>' + (e.lang === "zh" ? "中文" : "English") + '</span><span>Status</span><span><span class="pill st-' + e.status + '">' + STATUSES.find(function(s){ return s[0] === e.status; })[1] + '</span></span></div>' +
+    '<div class="field"><label for="drNotes">Internal notes</label><textarea id="drNotes" rows="6" placeholder="Quote sent, payment ref, seat details…">' + esc(e.notes || "") + '</textarea></div>';
+  $("#drWa").href = waReply(e);
+  $("#enqDrawer").classList.add("open"); $("#drNotes").focus();
+}
+$("#drClose").addEventListener("click", function(){ $("#enqDrawer").classList.remove("open"); });
+$("#drSave").addEventListener("click", function(){ var e = byId(state.enquiries, openId); e.notes = $("#drNotes").value; api.update("enquiries", e.id, { notes: e.notes }).then(function(){ toast("Notes saved"); }).catch(function(err){ toast("Couldn’t save: " + err.message); }); });
+$("#exportCsv").addEventListener("click", function(){
+  var cols = ["created_at","name","whatsapp","event","city","category","quantity","service","status","lang","notes"];
+  var csv = cols.join(",") + "\n" + filteredEnq().map(function(e){ return cols.map(function(c){ return '"' + String(e[c] == null ? "" : e[c]).replace(/"/g, '""') + '"'; }).join(","); }).join("\n");
+  download("authentix-enquiries.csv", "﻿" + csv, "text/csv"); });
+function updateCount(){ $("#newCount").textContent = state.enquiries.filter(function(e){ return e.status === "new"; }).length; }
+
+/* ================= DROPS ================= */
+var CITYN = { SG: "Singapore", KL: "Kuala Lumpur", OTHER: "Other" }, STN = { preorder: "Pre-order open", soon: "Coming soon", available: "Available", soldout: "Sold out" };
+function renderDrops(){
+  var today = day(Date.now());
+  $("#dropsList").innerHTML = state.drops.map(function(d){
+    var past = d.event_date && new Date(d.event_date) < today;
+    return '<article class="card drop"><div class="img" style="--bg:url(\'' + esc(imgUrl(d.image_url)) + '\')"><img src="' + esc(imgUrl(d.image_url)) + '" alt=""></div><div class="b">' +
+      '<div style="display:flex;gap:8px;flex-wrap:wrap"><span class="pill">' + STN[d.status] + '</span>' + (past ? '<span class="pill st-closed">Past — hidden</span>' : '') + '</div>' +
+      '<h3>' + esc(d.artist) + '</h3><span class="muted">' + esc(d.tour_en || "") + '</span><span>' + esc(d.date_label_en || "") + ' · ' + esc(d.venue_en || "") + ', ' + CITYN[d.city] + '</span>' +
+      '<div class="acts"><label class="switch"><input type="checkbox" data-pub="' + d.id + '"' + (d.published !== false ? " checked" : "") + '> Published</label><button class="btn btn-s btn-sm" data-edit="' + d.id + '" type="button" style="margin-left:auto">Edit</button></div></div></article>';
+  }).join("") || '<p class="empty">No drops yet — add your first one.</p>';
+  $$("[data-pub]").forEach(function(c){ c.addEventListener("change", function(){ var d = byId(state.drops, c.dataset.pub); d.published = c.checked;
+    api.update("drops", d.id, { published: c.checked }).then(function(){ toast(c.checked ? "Published" : "Hidden from website"); }).catch(function(err){ toast(err.message); }); }); });
+  $$("[data-edit]").forEach(function(b){ b.addEventListener("click", function(){ openDrop(b.dataset.edit); }); });
+}
+var editing = null, pendingImg = null;
+function setTab(t){ $$("#dropDlg [data-tab]").forEach(function(b){ b.setAttribute("aria-selected", b.dataset.tab === t); }); $$("#dropDlg [data-pane]").forEach(function(p){ p.hidden = p.dataset.pane !== t; }); }
+$$("#dropDlg [data-tab]").forEach(function(b){ b.addEventListener("click", function(){ setTab(b.dataset.tab); }); });
+var DF = { artist: "#dArtist", status: "#dStatus", city: "#dCity", event_date: "#dDate", tour_en: "#dTourEn", venue_en: "#dVenueEn", date_label_en: "#dDateEn", note_en: "#dNoteEn", tour_zh: "#dTourZh", venue_zh: "#dVenueZh", date_label_zh: "#dDateZh", note_zh: "#dNoteZh" };
+function openDrop(id){
+  editing = id ? byId(state.drops, id) : null; pendingImg = null;
+  var d = editing || { status: "soon", city: "SG", published: true, image_url: "beams" };
+  $("#dropDlgT").textContent = editing ? "Edit drop" : "New drop";
+  Object.keys(DF).forEach(function(k){ $(DF[k]).value = d[k] || ""; });
+  $("#dPub").checked = d.published !== false; $("#dImg").value = "";
+  var prev = $("#dImgPrev"); prev.src = imgUrl(d.image_url); prev.hidden = false;
+  $("#dDelete").hidden = !editing; setTab("en"); $("#dropDlg").showModal();
+}
+$("#newDrop").addEventListener("click", function(){ openDrop(null); });
+$("#dImg").addEventListener("change", function(e){ var f = e.target.files[0]; if (!f) return; pendingImg = f; var fr = new FileReader(); fr.onload = function(){ $("#dImgPrev").src = fr.result; $("#dImgPrev").hidden = false; }; fr.readAsDataURL(f); });
+$("#dropDlg").addEventListener("close", function(){
+  if ($("#dropDlg").returnValue !== "save") return;
+  var row = editing ? Object.assign({}, editing) : { id: "drop-" + Date.now(), image_url: "beams" };
+  Object.keys(DF).forEach(function(k){ row[k] = $(DF[k]).value.trim() || null; });
+  row.published = $("#dPub").checked;
+  var imgFail = null;
+  var up = pendingImg ? api.upload("drops", pendingImg).then(function(u){ row.image_url = u; }).catch(function(e){ imgFail = e; }) : Promise.resolve();
+  up.then(function(){ return api.upsert("drops", row); }).then(function(saved){
+    var i = state.drops.findIndex(function(x){ return x.id === row.id; }); if (i >= 0) state.drops[i] = saved || row; else state.drops.push(saved || row);
+    renderDrops(); toast(imgFail ? uploadMsg(imgFail) : "Drop saved"); }).catch(function(err){ toast("Couldn’t save: " + err.message); });
+});
+$("#dDelete").addEventListener("click", function(){ if (!editing || !confirm("Delete this drop?")) return; var id = editing.id;
+  api.remove("drops", id).then(function(){ state.drops = state.drops.filter(function(x){ return x.id !== id; }); $("#dropDlg").close("cancel"); renderDrops(); toast("Drop deleted"); }); });
+
+function uploadMsg(e){ var m = (e && e.message) || ""; return /tenant|bucket|not found|storage/i.test(m) ? "Saved, but the image wasn’t uploaded – Supabase Storage isn’t set up yet." : "Saved, but the image upload failed: " + m; }
+/* ================= REVIEWS ================= */
+function revShot(r){ return r.screenshot_url && /^(https?:|data:|\/)/.test(r.screenshot_url) ? r.screenshot_url : (BUNDLED.shots[r.screenshot_url] || ""); }
+function renderReviews(){
+  var list = state.reviews.slice().sort(function(a, b){ return (a.sort_order || 0) - (b.sort_order || 0); });
+  $("#revGrid").innerHTML = list.map(function(r, i){
+    return '<article class="card rev"><div class="shot" style="background-image:url(\'' + esc(revShot(r)) + '\')"></div><div class="b"><strong>@' + esc(r.handle) + '</strong><span class="muted" style="font-size:12px">' + esc(r.source) + ' · ' + esc(r.event) + '</span><q>' + esc(r.text) + '</q>' +
+      '<div class="acts"><label class="switch"><input type="checkbox" data-vis="' + r.id + '"' + (r.visible !== false ? " checked" : "") + '> Visible</label><span style="margin-left:auto"></span>' +
+      '<button class="btn btn-s btn-sm" data-mv="' + r.id + '" data-dir="-1" type="button" aria-label="Move up"' + (i === 0 ? " disabled" : "") + '>↑</button><button class="btn btn-s btn-sm" data-mv="' + r.id + '" data-dir="1" type="button" aria-label="Move down"' + (i === list.length - 1 ? " disabled" : "") + '>↓</button><button class="btn btn-s btn-sm" data-redit="' + r.id + '" type="button">Edit</button></div></div></article>';
+  }).join("") || '<p class="empty">No reviews yet.</p>';
+  $$("[data-vis]").forEach(function(c){ c.addEventListener("change", function(){ var r = byId(state.reviews, c.dataset.vis); r.visible = c.checked; api.update("reviews", r.id, { visible: c.checked }).then(function(){ toast(c.checked ? "Shown on website" : "Hidden"); }); }); });
+  $$("[data-mv]").forEach(function(b){ b.addEventListener("click", function(){ move(b.dataset.mv, +b.dataset.dir); }); });
+  $$("[data-redit]").forEach(function(b){ b.addEventListener("click", function(){ openRev(b.dataset.redit); }); });
+}
+function move(id, dir){
+  var list = state.reviews.slice().sort(function(a, b){ return (a.sort_order || 0) - (b.sort_order || 0); });
+  var i = list.findIndex(function(x){ return String(x.id) === String(id); }), j = i + dir; if (j < 0 || j >= list.length) return;
+  var t = list[i]; list[i] = list[j]; list[j] = t; list.forEach(function(r, k){ r.sort_order = k + 1; });
+  Promise.all([api.update("reviews", list[i].id, { sort_order: list[i].sort_order }), api.update("reviews", list[j].id, { sort_order: list[j].sort_order })]).then(function(){ renderReviews(); });
+}
+var redit = null, pendingShot = null;
+function openRev(id){
+  redit = id ? byId(state.reviews, id) : null; pendingShot = null;
+  var r = redit || { source: "Carousell", visible: true, tags: [] };
+  $("#revDlgT").textContent = redit ? "Edit review" : "Add review";
+  $("#rHandle").value = r.handle || ""; $("#rSource").value = r.source || "Carousell"; $("#rEvent").value = r.event || ""; $("#rText").value = r.text || ""; $("#rTextZh").value = r.text_zh || "";
+  $("#rTags").value = (r.tags || []).join(", "); $("#rVis").checked = r.visible !== false; $("#rImg").value = "";
+  var p = $("#rImgPrev"); p.src = revShot(r); p.hidden = !revShot(r); $("#rDelete").hidden = !redit; $("#revDlg").showModal();
+}
+$("#newReview").addEventListener("click", function(){ openRev(null); });
+$("#rImg").addEventListener("change", function(e){ var f = e.target.files[0]; if (!f) return; pendingShot = f; var fr = new FileReader(); fr.onload = function(){ $("#rImgPrev").src = fr.result; $("#rImgPrev").hidden = false; }; fr.readAsDataURL(f); });
+$("#revDlg").addEventListener("close", function(){
+  if ($("#revDlg").returnValue !== "save") return;
+  var row = redit ? Object.assign({}, redit) : { id: "rev-" + Date.now(), sort_order: state.reviews.length + 1 };
+  row.handle = $("#rHandle").value.trim().replace(/^@/, ""); row.source = $("#rSource").value; row.event = $("#rEvent").value.trim(); row.text = $("#rText").value.trim();
+  row.text_zh = $("#rTextZh").value.trim() || null; row.tags = $("#rTags").value.split(",").map(function(s){ return s.trim(); }).filter(Boolean); row.visible = $("#rVis").checked;
+  var imgFail = null;
+  var up = pendingShot ? api.upload("reviews", pendingShot).then(function(u){ row.screenshot_url = u; }).catch(function(e){ imgFail = e; }) : Promise.resolve();
+  up.then(function(){ return api.upsert("reviews", row); }).then(function(saved){
+    var i = state.reviews.findIndex(function(x){ return x.id === row.id; }); if (i >= 0) state.reviews[i] = saved || row; else state.reviews.push(saved || row);
+    renderReviews(); toast(imgFail ? uploadMsg(imgFail) : "Review saved"); }).catch(function(err){ toast("Couldn’t save: " + err.message); });
+});
+$("#rDelete").addEventListener("click", function(){ if (!redit || !confirm("Delete this review?")) return; var id = redit.id;
+  api.remove("reviews", id).then(function(){ state.reviews = state.reviews.filter(function(x){ return x.id !== id; }); $("#revDlg").close("cancel"); renderReviews(); toast("Review deleted"); }); });
+
+/* ================= SETTINGS ================= */
+function renderSettings(){
+  fillContacts();
+  $("#connStats").innerHTML = '<div><span>Mode</span><strong>' + (DEMO ? "Demo — sample data, nothing is saved" : "Live — Supabase") + '</strong></div>' +
+    '<div><span>Database</span><strong>' + (DEMO ? "Not connected yet" : esc(CONFIG.supabaseUrl.replace(/^https:\/\//, ""))) + '</strong></div>' +
+    '<div><span>Enquiries stored</span><strong>' + state.enquiries.length + '</strong></div><div><span>Events tracked</span><strong>' + state.events.length.toLocaleString() + '</strong></div>';
+  var hb = state.heartbeat; var age = hb && hb.last_ping ? Math.round((Date.now() - new Date(hb.last_ping)) / 36e5) : null;
+  $("#keepStats").innerHTML = '<div><span>Last ping</span><strong>' + (hb && hb.last_ping ? fmtDT(hb.last_ping) + " (" + age + "h ago)" : "No ping recorded yet") + '</strong></div>' +
+    '<div><span>Status</span><strong>' + (age !== null && age < 30 ? '<span class="pill st-secured">Healthy</span>' : '<span class="pill st-closed">Check the scheduled function</span>') + '</strong></div><div><span>Schedule</span><strong>Daily (Netlify scheduled function)</strong></div>';
+}
+$("#dlDrops").addEventListener("click", function(){ download("drops.json", JSON.stringify(state.drops, null, 1)); });
+$("#dlReviews").addEventListener("click", function(){ download("reviews.json", JSON.stringify(state.reviews, null, 1)); });
+$("#dlFaqs").addEventListener("click", function(){ download("faqs.json", JSON.stringify(state.faqs, null, 1)); });
+$("#dlSettings").addEventListener("click", function(){ download("settings.json", JSON.stringify([{ key: "contacts", value: state.contacts }], null, 1)); });
+
+/* ================= FAQ ================= */
+function sortedFaqs(){ return state.faqs.slice().sort(function(a, b){ return (a.sort_order || 0) - (b.sort_order || 0); }); }
+function renderFaqs(){
+  var list = sortedFaqs();
+  $("#faqBody").innerHTML = list.length ? list.map(function(f, i){
+    return '<tr><td class="muted">' + (i + 1) + '</td><td><strong>' + esc(f.q_en) + '</strong><br><span class="muted">' + esc(f.q_zh || "— no Chinese yet") + '</span></td>' +
+      '<td><label class="switch"><input type="checkbox" data-fvis="' + f.id + '"' + (f.visible !== false ? " checked" : "") + '><span class="sr">Visible</span></label></td>' +
+      '<td style="white-space:nowrap;text-align:right"><button class="btn btn-s btn-sm" data-fmv="' + f.id + '" data-dir="-1" type="button" aria-label="Move up"' + (i === 0 ? " disabled" : "") + '>↑</button> <button class="btn btn-s btn-sm" data-fmv="' + f.id + '" data-dir="1" type="button" aria-label="Move down"' + (i === list.length - 1 ? " disabled" : "") + '>↓</button> <button class="btn btn-s btn-sm" data-fedit="' + f.id + '" type="button">Edit</button></td></tr>';
+  }).join("") : '<tr><td colspan="4" class="empty">No questions yet.</td></tr>';
+  $$("[data-fvis]").forEach(function(c){ c.addEventListener("change", function(){ var f = byId(state.faqs, c.dataset.fvis); f.visible = c.checked; api.update("faqs", f.id, { visible: c.checked }).then(function(){ toast(c.checked ? "Shown on website" : "Hidden"); }); }); });
+  $$("[data-fmv]").forEach(function(b){ b.addEventListener("click", function(){
+    var list = sortedFaqs(), i = list.findIndex(function(x){ return String(x.id) === b.dataset.fmv; }), j = i + (+b.dataset.dir); if (j < 0 || j >= list.length) return;
+    var t = list[i]; list[i] = list[j]; list[j] = t; list.forEach(function(r, k){ r.sort_order = k + 1; });
+    Promise.all([api.update("faqs", list[i].id, { sort_order: list[i].sort_order }), api.update("faqs", list[j].id, { sort_order: list[j].sort_order })]).then(renderFaqs); }); });
+  $$("[data-fedit]").forEach(function(b){ b.addEventListener("click", function(){ openFaq(b.dataset.fedit); }); });
+}
+var fedit = null;
+function setFtab(t){ $$("#faqDlg [data-ftab]").forEach(function(b){ b.setAttribute("aria-selected", b.dataset.ftab === t); }); $$("#faqDlg [data-fpane]").forEach(function(p){ p.hidden = p.dataset.fpane !== t; }); }
+$$("#faqDlg [data-ftab]").forEach(function(b){ b.addEventListener("click", function(){ setFtab(b.dataset.ftab); }); });
+function openFaq(id){
+  fedit = id ? byId(state.faqs, id) : null; var f = fedit || { visible: true };
+  $("#faqDlgT").textContent = fedit ? "Edit question" : "Add question";
+  $("#fqEn").value = f.q_en || ""; $("#faEn").value = f.a_en || ""; $("#fqZh").value = f.q_zh || ""; $("#faZh").value = f.a_zh || ""; $("#fVis").checked = f.visible !== false;
+  $("#fDelete").hidden = !fedit; setFtab("en"); $("#faqDlg").showModal();
+}
+$("#newFaq").addEventListener("click", function(){ openFaq(null); });
+$("#faqForm").addEventListener("submit", function(e){ if (e.submitter && e.submitter.value === "save" && !$("#fqEn").value.trim()) { e.preventDefault(); setFtab("en"); $("#fqEn").reportValidity(); } });
+$("#faqDlg").addEventListener("close", function(){
+  if ($("#faqDlg").returnValue !== "save") return;
+  var row = fedit ? Object.assign({}, fedit) : { id: "faq-" + Date.now(), sort_order: state.faqs.length + 1 };
+  row.q_en = $("#fqEn").value.trim(); row.a_en = $("#faEn").value.trim(); row.q_zh = $("#fqZh").value.trim() || null; row.a_zh = $("#faZh").value.trim() || null; row.visible = $("#fVis").checked;
+  api.upsert("faqs", row).then(function(saved){ var i = state.faqs.findIndex(function(x){ return x.id === row.id; }); if (i >= 0) state.faqs[i] = saved || row; else state.faqs.push(saved || row); renderFaqs(); toast("Question saved"); })
+    .catch(function(err){ toast("Couldn’t save: " + err.message); });
+});
+$("#fDelete").addEventListener("click", function(){ if (!fedit || !confirm("Delete this question?")) return; var id = fedit.id;
+  api.remove("faqs", id).then(function(){ state.faqs = state.faqs.filter(function(x){ return x.id !== id; }); $("#faqDlg").close("cancel"); renderFaqs(); toast("Question deleted"); }); });
+
+/* ================= CONTACT LINKS ================= */
+var CF = { whatsapp_number: "#cWaNum", whatsapp_link: "#cWaLink", instagram_url: "#cIgUrl", instagram_handle: "#cIgHandle", carousell_url: "#cCsUrl" };
+var CT = { whatsapp_on: "#cWaOn", instagram_on: "#cIgOn", carousell_on: "#cCsOn" };
+function fillContacts(){ var c = state.contacts; Object.keys(CF).forEach(function(k){ $(CF[k]).value = c[k] || ""; }); Object.keys(CT).forEach(function(k){ $(CT[k]).checked = c[k] !== false; }); testWa(); }
+function testWa(){ var link = $("#cWaLink").value.trim() || ("https://wa.me/" + $("#cWaNum").value.replace(/\D/g, "")); $("#cTestWa").href = link; }
+["#cWaNum", "#cWaLink"].forEach(function(s){ $(s).addEventListener("input", testWa); });
+$("#cSave").addEventListener("click", function(){
+  var v = {}; Object.keys(CF).forEach(function(k){ v[k] = $(CF[k]).value.trim(); }); Object.keys(CT).forEach(function(k){ v[k] = $(CT[k]).checked; });
+  v.instagram_handle = v.instagram_handle.replace(/^@/, "");
+  var bad = [];
+  if (v.whatsapp_on && v.whatsapp_number.replace(/\D/g, "").length < 8) bad.push("WhatsApp number");
+  [["whatsapp_link", "WhatsApp link"], ["instagram_url", "Instagram link"], ["carousell_url", "Carousell link"]].forEach(function(p){ if (v[p[0]] && !/^https?:\/\//.test(v[p[0]])) bad.push(p[1] + " (must start with https://)"); });
+  if (bad.length) { $("#cMsg").textContent = "Check: " + bad.join(", "); return; }
+  $("#cMsg").textContent = "Saving…";
+  api.upsert("settings", { key: "contacts", value: v }).then(function(){ state.contacts = v; $("#cMsg").textContent = "Saved — live on the website."; toast("Contact links saved"); })
+    .catch(function(err){ $("#cMsg").textContent = "Couldn’t save: " + err.message; });
+});
+
+/* ================= BOOT ================= */
+function start(user){
+  $("#loginView").hidden = true; $("#appView").hidden = false;
+  $("#modeBadge").textContent = DEMO ? "Demo mode · sample data" : "Live"; $("#modeBadge").className = "badge" + (DEMO ? "" : " live");
+  $("#whoami").textContent = user || "Demo user";
+  api.load().then(function(){ updateCount(); show("dashboard"); }).catch(function(err){ toast("Couldn’t load data: " + err.message); });
+}
+$("#signOut").addEventListener("click", function(e){ e.preventDefault(); if (DEMO) return toast("Demo mode — no sign-in needed"); sb.auth.signOut().then(function(){ location.reload(); }); });
+if (DEMO) { start(null); }
+else if (!CONNECTED) { $("#loginView").hidden = false; $$("#loginForm input, #loginForm button").forEach(function(x){ x.disabled = true; }); $("#lgMsg").textContent = "Admin isn’t connected to the database yet — add your Supabase details to config.js (see README)."; }
+else {
+  var s = document.createElement("script"); s.src = "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2";
+  s.onload = function(){
+    sb = supabase.createClient(CONFIG.supabaseUrl, CONFIG.supabaseAnonKey);
+    sb.auth.getSession().then(function(r){ if (r.data.session) start(r.data.session.user.email); else $("#loginView").hidden = false; });
+    $("#loginForm").addEventListener("submit", function(e){ e.preventDefault(); $("#lgMsg").textContent = "Signing in…";
+      sb.auth.signInWithPassword({ email: $("#lgEmail").value, password: $("#lgPw").value }).then(function(r){ if (r.error) $("#lgMsg").textContent = r.error.message; else start(r.data.user.email); }); });
+  };
+  document.head.appendChild(s);
+}
+</script>
+</body>
+</html>
