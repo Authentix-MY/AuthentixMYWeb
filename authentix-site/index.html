@@ -269,6 +269,13 @@ dialog.pv .btn{margin-top:8px}
 .never > div{display:flex;align-items:center;gap:10px;font-size:15px;line-height:1.4}
 .never > div svg{flex-shrink:0}
 @media (max-width:900px){.never{flex-direction:column;align-items:flex-start;gap:14px}.never > .caps{flex:none}}
+
+/* Poster mode: uploaded concert posters show in full (no crop) over a blurred copy */
+.ticket .ph.poster{height:auto;aspect-ratio:4/5;background:var(--deep);isolation:isolate}
+.ticket .ph.poster:before{content:"";position:absolute;inset:-24px;background:var(--bg) center/cover no-repeat;filter:blur(22px) brightness(.4) saturate(1.1);z-index:-1}
+.ticket .ph.poster:after{display:none}
+.ticket .ph.poster .pz{display:block;width:100%;height:100%;cursor:zoom-in}
+.ticket .ph.poster img{object-fit:contain;opacity:1;padding:58px 16px 6px}
 </style>
 </head>
 <body>
@@ -524,6 +531,7 @@ function store(k, v){ try { if (v === undefined) return localStorage.getItem(k);
 function sid(){ try { var s = sessionStorage.getItem("ax_sid"); if (!s) { s = Math.random().toString(36).slice(2) + Date.now().toString(36); sessionStorage.setItem("ax_sid", s); } return s; } catch (e) { return "nosession"; } }
 function dbHeaders(){ var k = CONFIG.supabaseAnonKey, h = { "apikey": k, "Content-Type": "application/json" }; if (/^eyJ/.test(k)) h["Authorization"] = "Bearer " + k; return h; }
 function pick(obj, base){ return LANG === "zh" && obj[base + "_zh"] ? obj[base + "_zh"] : obj[base + "_en"]; }
+function isPoster(d){ return /^(https?:|data:)/.test(d.image_url || ""); }
 function imgFor(d){ return BUNDLED[d.image_url] || d.image_url || BUNDLED.beams; }
 var CONTACTS = FALLBACK_CONTACTS;
 function waDigits(){ return String(CONTACTS.whatsapp_number || "").replace(/\D/g, ""); }
@@ -611,7 +619,7 @@ function renderDrops(f){
   g.innerHTML = list.map(function(d){
     var soon = d.status === "soon", city = CITY[d.city] ? CITY[d.city][LANG === "zh" ? 1 : 0] : d.city;
     return '<article class="ticket" data-id="' + esc(d.id) + '" data-artist="' + esc(d.artist) + '">' +
-      '<div class="ph"><img src="' + esc(imgFor(d)) + '" alt=""><span class="status' + (soon ? ' soon' : '') + '">' + esc(tr("st." + d.status)) + '</span></div>' +
+      (isPoster(d) ? '<div class="ph poster" style="--bg:url(\'' + esc(imgFor(d)) + '\')"><a class="pz" href="' + esc(imgFor(d)) + '" target="_blank" rel="noopener" aria-label="' + esc(d.artist) + ' poster"><img src="' + esc(imgFor(d)) + '" alt="' + esc(d.artist) + ' poster" loading="lazy"></a>' : '<div class="ph"><img src="' + esc(imgFor(d)) + '" alt="">') + '<span class="status' + (soon ? ' soon' : '') + '">' + esc(tr("st." + d.status)) + '</span></div>' +
       '<div class="body"><span class="tour">' + esc(pick(d, "tour")) + '</span><h3>' + esc(d.artist) + '</h3>' +
       '<div class="meta"><span>' + esc(pick(d, "date_label")) + '</span><span>' + esc(pick(d, "venue")) + ', ' + esc(city) + '</span></div></div>' +
       '<div class="foot"><small>' + esc(pick(d, "note")) + '</small><a href="' + (waOn() ? waLink(d.artist + " — " + pick(d, "date_label") + " (" + city + ")") : "#quote") + '"' + (waOn() ? ' target="_blank" rel="noopener"' : '') + ' data-drop="' + esc(d.id) + '">' + tr(soon ? "drop.notify" : "drop.enquire") + ' →</a></div>' +
