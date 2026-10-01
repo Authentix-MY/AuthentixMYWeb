@@ -79,7 +79,7 @@ select.status{min-height:34px;border-radius:999px;border:0;box-shadow:inset 0 0 
 .drops-list,.rev-grid{display:grid;gap:14px}
 .drops-list{grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}
 .drop{display:flex;flex-direction:column;overflow:hidden;padding:0}
-.drop .img{height:120px;background:var(--deep) center/cover}
+.drop .img{position:relative;aspect-ratio:4/5;overflow:hidden;background:var(--deep);isolation:isolate}.drop .img:before{content:"";position:absolute;inset:-20px;background:var(--bg) center/cover no-repeat;filter:blur(18px) brightness(.45);z-index:-1}.drop .img img{width:100%;height:100%;object-fit:contain;padding:10px;display:block}
 .drop .b{padding:16px;display:flex;flex-direction:column;gap:6px;flex:1}
 .drop h3{margin:0;font-size:17px}
 .drop .acts{display:flex;gap:8px;align-items:center;margin-top:10px;flex-wrap:wrap}
@@ -106,7 +106,7 @@ dialog::backdrop{background:rgba(14,21,18,.55)}
 .tabs{display:flex;gap:6px}
 .tabs button{border:0;background:#EFECE5;border-radius:8px;min-height:34px;padding:0 14px;font-weight:600;cursor:pointer}
 .tabs button[aria-selected="true"]{background:var(--forest);color:var(--txt)}
-.preview-img{width:100%;max-height:200px;object-fit:cover;border-radius:12px;background:#111}
+.preview-img{width:100%;max-height:320px;object-fit:contain;border-radius:12px;background:#111}
 .drawer{position:fixed;top:0;right:0;bottom:0;width:min(440px,100%);background:var(--card);box-shadow:-20px 0 60px rgba(0,0,0,.15);z-index:40;display:flex;flex-direction:column;transform:translateX(100%);transition:transform .25s ease}
 .drawer.open{transform:none}
 .drawer .dlg-b{max-height:none;flex:1}
@@ -262,7 +262,7 @@ dialog::backdrop{background:rgba(14,21,18,.55)}
         <div class="frow"><div class="field"><label for="dVenueZh">场馆</label><input id="dVenueZh"></div><div class="field"><label for="dDateZh">日期显示</label><input id="dDateZh" placeholder="2026年10月17日（周六）· 晚上7点"></div></div>
         <div class="field"><label for="dNoteZh">卡片备注</label><input id="dNoteZh"></div>
       </div>
-      <div class="field"><label for="dImg">Cover image</label><input id="dImg" type="file" accept="image/*"><img class="preview-img" id="dImgPrev" alt="" hidden></div>
+      <div class="field"><label for="dImg">Poster image</label><input id="dImg" type="file" accept="image/*"><small class="muted" style="display:block;margin:4px 0 8px;font-size:12px">Shown in full, never cropped. Portrait posters (4:5) fit best.</small><img class="preview-img" id="dImgPrev" alt="" hidden></div>
       <label class="switch"><input type="checkbox" id="dPub" checked> Published on website</label>
     </div>
     <div class="dlg-f"><button class="btn btn-d" type="button" id="dDelete">Delete</button><div style="display:flex;gap:10px"><button class="btn btn-s" value="cancel" formnovalidate>Cancel</button><button class="btn btn-p" value="save" id="dSave">Save drop</button></div></div>
@@ -323,7 +323,7 @@ var sb = null, state = { enquiries: [], drops: [], reviews: [], faqs: [], contac
 function $(s, r){ return (r || document).querySelector(s); }
 function $$(s, r){ return Array.prototype.slice.call((r || document).querySelectorAll(s)); }
 function esc(s){ return String(s == null ? "" : s).replace(/[&<>"]/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]; }); }
-function toast(t){ var el = $("#toast"); el.textContent = t; el.style.display = "block"; clearTimeout(toast._t); toast._t = setTimeout(function(){ el.style.display = "none"; }, 2400); }
+function toast(t){ var el = $("#toast"); el.textContent = t; el.style.display = "block"; clearTimeout(toast._t); toast._t = setTimeout(function(){ el.style.display = "none"; }, Math.max(2400, t.length * 60)); }
 function day(d){ var x = new Date(d); x.setHours(0,0,0,0); return x; }
 function fmtDate(d){ return new Date(d).toLocaleDateString("en-GB", { day: "numeric", month: "short" }); }
 function fmtDT(d){ var x = new Date(d); return x.toLocaleDateString("en-GB", { day: "numeric", month: "short" }) + " " + x.toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" }); }
@@ -530,7 +530,7 @@ function renderDrops(){
   var today = day(Date.now());
   $("#dropsList").innerHTML = state.drops.map(function(d){
     var past = d.event_date && new Date(d.event_date) < today;
-    return '<article class="card drop"><div class="img" style="background-image:url(\'' + esc(imgUrl(d.image_url)) + '\')"></div><div class="b">' +
+    return '<article class="card drop"><div class="img" style="--bg:url(\'' + esc(imgUrl(d.image_url)) + '\')"><img src="' + esc(imgUrl(d.image_url)) + '" alt=""></div><div class="b">' +
       '<div style="display:flex;gap:8px;flex-wrap:wrap"><span class="pill">' + STN[d.status] + '</span>' + (past ? '<span class="pill st-closed">Past — hidden</span>' : '') + '</div>' +
       '<h3>' + esc(d.artist) + '</h3><span class="muted">' + esc(d.tour_en || "") + '</span><span>' + esc(d.date_label_en || "") + ' · ' + esc(d.venue_en || "") + ', ' + CITYN[d.city] + '</span>' +
       '<div class="acts"><label class="switch"><input type="checkbox" data-pub="' + d.id + '"' + (d.published !== false ? " checked" : "") + '> Published</label><button class="btn btn-s btn-sm" data-edit="' + d.id + '" type="button" style="margin-left:auto">Edit</button></div></div></article>';
@@ -559,14 +559,16 @@ $("#dropDlg").addEventListener("close", function(){
   var row = editing ? Object.assign({}, editing) : { id: "drop-" + Date.now(), image_url: "beams" };
   Object.keys(DF).forEach(function(k){ row[k] = $(DF[k]).value.trim() || null; });
   row.published = $("#dPub").checked;
-  var up = pendingImg ? api.upload("drops", pendingImg).then(function(u){ row.image_url = u; }) : Promise.resolve();
+  var imgFail = null;
+  var up = pendingImg ? api.upload("drops", pendingImg).then(function(u){ row.image_url = u; }).catch(function(e){ imgFail = e; }) : Promise.resolve();
   up.then(function(){ return api.upsert("drops", row); }).then(function(saved){
     var i = state.drops.findIndex(function(x){ return x.id === row.id; }); if (i >= 0) state.drops[i] = saved || row; else state.drops.push(saved || row);
-    renderDrops(); toast("Drop saved"); }).catch(function(err){ toast("Couldn’t save: " + err.message); });
+    renderDrops(); toast(imgFail ? uploadMsg(imgFail) : "Drop saved"); }).catch(function(err){ toast("Couldn’t save: " + err.message); });
 });
 $("#dDelete").addEventListener("click", function(){ if (!editing || !confirm("Delete this drop?")) return; var id = editing.id;
   api.remove("drops", id).then(function(){ state.drops = state.drops.filter(function(x){ return x.id !== id; }); $("#dropDlg").close("cancel"); renderDrops(); toast("Drop deleted"); }); });
 
+function uploadMsg(e){ var m = (e && e.message) || ""; return /tenant|bucket|not found|storage/i.test(m) ? "Saved, but the image wasn’t uploaded – Supabase Storage isn’t set up yet." : "Saved, but the image upload failed: " + m; }
 /* ================= REVIEWS ================= */
 function revShot(r){ return r.screenshot_url && /^(https?:|data:|\/)/.test(r.screenshot_url) ? r.screenshot_url : (BUNDLED.shots[r.screenshot_url] || ""); }
 function renderReviews(){
@@ -602,10 +604,11 @@ $("#revDlg").addEventListener("close", function(){
   var row = redit ? Object.assign({}, redit) : { id: "rev-" + Date.now(), sort_order: state.reviews.length + 1 };
   row.handle = $("#rHandle").value.trim().replace(/^@/, ""); row.source = $("#rSource").value; row.event = $("#rEvent").value.trim(); row.text = $("#rText").value.trim();
   row.text_zh = $("#rTextZh").value.trim() || null; row.tags = $("#rTags").value.split(",").map(function(s){ return s.trim(); }).filter(Boolean); row.visible = $("#rVis").checked;
-  var up = pendingShot ? api.upload("reviews", pendingShot).then(function(u){ row.screenshot_url = u; }) : Promise.resolve();
+  var imgFail = null;
+  var up = pendingShot ? api.upload("reviews", pendingShot).then(function(u){ row.screenshot_url = u; }).catch(function(e){ imgFail = e; }) : Promise.resolve();
   up.then(function(){ return api.upsert("reviews", row); }).then(function(saved){
     var i = state.reviews.findIndex(function(x){ return x.id === row.id; }); if (i >= 0) state.reviews[i] = saved || row; else state.reviews.push(saved || row);
-    renderReviews(); toast("Review saved"); }).catch(function(err){ toast("Couldn’t save: " + err.message); });
+    renderReviews(); toast(imgFail ? uploadMsg(imgFail) : "Review saved"); }).catch(function(err){ toast("Couldn’t save: " + err.message); });
 });
 $("#rDelete").addEventListener("click", function(){ if (!redit || !confirm("Delete this review?")) return; var id = redit.id;
   api.remove("reviews", id).then(function(){ state.reviews = state.reviews.filter(function(x){ return x.id !== id; }); $("#revDlg").close("cancel"); renderReviews(); toast("Review deleted"); }); });
