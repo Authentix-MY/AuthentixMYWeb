@@ -6,7 +6,7 @@ export default async () => {
   if (!url || !key) return new Response("Missing SUPABASE_URL / SUPABASE_ANON_KEY", { status: 500 });
   const res = await fetch(`${url}/rest/v1/rpc/ping`, {
     method: "POST",
-    headers: { apikey: key, Authorization: `Bearer ${key}`, "Content-Type": "application/json" },
+    headers: { apikey: key, "Content-Type": "application/json", ...(key.startsWith("eyJ") ? { Authorization: `Bearer ${key}` } : {}) },
     body: "{}",
   });
   console.log("keep-alive", res.status);
